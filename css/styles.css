@@ -10850,3 +10850,11 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+#footer{
+  margin-top: 25vh;
+}
+
+#navBar {
+  margin-bottom: 25vh;
+}
