@@ -10850,9 +10850,3 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-
-@media (max-width: 992px) {
-  #navCarrito {
-    display: flex;
-  }
-}
