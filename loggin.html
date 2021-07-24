@@ -13,13 +13,14 @@
   >
     <div id="cartaLogin" class="card">
       <div class="card-body">
-        <form class="text-center">
+        <form class="text-center" id="loginForm">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label"
               >Email address</label
             >
             <input
               type="email"
+              id="logginE"
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
@@ -38,9 +39,15 @@
               id="exampleInputPassword1"
             />
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <div class="d-flex justify-content-between">
+            <button type="submit" id="login" class="btn btn-primary">
+              Ingresa
+            </button>
+            <button type="button" class="btn btn-primary">Crear Usuario</button>
+          </div>
         </form>
       </div>
     </div>
+    <script src="./js/scripts.js"></script>
   </body>
 </html>
