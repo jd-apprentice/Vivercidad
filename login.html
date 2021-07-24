@@ -1,46 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/styles.css" />
-    <title>Document</title>
-  </head>
-  <body
-    class="d-flex justify-content-center align-items-center"
-    style="height: 100vh"
-  >
-    <div id="cartaLogin" class="card">
-      <div class="card-body">
-        <form class="text-center">
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label"
-              >Email address</label
-            >
-            <input
-              type="email"
-              class="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-            />
-            <div id="emailHelp" class="form-text">
-              We'll never share your email with anyone else.
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <title>Document</title>
+</head>
+
+<body style="height: 100vh">
+
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container px-4 px-lg-5">
+      <a class="navbar-brand" href="#!">Vivercidad</a>
+    </div>
+  </nav>
+
+    <div class="d-flex justify-content-center align-items-center mt-5 pt-5">
+      <div id="cartaLogin" class="card">
+        <div class="card-body">
+          <form class="text-center">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+              <div id="emailHelp" class="form-text">
+                Nunca compartiremos tu contraseña con nadie.
+              </div>
             </div>
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label"
-              >Password</label
-            >
-            <input
-              type="password"
-              class="form-control"
-              id="exampleInputPassword1"
-            />
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" />
+            </div>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-success">Ingresa</button>
+              <button type="submit" class="btn btn-success">Crear Usuario</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </body>
+
+  <footer id="footer" class="bg-light">
+    <div class="container">
+      <p class="pt-3 text-center text-dark">Copyright &copy; Your Website 2021</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+
+  <!-- Firebase Addons -->
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
+
+  <script>
+      // Configuracion Firebase
+      var firebaseConfig = {
+          apiKey: "AIzaSyDo-Mx2Jz3j5MR9vH0V5ypYk3cQxYqYB7Y",
+          authDomain: "e-commerce-35ca6.firebaseapp.com",
+          projectId: "e-commerce-35ca6",
+          storageBucket: "e-commerce-35ca6.appspot.com",
+          messagingSenderId: "532342078664",
+          appId: "1:532342078664:web:8ccee9a04ce0eb868bf9fd"
+      };
+      // Iniciar Firebase
+      firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Main JS -->
+  <script src="js/scripts.js"></script>
+
+</body>
 </html>

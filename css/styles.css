@@ -10858,3 +10858,7 @@ textarea.form-control-lg {
 #navBar {
   margin-bottom: 25vh;
 }
+
+#footer{
+  min-height: calc(100vh - 150px - 330px);
+}
