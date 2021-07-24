@@ -594,7 +594,7 @@ progress {
   color: #6c757d;
 }
 .blockquote-footer::before {
-  content: "— ";
+  content: "— ";
 }
 
 .img-fluid {
@@ -11189,4 +11189,16 @@ fieldset:disabled .btn {
   .d-print-none {
     display: none !important;
   }
+}
+
+#footer {
+  margin-top: 25vh;
+}
+
+#navBar {
+  margin-bottom: 25vh;
+}
+
+#footer {
+  min-height: calc(100vh - 150px - 330px);
 }
