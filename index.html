@@ -1,133 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Vivercidad - Tienda de plantas</title>
     <link rel="icon" type="image/x-icon" href="img/Logo_URL.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-success">
-      <div class="container">
-        <a class="navbar-brand" href="#!">Vivercidad</a>
-        <form class="d-flex">
-          <input
-            class="form-control me-2 bg-light"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-success bg-dark" type="submit">
-            <i class="bi bi-search"></i>
-          </button>
-        </form>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#!"
-                >Inicio</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#!">Sobre Nosotros</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                id="navbarDropdown"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                >Productos</a
-              >
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <a class="dropdown-item" href="#!">Todos los productos</a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" href="#!">Mas visitados</a></li>
-                <li><a class="dropdown-item" href="#!">Nuevos productos</a></li>
-              </ul>
-            </li>
-          </ul>
-          <div class="d-flex">
-            <button
-              type="button"
-              id="navCarrito"
-              class="btn btn-outline-dark me-2"
-            >
-              <i class="bi-cart-fill"></i>
-              <span>Carrito</span>
-              <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-            </button>
-            <a href="login.html">
-              <button type="button" class="btn btn-outline-dark">
-                <i class="bi bi-person-circle me-1"></i>
-                <span id="changeName">Ingresar</span>
-              </button>
-            </a>
-          </div>
+        <div class="container   ">
+            <a class="navbar-brand" href="#!">Vivercidad</a>
+            <form class="d-flex">
+                <input class="form-control me-2 bg-light" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success bg-dark" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#!">Sobre Nosotros</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#!">Todos los productos</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#!">Mas visitados</a></li>
+                            <li><a class="dropdown-item" href="#!">Nuevos productos</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button type="button" id="navCarrito" class="btn btn-outline-dark me-2">
+                        <i class="bi-cart-fill"></i>
+                        <span>Carrito</span>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </button>
+                    <a href="login.html">
+                        <button type="button" class="btn btn-outline-dark">
+                            <i class="bi bi-person-circle me-1 "></i>
+                            <span>Ingresar</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
     </nav>
     <!-- Header-->
-    <div
-      id="carouselExampleCaptions"
-      class="carousel slide"
-      data-bs-ride="carousel"
-    >
-      <div class="carousel-indicators">
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="0"
-          class="active"
-          aria-current="true"
-          aria-label="Slide 1"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="1"
-          aria-label="Slide 2"
-        ></button>
-        <button
-          type="button"
-          data-bs-target="#carouselExampleCaptions"
-          data-bs-slide-to="2"
-          aria-label="Slide 3"
-        ></button>
-      </div>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="img/plants.png" class="d-block w-100" alt="..." />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>Ofertas en plantas solo hoy!</h5>
-            <p>50% Off despues del 3er produco agregado al carrito</p>
-          </div>
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -136,7 +74,6 @@
                     <h5>Ofertas en plantas solo hoy!</h5>
                     <p>50% Off despues del 3er produco agregado al carrito</p>
                 </div>
-              </div>
             </div>
             <div class="carousel-item">
                 <img src="img/Oferta2.png" class="d-block w-100" alt="...">
@@ -144,15 +81,6 @@
                     <h5>Nuevos productos!</h5>
                     <p>Visita nuestros productos nuevos</p>
                 </div>
-              </div>
-              <!-- Product actions-->
-              <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center">
-                  <a class="btn btn-outline-dark mt-auto" href="#"
-                    >Add to cart</a
-                  >
-                </div>
-              </div>
             </div>
             <div class="carousel-item">
                 <img src="img/Oferta3.png" class="d-block w-100" alt="...">
@@ -160,7 +88,6 @@
                     <h5>Dale vida a tu casa</h5>
                     <p>Con una enorme cantidad de plantas decorativas de nuestro catalogo</p>
                 </div>
-              </div>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -388,11 +315,8 @@
                         </div>
                     </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
     <!-- Footer-->
     <footer class="py-5 bg-dark">
@@ -412,20 +336,21 @@
     <script src="https://www.gstatic.com/firebasejs/8.7.0/firebase-firestore.js"></script>
 
     <script>
-      // Configuracion Firebase
-      var firebaseConfig = {
-        apiKey: "AIzaSyDo-Mx2Jz3j5MR9vH0V5ypYk3cQxYqYB7Y",
-        authDomain: "e-commerce-35ca6.firebaseapp.com",
-        projectId: "e-commerce-35ca6",
-        storageBucket: "e-commerce-35ca6.appspot.com",
-        messagingSenderId: "532342078664",
-        appId: "1:532342078664:web:8ccee9a04ce0eb868bf9fd",
-      };
-      // Iniciar Firebase
-      firebase.initializeApp(firebaseConfig);
+        // Configuracion Firebase
+        var firebaseConfig = {
+            apiKey: "AIzaSyDo-Mx2Jz3j5MR9vH0V5ypYk3cQxYqYB7Y",
+            authDomain: "e-commerce-35ca6.firebaseapp.com",
+            projectId: "e-commerce-35ca6",
+            storageBucket: "e-commerce-35ca6.appspot.com",
+            messagingSenderId: "532342078664",
+            appId: "1:532342078664:web:8ccee9a04ce0eb868bf9fd"
+        };
+        // Iniciar Firebase
+        firebase.initializeApp(firebaseConfig);
     </script>
 
     <!-- Main JS -->
-    <script src="./js/index.js"></script>
-  </body>
+    <script src="js/scripts.js"></script>
+</body>
+
 </html>
