@@ -10,9 +10,10 @@ let getNombres = document.querySelectorAll('.nombreProducto');
 
 db.collection("plantas").get().then((querySnapshot) => {
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(getNombres.doc);
+    plantasNombre = doc.data().nombre;
+    plantasPrecio = doc.data().precio;
   });
+  console.log(plantasNombre, plantasPrecio);
 });
 
 // Leer documento expecifico
