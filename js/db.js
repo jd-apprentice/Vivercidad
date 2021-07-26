@@ -4,16 +4,22 @@ const db = firebase.firestore();
 
 // Variables
 
-let getNombres = document.querySelectorAll('.nombreProducto');
+const getNombres = document.querySelectorAll(".nombreProducto");
+const getPrecio = document.querySelectorAll(".precioProducto");
 
+let i = 0;
 // Leer todos los datos
 
-db.collection("plantas").get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    console.log(getNombres.doc);
+db.collection("plantas")
+  .orderBy("nombre", "asc")
+  .get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      getNombres[i].innerText = doc.data().nombre;
+      getPrecio[i].innerText = `$${doc.data().precio}`;
+      i++;
+    });
   });
-});
 
 // Leer documento expecifico
 
