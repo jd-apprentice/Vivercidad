@@ -52,7 +52,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#!">Contacto</a>
+              <a class="nav-link" href="#!">Sobre Nosotros</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -76,7 +76,7 @@
               </ul>
             </li>
           </ul>
-          <div id="carritoWidth" class="d-flex">
+          <div class="d-flex">
             <button
               type="button"
               id="navCarrito"
@@ -86,23 +86,12 @@
               <span>Carrito</span>
               <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
             </button>
-          </div>
-          <div class="dropdown">
-            <button
-              class="btn btn-outline-dark dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i class="bi bi-person-circle me-1"></i>
-              <span id="changeName">Ingresar</span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li>
-                <a class="dropdown-item" href="#" id="btnDropDo">Salir</a>
-              </li>
-            </ul>
+            <a href="login.html">
+              <button type="button" class="btn btn-outline-dark">
+                <i class="bi bi-person-circle me-1"></i>
+                <span id="changeName">Ingresar</span>
+              </button>
+            </a>
           </div>
         </div>
       </div>
@@ -202,7 +191,7 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Fancy Product</h5>
+                  <h5 class="fw-bolder nombreProducto">Fancy Product</h5>
                   <!-- Product price-->
                   $40.00 - $80.00
                 </div>
@@ -236,7 +225,7 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Special Item</h5>
+                  <h5 class="fw-bolder nombreProducto">Special Item</h5>
                   <!-- Product reviews-->
                   <div
                     class="
@@ -289,7 +278,7 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Sale Item</h5>
+                  <h5 class="fw-bolder nombreProducto">Sale Item</h5>
                   <!-- Product price-->
                   <span class="text-muted text-decoration-line-through"
                     >$50.00</span
@@ -319,7 +308,7 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Popular Item</h5>
+                  <h5 class="fw-bolder nombreProducto">Popular Item</h5>
                   <!-- Product reviews-->
                   <div
                     class="
@@ -369,7 +358,7 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Sale Item</h5>
+                  <h5 class="fw-bolder nombreProducto">Sale Item</h5>
                   <!-- Product price-->
                   <span class="text-muted text-decoration-line-through"
                     >$50.00</span
@@ -399,7 +388,7 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Fancy Product</h5>
+                  <h5 class="fw-bolder nombreProducto">Fancy Product</h5>
                   <!-- Product price-->
                   $120.00 - $280.00
                 </div>
@@ -433,7 +422,7 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Special Item</h5>
+                  <h5 class="fw-bolder nombreProducto">Special Item</h5>
                   <!-- Product reviews-->
                   <div
                     class="
@@ -479,7 +468,7 @@
               <div class="card-body p-4">
                 <div class="text-center">
                   <!-- Product name-->
-                  <h5 class="fw-bolder">Popular Item</h5>
+                  <h5 class="fw-bolder nombreProducto">Popular Item</h5>
                   <!-- Product reviews-->
                   <div
                     class="
@@ -547,6 +536,7 @@
     </script>
 
     <!-- Main JS -->
-    <script src="./js/index.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/db.js"></script>
   </body>
 </html>

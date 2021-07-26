@@ -68,6 +68,7 @@ loginF.addEventListener("submit", (e) => {
     });
 });
 
+//Mobile login
 googleAcc.addEventListener("click", (e) => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase
