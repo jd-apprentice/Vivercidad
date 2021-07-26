@@ -11203,6 +11203,6 @@ fieldset:disabled .btn {
   min-height: calc(100vh - 150px - 330px);
 }
 
-#btnLogout{
-  display:none;
+#btnLogout {
+  display: none;
 }
