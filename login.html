@@ -35,6 +35,7 @@
                 class="form-control"
                 id="userName"
                 aria-describedby="emailHelp"
+                required
               />
               <div id="emailHelp" class="form-text">
                 Nunca compartiremos tu contraseña con nadie.
@@ -49,6 +50,7 @@
                 id="lgPass"
                 class="form-control"
                 id="exampleInputPassword1"
+                required
               />
             </div>
             <div class="d-flex justify-content-between">
@@ -87,11 +89,16 @@
               <label for="email" class="text-center mb-2"
                 >Ingrese el Email</label
               >
-              <input type="text" id="email" class="d-block w-100" />
+              <input type="text" id="email" class="d-block w-100" required />
               <label for="password" class="text-center mt-2"
                 >Ingrese el Password</label
               >
-              <input type="password" id="pass" class="d-block w-100 mt-3" />
+              <input
+                type="password"
+                id="pass"
+                class="d-block w-100 mt-3"
+                required
+              />
               <button type="submit" class="btn btn-success mt-3" id="aceptU">
                 Crear Usuario
               </button>
@@ -142,6 +149,6 @@
     </script>
 
     <!-- Main JS -->
-    <script src="./js/scripts.js"></script>
+    <script src="./js/login.js"></script>
   </body>
 </html>

@@ -5,6 +5,7 @@ const btnLogin = document.querySelector("#loginBtn");
 const btnCreateU = document.querySelector("#createU");
 const btnLogout = document.querySelector("#btnLogout");
 const formCreateUsr = document.querySelector("#usr-form");
+const modalCreateU = document.querySelector("#CreateUsr");
 
 let btns = () => {
   btnLogin.style.display = "none";
@@ -14,22 +15,40 @@ let btns = () => {
   btnLogout.style.margin = "0 auto";
 };
 
-formCreateUsr.addEventListener("click", (e) => {
+let userEmail = document.querySelector("#email");
+let password = document.querySelector("#pass");
+
+firebase
+  .auth()
+  .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+  .then(() => {
+    // Existing and future Auth states are now persisted in the current
+    // session only. Closing the window would clear any existing state even
+    // if a user forgets to sign out.
+    // ...
+    // New sign-in will be persisted with session persistence.
+    return firebase
+      .auth()
+      .signInWithEmailAndPassword(userEmail.value, password.value);
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
+
+formCreateUsr.addEventListener("submit", (e) => {
   e.preventDefault();
-  let userName = document.querySelector("#email");
-  let password = document.querySelector("#pass");
   firebase
     .auth()
-    .createUserWithEmailAndPassword(userName.value, password.value)
+    .createUserWithEmailAndPassword(userEmail.value, password.value)
     .then((userCredential) => {
       // Signed in
       var user = userCredential.user;
-      console.log("Se creo correctamente");
-      // ...
+      alert("El usuario se creo correctamente");
     })
     .catch((error) => {
-      console.log(error);
-      // ..
+      alert(error);
     });
 });
 
@@ -41,8 +60,6 @@ loginF.addEventListener("submit", (e) => {
     .auth()
     .signInWithEmailAndPassword(loginE.value, loginP.value)
     .then((userCredential) => {
-      var user = userCredential.user;
-      console.log("Exito");
       btns();
       loginF.reset();
     })
@@ -58,7 +75,6 @@ googleAcc.addEventListener("click", (e) => {
     .auth()
     .signInWithPopup(provider)
     .then((result) => {
-      console.log("bien ahi");
       btns();
     })
     .catch((error) => {
@@ -80,4 +96,12 @@ btnLogout.addEventListener("click", () => {
     .catch((error) => {
       console.log(error.message);
     });
+});
+
+//
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    console.log(user);
+  } else {
+  }
 });
