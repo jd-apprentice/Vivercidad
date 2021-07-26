@@ -2,25 +2,30 @@
 
 const db = firebase.firestore();
 
+// Variables
+
+let getNombres = document.querySelectorAll('.nombreProducto');
+
 // Leer todos los datos
 
-async function readDatos() {
-  const snapshot = await db.collection('plantas').get();
-  snapshot.forEach((doc) => {
-    /* console.log(doc.id, '=>', doc.data()); */
-    console.log('Planta: ', doc.data().nombre, 'Precio: ', doc.data().precio);
+db.collection("plantas").get().then((querySnapshot) => {
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    console.log(getNombres.doc);
   });
-}
+});
 
 // Leer documento expecifico
 
-async function readDocuments() {
-  const snapshot = db.collection('plantas').doc('056F0WCI91FoV6nNOtpA');
-  const doc = await snapshot.get();
-  if (!doc.exists) {
-    console.log('No such document!');
+/* let docRef = db.collection("plantas").doc("smZxTcyfxsrUxU67ar5n");
+
+docRef.get().then((doc) => {
+  if (doc.exists) {
+    console.log("Document data:", doc.data());
   } else {
-    console.log('Document data:', doc.data());
-    /* console.log(doc.data().nombre); */
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
   }
-}
+}).catch((error) => {
+  console.log("Error getting document:", error);
+}); */
