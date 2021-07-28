@@ -15,8 +15,7 @@ let iTwo = 0;
 
 // Leer todos los datos - Pintar Carousel #1
 
-db.collection("plantas", "plantas2")
-  .orderBy("nombre", "asc")
+db.collection("plantas")
   .get()
   .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -29,7 +28,6 @@ db.collection("plantas", "plantas2")
 // Leer todos los datos - Pintar Carousel #2
 
 db.collection("plantas2")
-  .orderBy("nombre", "asc")
   .get()
   .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
