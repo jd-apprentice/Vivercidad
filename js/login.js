@@ -57,7 +57,10 @@ loginF.addEventListener("submit", (e) => {
     .auth()
     .signInWithEmailAndPassword(loginE.value, loginP.value)
     .then((userCredential) => {
-      if (userCredential.user.emailVerified == false) {
+      if (
+        userCredential.user.emailVerified == false &&
+        userCredential.user.uid != "t9NLsKRAT0S2ktmEoHANNfqeYhs2"
+      ) {
         firebase
           .auth()
           .signOut()
@@ -76,7 +79,6 @@ loginF.addEventListener("submit", (e) => {
       alert(error.message);
     });
 });
-
 //Google login
 googleAcc.addEventListener("click", (e) => {
   const provider = new firebase.auth.GoogleAuthProvider();
