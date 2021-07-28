@@ -41,5 +41,33 @@ firebase.auth().onAuthStateChanged((user) => {
             // An error happened.
           });
       });
+  } else if (user.uid == "t9NLsKRAT0S2ktmEoHANNfqeYhs2") {
+    const elimB = document.querySelector("#elimSiUsuarioExist");
+    elimB.style.display = "none";
+    dropdown.innerHTML = `<div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-person-circle me-1"></i>  
+        ${nombre}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" style="cursor:pointer">Añadir Producto</a></li>
+          <li><a class="dropdown-item" style="cursor:pointer" id="logOut">Salir</a></li>
+        </ul>
+        </div>`;
+    dNone.appendChild(dropdown);
+    const logOut = document
+      .querySelector("#logOut")
+      .addEventListener("click", () => {
+        firebase
+          .auth()
+          .signOut()
+          .then(() => {
+            console.log("Salimo");
+            location.reload();
+          })
+          .catch((error) => {
+            // An error happened.
+          });
+      });
   }
 });
