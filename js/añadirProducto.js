@@ -19,6 +19,7 @@ archivo.addEventListener("change", () => {
 });
 
 btnSubir.addEventListener("submit", async (e) => {
+  e.preventDefault();
   const nameProduct = document.querySelector("#nameProduct").value;
   const precioProduct = document.querySelector("#precioP").value;
   var storageRef = firebase.storage().ref(`imagenes/${nameProduct}`);
