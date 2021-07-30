@@ -26,18 +26,25 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-success">
       <div class="container">
-        <a class="navbar-brand" href="#!">Vivercidad</a>
-        <form class="d-flex">
+        <a class="navbar-brand" href="#!">VIVERCIDAD</a>
+        <form class="d-flex w-100">
           <input
             class="form-control me-2 bg-light"
             type="search"
-            placeholder="Search"
+            placeholder="Buscar Productos"
             aria-label="Search"
           />
           <button class="btn btn-success bg-dark" type="submit">
             <i class="bi bi-search"></i>
           </button>
         </form>
+      </div>
+    </nav>
+
+    <!-- Segunda parte Navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+      <div class="container">
         <button
           class="navbar-toggler"
           type="button"
@@ -51,14 +58,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#!"
-                >Inicio</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#!">Contacto</a>
-            </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -79,117 +78,667 @@
                   <hr class="dropdown-divider" />
                 </li>
                 <li><a class="dropdown-item" href="#!">Mas visitados</a></li>
-                <li><a class="dropdown-item" href="#!">Nuevos productos</a></li>
+                <li>
+                  <a class="dropdown-item" href="#!">Nuevos productos</a>
+                </li>
               </ul>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#!">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#!">Sobre Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#!">Ayuda</a>
+            </li>
           </ul>
-          <div class="d-flex insertName">
-            <button
-              type="button"
-              id="navCarrito"
-              class="btn btn-outline-dark me-2"
-            >
-              <i class="bi-cart-fill"></i>
-              <span>Carrito</span>
-              <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+        </div>
+        <div class="d-flex insertName">
+          <button
+            type="button"
+            id="navCarrito"
+            class="btn btn-outline-dark me-2"
+          >
+            <i class="bi-cart-fill"></i>
+            <span>Carrito</span>
+            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+          </button>
+          <a href="login.html" id="elimSiUsuarioExist">
+            <button type="button" class="btn btn-outline-dark">
+              <i class="bi bi-person-circle me-1"></i>
+              <span id="changeName">Ingresar</span>
             </button>
-            <a href="login.html" id="elimSiUsuarioExist">
-              <button type="button" class="btn btn-outline-dark">
-                <i class="bi bi-person-circle me-1"></i>
-                <span id="changeName">Ingresar</span>
-              </button>
-            </a>
-          </div>
+          </a>
         </div>
       </div>
     </nav>
+
     <!-- Header-->
+    <div class="swiper-container mySwiperHead">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img
+            class="img-fluid imgHead"
+            src="./img/pexels-cottonbro-4503273.jpg"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            class="img-fluid imgHead"
+            src="./img/pexels-cottonbro-4503273.jpg"
+            alt=""
+            srcset=""
+          />
+        </div>
+        <div class="swiper-slide">
+          <img
+            class="img-fluid imgHead"
+            src="./img/pexels-cottonbro-4503273.jpg"
+            alt=""
+            srcset=""
+          />
+        </div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
 
     <!-- Section Carousel -->
-
     <!-- Swiper -->
-    <div class="swiper-container mySwiper text-center p-5">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <span>Nombre: Hola soy una planta</span>
-          <span class="d-block">Precio: 200$</span>
-          <img
-            class="img-fluid img-thumbnail"
-            src="./img/imagen_vivero.png"
-            alt=""
-            srcset=""
-          />
-          <button class="btn btn-success d-block mx-auto mt-3">
-            Anadir producto
-          </button>
+    <div class="contenedor">
+      <h1>Hola soy un titulo como la gente</h1>
+      <div class="swiper-container mySwiper text-center">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span class="d-block precioProducto fs-6">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span class="d-block precioProducto fs-6">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span class="d-block precioProducto fs-6">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span class="d-block precioProducto fs-6">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span class="d-block precioProducto fs-6">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span class="d-block precioProducto fs-6">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span class="d-block precioProducto fs-6">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span class="d-block precioProducto fs-6">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span class="d-block precioProducto fs-6">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span class="d-block precioProducto fs-6">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
         </div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
-        <div class="swiper-slide">Slide 6</div>
-        <div class="swiper-slide">Slide 7</div>
-        <div class="swiper-slide">Slide 8</div>
-        <div class="swiper-slide">Slide 9</div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
     </div>
     <hr />
-    <div class="swiper-container mySwiper2 text-center p-5">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <span>Nombre: Hola soy una planta</span>
-          <span class="d-block">Precio: 200$</span>
-          <img
-            class="img-fluid img-thumbnail"
-            src="./img/imagen_vivero.png"
-            alt=""
-            srcset=""
-          />
-          <button class="btn btn-success d-block mx-auto mt-3">
-            Anadir producto
-          </button>
+    <div class="contenedor">
+      <h1>Lorem ipsum dolor sit amet.</h1>
+      <div class="swiper-container mySwiper2 text-center">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <span class="nombreProducto2 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto2 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-slide">
+              <span class="nombreProducto2 fs-5"
+                >Nombre: Hola soy una planta</span
+              >
+              <span class="d-block precioProducto2 f-65">Precio: 200$</span>
+              <img
+                class="img-fluid img-thumbnail"
+                src="./img/imagen_vivero.png"
+                alt=""
+                srcset=""
+              />
+              <button class="btn btn-success d-block mx-auto mt-3">
+                Anadir producto
+              </button>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-slide">
+              <span class="nombreProducto2 fs-5"
+                >Nombre: Hola soy una planta</span
+              >
+              <span class="d-block precioProducto2 f-65">Precio: 200$</span>
+              <img
+                class="img-fluid img-thumbnail"
+                src="./img/imagen_vivero.png"
+                alt=""
+                srcset=""
+              />
+              <button class="btn btn-success d-block mx-auto mt-3">
+                Anadir producto
+              </button>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-slide">
+              <span class="nombreProducto2 fs-5"
+                >Nombre: Hola soy una planta</span
+              >
+              <span class="d-block precioProducto2 f-65">Precio: 200$</span>
+              <img
+                class="img-fluid img-thumbnail"
+                src="./img/imagen_vivero.png"
+                alt=""
+                srcset=""
+              />
+              <button class="btn btn-success d-block mx-auto mt-3">
+                Anadir producto
+              </button>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-slide">
+              <span class="nombreProducto2 fs-5"
+                >Nombre: Hola soy una planta</span
+              >
+              <span class="d-block precioProducto2 f-65">Precio: 200$</span>
+              <img
+                class="img-fluid img-thumbnail"
+                src="./img/imagen_vivero.png"
+                alt=""
+                srcset=""
+              />
+              <button class="btn btn-success d-block mx-auto mt-3">
+                Anadir producto
+              </button>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-slide">
+              <span class="nombreProducto2 fs-5"
+                >Nombre: Hola soy una planta</span
+              >
+              <span class="d-block precioProducto2 f-65">Precio: 200$</span>
+              <img
+                class="img-fluid img-thumbnail"
+                src="./img/imagen_vivero.png"
+                alt=""
+                srcset=""
+              />
+              <button class="btn btn-success d-block mx-auto mt-3">
+                Anadir producto
+              </button>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-slide">
+              <span class="nombreProducto2 fs-5"
+                >Nombre: Hola soy una planta</span
+              >
+              <span class="d-block precioProducto2 f-65">Precio: 200$</span>
+              <img
+                class="img-fluid img-thumbnail"
+                src="./img/imagen_vivero.png"
+                alt=""
+                srcset=""
+              />
+              <button class="btn btn-success d-block mx-auto mt-3">
+                Anadir producto
+              </button>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-slide">
+              <span class="nombreProducto2 fs-5"
+                >Nombre: Hola soy una planta</span
+              >
+              <span class="d-block precioProducto2 f-65">Precio: 200$</span>
+              <img
+                class="img-fluid img-thumbnail"
+                src="./img/imagen_vivero.png"
+                alt=""
+                srcset=""
+              />
+              <button class="btn btn-success d-block mx-auto mt-3">
+                Anadir producto
+              </button>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="swiper-slide">
+              <span class="nombreProducto2 fs-5"
+                >Nombre: Hola soy una planta</span
+              >
+              <span class="d-block precioProducto2 f-65">Precio: 200$</span>
+              <img
+                class="img-fluid img-thumbnail"
+                src="./img/imagen_vivero.png"
+                alt=""
+                srcset=""
+              />
+              <button class="btn btn-success d-block mx-auto mt-3">
+                Anadir producto
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
-        <div class="swiper-slide">Slide 6</div>
-        <div class="swiper-slide">Slide 7</div>
-        <div class="swiper-slide">Slide 8</div>
-        <div class="swiper-slide">Slide 9</div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
     </div>
     <hr />
-    <div class="swiper-container mySwiper3 text-center p-5">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <span>Nombre: Hola soy una planta</span>
-          <span class="d-block">Precio: 200$</span>
-          <img
-            class="img-fluid img-thumbnail"
-            src="./img/imagen_vivero.png"
-            alt=""
-            srcset=""
-          />
-          <button class="btn btn-success d-block mx-auto mt-3">
-            Anadir producto
-          </button>
+    <div class="contenedor">
+      <h1>Lorem ipsum dolor sit amet.</h1>
+      <div class="swiper-container mySwiper3 text-center">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="swiper-slide">
+              <span class="nombreProducto3 fs-5"
+                >Nombre: Hola soy una planta</span
+              >
+              <span class="d-block precioProducto3 f-65">Precio: 200$</span>
+              <img
+                class="img-fluid img-thumbnail"
+                src="./img/imagen_vivero.png"
+                alt=""
+                srcset=""
+              />
+              <button class="btn btn-success d-block mx-auto mt-3">
+                Anadir producto
+              </button>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto3 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto3 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto3 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto3 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto3 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto3 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto3 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto3 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto3 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto3 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto3 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto3 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto3 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto3 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto3 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto3 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
         </div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 4</div>
-        <div class="swiper-slide">Slide 5</div>
-        <div class="swiper-slide">Slide 6</div>
-        <div class="swiper-slide">Slide 7</div>
-        <div class="swiper-slide">Slide 8</div>
-        <div class="swiper-slide">Slide 9</div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
+    </div>
+    <hr />
+    <div class="contenedor">
+      <h1>Lorem ipsum dolor sit amet.</h1>
+      <div class="swiper-container mySwiper4 text-center">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <span class="nombreProducto4 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto4 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto4 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto4 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto4 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto4 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto4 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto4 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto4 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto4 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto4 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto4 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto4 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto4 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto4 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto4 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto4 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto4 f-65">Precio: 200$</span>
+            <img
+              class="img-fluid img-thumbnail"
+              src="./img/imagen_vivero.png"
+              alt=""
+              srcset=""
+            />
+            <button class="btn btn-success d-block mx-auto mt-3">
+              Anadir producto
+            </button>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
     </div>
 
     <!-- Segundo carousel -->
