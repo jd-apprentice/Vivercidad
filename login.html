@@ -84,19 +84,23 @@
           </div>
           <div class="modal-body">
             <form id="usr-form">
-              <label for="email" class="text-center mb-2"
-                >Ingrese el Email</label
-              >
+              <label for="email" class="text-center mb-2">Email</label>
               <input type="text" id="email" class="d-block w-100" required />
-              <label for="password" class="text-center mt-2"
-                >Ingrese el Password</label
-              >
+              <label for="password" class="text-center mt-2">Password</label>
               <input
                 type="password"
+                minlength="8"
+                maxlength="20"
+                placeholder="8 a 20 caracteres"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                 id="pass"
                 class="d-block w-100 mt-3"
                 required
               />
+              <span
+                >La contrasena debe contener una miniscula,una mayuscula,un
+                numero y un signo</span
+              >
               <button type="submit" class="btn btn-success mt-3" id="aceptU">
                 Crear Usuario
               </button>

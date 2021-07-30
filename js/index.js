@@ -1,4 +1,5 @@
 var swiper = new Swiper(".mySwiper", {
+  slidesPerView: 3,
   spaceBetween: 30,
   loop: true,
   pagination: {
@@ -8,21 +9,105 @@ var swiper = new Swiper(".mySwiper", {
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 50,
+    },
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 50,
+    },
   },
 });
 var swiper2 = new Swiper(".mySwiper2", {
+  slidesPerView: 3,
   spaceBetween: 30,
   loop: true,
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 50,
+    },
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 50,
+    },
+  },
+});
+var swiper3 = new Swiper(".mySwiper3", {
+  slidesPerView: 3,
+  spaceBetween: 30,
+  loop: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 50,
+    },
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 50,
+    },
+  },
+});
+
+var mySwiperHead = new Swiper(".mySwiperHead", {
+  spaceBetween: 30,
+  centeredSlides: true,
+  loop: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
   },
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
 });
-var swiper3 = new Swiper(".mySwiper3", {
+
+var swiper4 = new Swiper(".mySwiper4", {
+  slidesPerView: 3,
   spaceBetween: 30,
   loop: true,
   pagination: {
@@ -32,6 +117,24 @@ var swiper3 = new Swiper(".mySwiper3", {
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 50,
+    },
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    1024: {
+      slidesPerView: 4,
+      spaceBetween: 50,
+    },
   },
 });
 
@@ -52,12 +155,14 @@ if (userName.displayName === null) {
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user.emailVerified === true) {
+    let words = "";
     const elimB = document.querySelector("#elimSiUsuarioExist");
     elimB.style.display = "none";
+    words = nombre.split("@");
     dropdown.innerHTML = `<div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-person-circle me-1"></i>  
-        ${nombre}
+        ${words[0]}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
           <li><a class="dropdown-item" id="logOut">Salir</a></li>
@@ -81,9 +186,9 @@ firebase.auth().onAuthStateChanged((user) => {
   } else if (user.uid == "t9NLsKRAT0S2ktmEoHANNfqeYhs2") {
     const elimB = document.querySelector("#elimSiUsuarioExist");
     elimB.style.display = "none";
-    dropdown.innerHTML = `<div class="dropdown">
+    dropdown.innerHTML = dropdown.innerHTML = `<div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="bi bi-person-circle me-1"></i>  
+        <i class="bi bi-person-circle me-1"></i>
         ${nombre}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
