@@ -10,7 +10,6 @@ let verificado = false;
 
 let userEmail = document.querySelector("#email");
 let password = document.querySelector("#pass");
-
 firebase
   .auth()
   .setPersistence(firebase.auth.Auth.Persistence.SESSION)

@@ -11209,3 +11209,8 @@ hr {
     rgba(0, 0, 0, 0)
   );
 }
+
+.contenedor {
+  padding: 5% 0;
+  margin: 0 10%;
+}
