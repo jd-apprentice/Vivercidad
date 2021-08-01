@@ -1,3 +1,5 @@
+// Swipers del index
+
 var swiper = new Swiper(".mySwiper", {
   slidesPerView: 3,
   spaceBetween: 30,
@@ -92,6 +94,8 @@ var swiper3 = new Swiper(".mySwiper3", {
   },
 });
 
+// Swiper del header
+
 var mySwiperHead = new Swiper(".mySwiperHead", {
   spaceBetween: 30,
   centeredSlides: true,
@@ -146,12 +150,15 @@ const userName = JSON.parse(
     "firebase:authUser:AIzaSyDo-Mx2Jz3j5MR9vH0V5ypYk3cQxYqYB7Y:[DEFAULT]"
   )
 );
+
 let nombre = "";
 if (userName.displayName === null) {
   nombre = userName.email;
 } else {
   nombre = userName.displayName;
 }
+
+// Usuarios normales
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user.emailVerified === true) {
@@ -183,6 +190,9 @@ firebase.auth().onAuthStateChanged((user) => {
             // An error happened.
           });
       });
+
+    // Si el usuario es el administrador
+
   } else if (user.uid == "t9NLsKRAT0S2ktmEoHANNfqeYhs2") {
     let words = "";
     words = nombre.split("@");

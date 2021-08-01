@@ -2,6 +2,8 @@
 var storage = firebase.storage();
 const db = firebase.firestore();
 
+// Cuando la pantalla carga verifica la lista de productos para agregar los botones
+
 window.onload = async () => {
   await db
     .collection("carrousel")
@@ -44,11 +46,7 @@ let cont = 0;
 let cont_carousel = 0;
 let botonDisplay = false;
 
-// LocalStorage
-
-let contadorCheck = localStorage.getItem("contadorCheck");
-
-//Obtener Carrousel
+//Obtener Carrousel - Contador
 
 /* // Obtener contador de firebase
 db.collection("saveContador")
