@@ -1,15 +1,15 @@
-const loginF = document.querySelector("#lgForm");
-const userName = document.querySelector("#userName");
-const googleAcc = document.querySelector("#googleAcc");
-const btnLogin = document.querySelector("#loginBtn");
-const btnCreateU = document.querySelector("#createU");
-const formCreateUsr = document.querySelector("#usr-form");
-const modalCreateU = document.querySelector("#CreateUsr");
+// Alertas
 
-let verificado = false;
+const grabAlertEmail = document.querySelector("#alertaEmail");
+const grabAlertVerificar = document.querySelector("#alertaVerificar");
+const grabAlertWelcome = document.querySelector("#Bienvenido");
+const grabAlertRecu = document.querySelector("#alertaRecuperar");
+
+// Seccion persistente
 
 let userEmail = document.querySelector("#email");
 let password = document.querySelector("#pass");
+
 firebase
   .auth()
   .setPersistence(firebase.auth.Auth.Persistence.SESSION)
@@ -25,6 +25,9 @@ firebase
   });
 
 //Create login
+
+const formCreateUsr = document.querySelector("#usr-form");
+
 formCreateUsr.addEventListener("submit", (e) => {
   e.preventDefault();
   firebase
@@ -32,14 +35,14 @@ formCreateUsr.addEventListener("submit", (e) => {
     .createUserWithEmailAndPassword(userEmail.value, password.value)
     .then((userCredential) => {
       // Signed in
-      alert(
-        "El usuario se creo correctamente, por favor confirme su mail para poder ingresar"
-      );
       firebase
         .auth()
         .currentUser.sendEmailVerification()
         .then(() => {
-          console.log("se envio correctamente");
+          grabAlertEmail.style.display = "flex";
+          setTimeout(() => {
+            location.href = "./login.html";
+          }, 5000);
         });
     })
     .catch((error) => {
@@ -48,6 +51,9 @@ formCreateUsr.addEventListener("submit", (e) => {
 });
 
 //User login
+
+const loginF = document.querySelector("#lgForm");
+
 loginF.addEventListener("submit", (e) => {
   e.preventDefault();
   let loginE = document.querySelector("#lgEmail");
@@ -64,21 +70,52 @@ loginF.addEventListener("submit", (e) => {
           .auth()
           .signOut()
           .then(() => {
-            alert("por favor verifique se mail antes de entrar");
+            grabAlertVerificar.style.display = "flex";
+            setTimeout(() => {
+              grabAlertVerificar.style.display = "none";
+            }, 5000);
           })
           .catch((error) => {
             console.log(error.message);
           });
       } else {
-        alert("Bienvenide!");
-        location.href = "./index.html";
+        grabAlertWelcome.style.display = "flex";
+        grabAlertWelcome.style.display = "justify-content-center";
+        setTimeout(() => {
+          location.href = "./index.html";
+        }, 3000);
       }
     })
     .catch((error) => {
       alert(error.message);
     });
 });
+
+// Recuperar contraseña
+const btnRecu = document.querySelector("#enviarMail");
+const inputRecu = document.querySelector("#emailRecu");
+
+btnRecu.addEventListener("click", (e) => {
+  firebase
+    .auth()
+    .sendPasswordResetEmail(inputRecu.value)
+    .then(() => {
+      grabAlertRecu.style.display = "flex";
+      setTimeout(() => {
+        grabAlertRecu.style.display = "none";
+      }, 4000);
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ..
+    });
+});
+
 //Google login
+
+const googleAcc = document.querySelector("#googleAcc");
+
 googleAcc.addEventListener("click", (e) => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase
@@ -92,10 +129,14 @@ googleAcc.addEventListener("click", (e) => {
     });
 });
 
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    verificado = user.emailVerified;
-    console.log(user);
-  } else {
-  }
-});
+// Verificar
+
+// let verificado = false;
+
+// firebase.auth().onAuthStateChanged((user) => {
+//   if (user) {
+//     verificado = user.emailVerified;
+//     console.log(user);
+//   } else {
+//   }
+// });

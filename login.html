@@ -21,6 +21,36 @@
       </div>
     </nav>
 
+    <!--  Alerta verifique su email -->
+
+    <div
+      style="display: none"
+      class="alert alert-warning"
+      role="alert"
+      data-bs-dismiss="alert"
+      id="alertaVerificar"
+    >
+      <i class="bi bi-exclamation-lg fs-3"></i>
+      <use xlink:href="#check-circle-fill" />
+      <div class="fs-3">Verifique su email antes de entrar!</div>
+    </div>
+
+    <!-- Alerta bienvenido -->
+
+    <div
+      style="display: none"
+      class="alert alert-success"
+      role="alert"
+      data-bs-dismiss="alert"
+      id="Bienvenido"
+    >
+      <i class="bi bi-emoji-smile fs-3"></i>
+      <use xlink:href="#check-circle-fill" />
+      <div class="fs-3">¡Bienvenido!</div>
+    </div>
+
+    <!-- Seccion Inicio -->
+
     <div class="d-flex justify-content-center align-items-center mt-5 pt-5">
       <div id="cartaLogin" class="card">
         <div class="card-body">
@@ -33,7 +63,6 @@
                 type="email"
                 id="lgEmail"
                 class="form-control"
-                id="userName"
                 aria-describedby="emailHelp"
                 required
               />
@@ -54,9 +83,7 @@
               />
             </div>
             <div class="d-flex justify-content-between">
-              <button id="loginBtn" type="submit" class="btn btn-success">
-                Ingresa
-              </button>
+              <button type="submit" class="btn btn-success">Ingresa</button>
               <button class="btn btn-success mx-3" type="button" id="googleAcc">
                 Ingresa con <i class="bi bi-google"></i>
               </button>
@@ -71,22 +98,47 @@
             </div>
           </form>
         </div>
-        <span class="text-center"><a href="">Recuperar Contraseña</a></span>
+        <span class="text-center"
+          ><a
+            data-bs-toggle="modal"
+            data-bs-target="#modalPass"
+            style="cursor: pointer"
+            >Recuperar Contraseña</a
+          ></span
+        >
       </div>
     </div>
 
-    <!--MODAL-->
+    <!--MODAL Crear Usuario-->
+
     <div class="modal" id="CreateUsr">
       <div class="modal-dialog">
         <div class="modal-content text-center">
+          <!-- Alert crear usuario -->
+
+          <div
+            style="display: none"
+            class="alert alert-success"
+            role="alert"
+            data-bs-dismiss="alert"
+            id="alertaEmail"
+          >
+            <i class="bi bi-envelope-fill fs-3"></i>
+            <use xlink:href="#check-circle-fill" />
+            <div class="fs-3">
+              La cuenta fue creada correctamente, verifique su correo
+              electronico para activar su cuenta
+            </div>
+          </div>
+
           <div class="modal-header d-flex justify-content-center">
             <h5 class="modal-title">Crear nueva cuenta</h5>
           </div>
           <div class="modal-body">
             <form id="usr-form">
-              <label for="email" class="text-center mb-2">Email</label>
+              <label for="email" class="text-center mb-2">Correo</label>
               <input type="text" id="email" class="d-block w-100" required />
-              <label for="password" class="text-center mt-2">Password</label>
+              <label for="password" class="text-center mt-2">Contraseña</label>
               <input
                 type="password"
                 minlength="8"
@@ -97,10 +149,14 @@
                 class="d-block w-100 mt-3"
                 required
               />
-              <span
-                >La contrasena debe contener una miniscula,una mayuscula,un
-                numero y un signo</span
-              >
+              <ul class="mt-3">
+                <small class="text-start">
+                  <li>La contraseña debe contener una miniscula</li>
+                  <li>una mayuscula</li>
+                  <li>un numero</li>
+                  <li>un signo</li>
+                </small>
+              </ul>
               <button type="submit" class="btn btn-success mt-3" id="aceptU">
                 Crear Usuario
               </button>
@@ -117,6 +173,64 @@
       </div>
     </div>
     <!--MODAL-->
+
+    <!-- Modal Restablecer -->
+
+    <div class="modal" id="modalPass">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div
+            style="display: none"
+            class="alert alert-success"
+            role="alert"
+            data-bs-dismiss="alert"
+            id="alertaRecuperar"
+          >
+            <i class="bi bi-check-circle-fill fs-4 me-3"></i>
+            <use xlink:href="#check-circle-fill" />
+            <div class="fs-5">
+              Enlace de recuperacion de contraseña enviado!
+            </div>
+          </div>
+
+          <div class="modal-header">
+            <h5 class="modal-title">Recuperar contraseña</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="emailRecu" class="form-label"
+                >Correo Electronico</label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="emailRecu"
+                aria-describedby="emailHelp"
+                required
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button type="button" id="enviarMail" class="btn btn-primary">
+              Enviar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <footer id="footer" class="bg-light">
       <div class="container">
