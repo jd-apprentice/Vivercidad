@@ -160,7 +160,7 @@ firebase.auth().onAuthStateChanged((user) => {
     elimB.style.display = "none";
     words = nombre.split("@");
     dropdown.innerHTML = `<div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-person-circle me-1"></i>  
         ${words[0]}
         </button>
@@ -184,15 +184,17 @@ firebase.auth().onAuthStateChanged((user) => {
           });
       });
   } else if (user.uid == "t9NLsKRAT0S2ktmEoHANNfqeYhs2") {
+    let words = "";
+    words = nombre.split("@");
     const elimB = document.querySelector("#elimSiUsuarioExist");
     elimB.style.display = "none";
     dropdown.innerHTML = dropdown.innerHTML = `<div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-person-circle me-1"></i>
-        ${nombre}
+        ${words[0]}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" style="cursor:pointer">Añadir Producto</a></li>
+          <li><a class="dropdown-item" href="./añadirProducto.html" style="cursor:pointer">Añadir Producto</a></li>
           <li><a class="dropdown-item" style="cursor:pointer" id="logOut">Salir</a></li>
         </ul>
         </div>`;
