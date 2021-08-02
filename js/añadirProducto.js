@@ -23,9 +23,9 @@ window.onload = async () => {
           let input = document.createElement("input");
           let span = document.createElement("span");
           input.classList.add("form-check-input", "me-1");
-          label.classList.add("list-group-item");
-          input.type = "checkbox";
-          input.value = "";
+          label.classList.add("list-group-item", "form-check-label");
+          input.type = "radio";
+          input.name = "flexRadioDefault"
           span.innerText = nombreDB;
           label.append(input, span);
           grabLista.append(label);
@@ -44,7 +44,6 @@ window.onload = async () => {
 const btnSubir = document.querySelector("#lgForm");
 export const grabLista = document.querySelector("#listaProductos");
 
-let botonDisplay = false;
 let archivo = document.querySelector("#fileItem");
 let fileAll = "";
 let fileName = "";
@@ -64,21 +63,19 @@ archivo.addEventListener("change", () => {
 
 // Pintar productos en la lista
 
-export let getImput = (nombreListo) => {
+export let getImput = () => {
   const nameProduct = document.querySelector("#nameProduct").value;
-  nombreListo = true;
-  return nombreListo, nameProduct;
+  return nameProduct;
 };
 
 // Subir productos a firebase y actualizar lista
 
 btnSubir.addEventListener("submit", async (e) => {
-  let nombreListo = false;
   e.preventDefault();
   let contadorCheck = localStorage.getItem("contadorCheck");
   if (contadorCheck < 4) {
     // Generar contador en localstorage
-    const nameProduct = await getImput(nombreListo);
+    const nameProduct = await getImput();
     // const precioProduct = document.querySelector("#precioP").value;
     var storageRef = firebase.storage().ref(`imagenes/${nameProduct}`);
     await storageRef.put(fileAll).then(function (snapshot) {
@@ -87,12 +84,10 @@ btnSubir.addEventListener("submit", async (e) => {
         "contadorCheck",
         Number(localStorage.getItem("contadorCheck")) + 1
       );
-      if (nombreListo) {
-        btnSubir.reset();
-      }
     });
     pintarProductos();
     addButtons();
+    btnSubir.reset();
   } else {
     alert("Esta lleno");
   }

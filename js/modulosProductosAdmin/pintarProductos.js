@@ -1,4 +1,4 @@
-import { getImput, grabLista, db } from "../añadirProducto.js";
+import { getImput, grabLista, db} from "../añadirProducto.js";
 export let pintarProductos = () => {
   const nameProduct = getImput();
 
@@ -6,10 +6,10 @@ export let pintarProductos = () => {
   let createInput = document.createElement("input");
   let createSpan = document.createElement("span");
 
-  createLabel.classList.add("list-group-item");
+  createLabel.classList.add("list-group-item", "form-check-label");
   createInput.classList.add("form-check-input", "me-1");
-  createInput.value = "";
-  createInput.type = "checkbox";
+  createInput.name = "flexRadioDefault";
+  createInput.type = "radio";
   createSpan.textContent = `${nameProduct}`;
   createLabel.appendChild(createInput);
   createLabel.appendChild(createSpan);
