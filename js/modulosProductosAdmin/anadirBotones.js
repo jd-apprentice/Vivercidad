@@ -1,5 +1,3 @@
-// Modulos
-
 import { grabLista, db } from "../añadirProducto.js";
 
 export let addButtons = () => {
@@ -12,7 +10,7 @@ export let addButtons = () => {
     padreBoton.classList.add("d-flex", "justify-content-between");
     btnSig.classList.add("btn", "btn-success");
     btnAnt.classList.add("btn", "btn-success");
-    btnAnadirCarrousel.classList.add("btn", "btn-warning");
+    btnAnadirCarrousel.classList.add("btn", "btn-warning", "mx-2");
     btnSig.type = "button";
     btnAnt.type = "button";
     btnAnadirCarrousel.type = "button";
