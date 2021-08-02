@@ -1,14 +1,20 @@
+// Modulos
+
+import { crearUsuario } from "./modulosLogin/crearUsuarios.js";
+import { loginUser } from "./modulosLogin/loginUsuario.js";
+import { recuperarContra } from "./modulosLogin/recuperarContraseña.js";
+
 // Alertas
 
-const grabAlertEmail = document.querySelector("#alertaEmail");
-const grabAlertVerificar = document.querySelector("#alertaVerificar");
-const grabAlertWelcome = document.querySelector("#Bienvenido");
-const grabAlertRecu = document.querySelector("#alertaRecuperar");
+export const grabAlertEmail = document.querySelector("#alertaEmail");
+export const grabAlertVerificar = document.querySelector("#alertaVerificar");
+export const grabAlertWelcome = document.querySelector("#Bienvenido");
+export const grabAlertRecu = document.querySelector("#alertaRecuperar");
 
 // Seccion persistente
 
-let userEmail = document.querySelector("#email");
-let password = document.querySelector("#pass");
+export let userEmail = document.querySelector("#email");
+export let password = document.querySelector("#pass");
 
 firebase
   .auth()
@@ -25,95 +31,20 @@ firebase
   });
 
 //Create login
-
 const formCreateUsr = document.querySelector("#usr-form");
-
-formCreateUsr.addEventListener("submit", (e) => {
-  e.preventDefault();
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(userEmail.value, password.value)
-    .then((userCredential) => {
-      // Signed in
-      firebase
-        .auth()
-        .currentUser.sendEmailVerification()
-        .then(() => {
-          grabAlertEmail.style.display = "flex";
-          setTimeout(() => {
-            location.href = "./login.html";
-          }, 5000);
-        });
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-});
+formCreateUsr.addEventListener("submit", crearUsuario);
 
 //User login
-
 const loginF = document.querySelector("#lgForm");
-
-loginF.addEventListener("submit", (e) => {
-  e.preventDefault();
-  let loginE = document.querySelector("#lgEmail");
-  let loginP = document.querySelector("#lgPass");
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(loginE.value, loginP.value)
-    .then((userCredential) => {
-      if (
-        userCredential.user.emailVerified == false &&
-        userCredential.user.uid != "t9NLsKRAT0S2ktmEoHANNfqeYhs2"
-      ) {
-        firebase
-          .auth()
-          .signOut()
-          .then(() => {
-            grabAlertVerificar.style.display = "flex";
-            setTimeout(() => {
-              grabAlertVerificar.style.display = "none";
-            }, 5000);
-          })
-          .catch((error) => {
-            console.log(error.message);
-          });
-      } else {
-        grabAlertWelcome.style.display = "flex";
-        grabAlertWelcome.style.display = "justify-content-center";
-        setTimeout(() => {
-          location.href = "./index.html";
-        }, 3000);
-      }
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
-});
+loginF.addEventListener("submit", loginUser);
 
 // Recuperar contraseña
 const btnRecu = document.querySelector("#enviarMail");
-const inputRecu = document.querySelector("#emailRecu");
+export const inputRecu = document.querySelector("#emailRecu");
 
-btnRecu.addEventListener("click", (e) => {
-  firebase
-    .auth()
-    .sendPasswordResetEmail(inputRecu.value)
-    .then(() => {
-      grabAlertRecu.style.display = "flex";
-      setTimeout(() => {
-        grabAlertRecu.style.display = "none";
-      }, 4000);
-    })
-    .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ..
-    });
-});
+btnRecu.addEventListener("click", recuperarContra);
 
 //Google login
-
 const googleAcc = document.querySelector("#googleAcc");
 
 googleAcc.addEventListener("click", (e) => {
@@ -128,15 +59,3 @@ googleAcc.addEventListener("click", (e) => {
       console.log(error.message);
     });
 });
-
-// Verificar
-
-// let verificado = false;
-
-// firebase.auth().onAuthStateChanged((user) => {
-//   if (user) {
-//     verificado = user.emailVerified;
-//     console.log(user);
-//   } else {
-//   }
-// });

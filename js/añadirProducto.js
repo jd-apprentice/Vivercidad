@@ -1,6 +1,11 @@
+//Modulos
+
+import { addButtons } from "../js/modulosProductosAdmin/anadirBotones.js";
+import { pintarProductos } from "../js/modulosProductosAdmin/pintarProductos.js";
+
 // Inicializar Firebase
-var storage = firebase.storage();
-const db = firebase.firestore();
+// var storage = firebase.storage();
+export const db = firebase.firestore();
 
 // Cuando la pantalla carga verifica la lista de productos para agregar los botones
 
@@ -10,6 +15,7 @@ window.onload = async () => {
     .get()
     .then((querySnapshot) => {
       let contP = 0;
+      let nombreDB = "";
       querySnapshot.forEach((doc) => {
         if (contP < 4) {
           nombreDB = doc.data().nombre;
@@ -36,7 +42,7 @@ window.onload = async () => {
 
 // Variables
 const btnSubir = document.querySelector("#lgForm");
-const grabLista = document.querySelector("#listaProductos");
+export const grabLista = document.querySelector("#listaProductos");
 
 let botonDisplay = false;
 let archivo = document.querySelector("#fileItem");
@@ -46,14 +52,9 @@ let cont = 0;
 let cont_carousel = 0;
 let botonDisplay = false;
 
-//Obtener Carrousel - Contador
+// LocalStorage
 
-/* // Obtener contador de firebase
-db.collection("saveContador")
-  .doc("JgYMERdLqjAok2wIoFV8")
-  .onSnapshot((doc) => {
-    cont = doc.data().contador;
-  }); */
+let contadorCheck = localStorage.getItem("contadorCheck");
 
 // Toma nombre de archivo
 archivo.addEventListener("change", () => {
@@ -63,66 +64,22 @@ archivo.addEventListener("change", () => {
 
 // Pintar productos en la lista
 
-let getImput = () => {
+export let getImput = (nombreListo) => {
   const nameProduct = document.querySelector("#nameProduct").value;
-  return nameProduct;
-};
-
-let paintProductos = () => {
-  const nameProduct = getImput();
-
-  let createLabel = document.createElement("label");
-  let createInput = document.createElement("input");
-  let createSpan = document.createElement("span");
-
-  createLabel.classList.add("list-group-item");
-  createInput.classList.add("form-check-input", "me-1");
-  createInput.value = "";
-  createInput.type = "checkbox";
-  createSpan.textContent = `${nameProduct}`;
-  createLabel.appendChild(createInput);
-  createLabel.appendChild(createSpan);
-  grabLista.appendChild(createLabel);
-
-  db.collection("carrousel").doc().set({
-    nombre: nameProduct,
-  });
-};
-
-// Agregar botones de paginas
-
-let addButtons = () => {
-  let contadorCheck = localStorage.getItem("contadorCheck");
-  if (contadorCheck == 4) {
-    const padreBoton = document.createElement("div");
-    const btnSig = document.createElement("button");
-    const btnAnt = document.createElement("button");
-    const btnAnadirCarrousel = document.createElement("button");
-    padreBoton.classList.add("d-flex", "justify-content-between");
-    btnSig.classList.add("btn", "btn-success");
-    btnAnt.classList.add("btn", "btn-success");
-    btnAnadirCarrousel.classList.add("btn", "btn-warning");
-    btnSig.type = "button";
-    btnAnt.type = "button";
-    btnAnadirCarrousel.type = "button";
-    btnAnadirCarrousel.innerText = "Añadir al carrousel";
-    btnAnt.innerText = "<==";
-    btnSig.innerText = "==>";
-    padreBoton.appendChild(btnAnt);
-    padreBoton.appendChild(btnAnadirCarrousel);
-    padreBoton.appendChild(btnSig);
-    grabLista.appendChild(padreBoton);
-  }
+  nombreListo = true;
+  return nombreListo, nameProduct;
 };
 
 // Subir productos a firebase y actualizar lista
 
 btnSubir.addEventListener("submit", async (e) => {
+  let nombreListo = false;
+  e.preventDefault();
   let contadorCheck = localStorage.getItem("contadorCheck");
   if (contadorCheck < 4) {
     // Generar contador en localstorage
-    const nameProduct = getImput();
-    const precioProduct = document.querySelector("#precioP").value;
+    const nameProduct = await getImput(nombreListo);
+    // const precioProduct = document.querySelector("#precioP").value;
     var storageRef = firebase.storage().ref(`imagenes/${nameProduct}`);
     await storageRef.put(fileAll).then(function (snapshot) {
       console.log("Uploaded a blob or file!");
@@ -130,8 +87,11 @@ btnSubir.addEventListener("submit", async (e) => {
         "contadorCheck",
         Number(localStorage.getItem("contadorCheck")) + 1
       );
+      if (nombreListo) {
+        btnSubir.reset();
+      }
     });
-    paintProductos();
+    pintarProductos();
     addButtons();
   } else {
     alert("Esta lleno");
