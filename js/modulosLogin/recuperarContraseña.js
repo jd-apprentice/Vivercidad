@@ -1,0 +1,21 @@
+// Modulos
+
+import { grabAlertRecu, inputRecu } from "../login.js";
+
+export let recuperarContra = (e) => {
+  e.preventDefault();
+  firebase
+    .auth()
+    .sendPasswordResetEmail(inputRecu.value)
+    .then(() => {
+      grabAlertRecu.style.display = "flex";
+      setTimeout(() => {
+        grabAlertRecu.style.display = "none";
+      }, 4000);
+    })
+    .catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // ..
+    });
+};

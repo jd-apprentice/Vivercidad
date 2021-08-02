@@ -68,14 +68,6 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-hr {
-  margin: 1rem 0;
-  color: inherit;
-  background-color: currentColor;
-  border: 0;
-  opacity: 0.25;
-}
-
 hr:not([size]) {
   height: 1px;
 }
@@ -11207,6 +11199,24 @@ fieldset:disabled .btn {
   display: none;
 }
 
+<<<<<<< HEAD
 @media (min-width: 768px) and (max-width: 991.98px) {
   
 }
+=======
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.contenedor {
+  padding: 5% 0;
+  margin: 0 10%;
+}
+>>>>>>> development

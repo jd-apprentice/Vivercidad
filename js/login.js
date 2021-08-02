@@ -1,15 +1,20 @@
-const loginF = document.querySelector("#lgForm");
-const userName = document.querySelector("#userName");
-const googleAcc = document.querySelector("#googleAcc");
-const btnLogin = document.querySelector("#loginBtn");
-const btnCreateU = document.querySelector("#createU");
-const formCreateUsr = document.querySelector("#usr-form");
-const modalCreateU = document.querySelector("#CreateUsr");
+// Modulos
 
-let verificado = false;
+import { crearUsuario } from "./modulosLogin/crearUsuarios.js";
+import { loginUser } from "./modulosLogin/loginUsuario.js";
+import { recuperarContra } from "./modulosLogin/recuperarContraseña.js";
 
-let userEmail = document.querySelector("#email");
-let password = document.querySelector("#pass");
+// Alertas
+
+export const grabAlertEmail = document.querySelector("#alertaEmail");
+export const grabAlertVerificar = document.querySelector("#alertaVerificar");
+export const grabAlertWelcome = document.querySelector("#Bienvenido");
+export const grabAlertRecu = document.querySelector("#alertaRecuperar");
+
+// Seccion persistente
+
+export let userEmail = document.querySelector("#email");
+export let password = document.querySelector("#pass");
 
 firebase
   .auth()
@@ -26,58 +31,22 @@ firebase
   });
 
 //Create login
-formCreateUsr.addEventListener("submit", (e) => {
-  e.preventDefault();
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(userEmail.value, password.value)
-    .then((userCredential) => {
-      // Signed in
-      alert(
-        "El usuario se creo correctamente, por favor confirme su mail para poder ingresar"
-      );
-      firebase
-        .auth()
-        .currentUser.sendEmailVerification()
-        .then(() => {
-          console.log("se envio correctamente");
-        });
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-});
+const formCreateUsr = document.querySelector("#usr-form");
+formCreateUsr.addEventListener("submit", crearUsuario);
 
 //User login
-loginF.addEventListener("submit", (e) => {
-  e.preventDefault();
-  let loginE = document.querySelector("#lgEmail");
-  let loginP = document.querySelector("#lgPass");
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(loginE.value, loginP.value)
-    .then((userCredential) => {
-      if (userCredential.user.emailVerified == false) {
-        firebase
-          .auth()
-          .signOut()
-          .then(() => {
-            alert("por favor verifique se mail antes de entrar");
-          })
-          .catch((error) => {
-            console.log(error.message);
-          });
-      } else {
-        alert("Bienvenide!");
-        location.href = "./index.html";
-      }
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
-});
+const loginF = document.querySelector("#lgForm");
+loginF.addEventListener("submit", loginUser);
+
+// Recuperar contraseña
+const btnRecu = document.querySelector("#enviarMail");
+export const inputRecu = document.querySelector("#emailRecu");
+
+btnRecu.addEventListener("click", recuperarContra);
 
 //Google login
+const googleAcc = document.querySelector("#googleAcc");
+
 googleAcc.addEventListener("click", (e) => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase
@@ -89,12 +58,4 @@ googleAcc.addEventListener("click", (e) => {
     .catch((error) => {
       console.log(error.message);
     });
-});
-
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    verificado = user.emailVerified;
-    console.log(user);
-  } else {
-  }
 });
