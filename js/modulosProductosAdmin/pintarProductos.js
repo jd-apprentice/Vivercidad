@@ -1,7 +1,15 @@
-import { getImput, grabLista, db } from "../añadirProducto.js";
+import {
+  getImput,
+  grabLista,
+  db
+} from "../añadirProducto.js";
+
 export let pintarProductos = async () => {
-  const nameProduct = getImput();
-  var createSpan = document.createElement("span");
+
+  let contadorCheck = localStorage.getItem("contadorCheck");
+  let nmProduct = getImput();
+
+  let createSpan = document.createElement("span");
   let createLabel = document.createElement("label");
   let createInput = document.createElement("input");
 
@@ -9,18 +17,13 @@ export let pintarProductos = async () => {
   createInput.classList.add("form-check-input", "me-1");
   createInput.name = "flexRadioDefault";
   createInput.type = "radio";
-  createSpan.textContent = `${nameProduct}`;
+  createSpan.textContent = `${nmProduct}`;
+  createSpan.id = getId();
   createLabel.appendChild(createInput);
   createLabel.appendChild(createSpan);
   grabLista.appendChild(createLabel);
 
   await db.collection("carrousel").doc().set({
-    nombre: nameProduct,
+    nombre: nmProduct,
   });
-  await db
-    .collection("carrousel")
-    .get()
-    .then((querySnapshot) => {
-      console.log(querySnapshot.docs);
-    });
 };

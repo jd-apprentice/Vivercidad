@@ -1,10 +1,15 @@
 //Modulos
 
-import { addButtons } from "../js/modulosProductosAdmin/anadirBotones.js";
-import { pintarProductos } from "../js/modulosProductosAdmin/pintarProductos.js";
-import { btnEdit } from "../js/modulosProductosAdmin/botonEditar.js";
+import {
+  addButtons
+} from "../js/modulosProductosAdmin/anadirBotones.js";
+import {
+  pintarProductos
+} from "../js/modulosProductosAdmin/pintarProductos.js";
+import {
+  btnEdit
+} from "../js/modulosProductosAdmin/botonEditar.js";
 // Inicializar Firebase
-// var storage = firebase.storage();
 export const db = firebase.firestore();
 
 //Btn Editar Modal
@@ -20,12 +25,8 @@ window.onload = async () => {
     .get()
     .then((querySnapshot) => {
       let contP = 0;
-      let nombreDB = "";
-      let idSpan = "";
       querySnapshot.forEach((doc) => {
         if (contP < 4) {
-          nombreDB = doc.data().nombre;
-          idSpan = doc.id;
           let label = document.createElement("label");
           let input = document.createElement("input");
           let span = document.createElement("span");
@@ -33,8 +34,8 @@ window.onload = async () => {
           label.classList.add("list-group-item", "form-check-label");
           input.type = "radio";
           input.name = "flexRadioDefault";
-          span.setAttribute("id", idSpan);
-          span.innerText = nombreDB;
+          span.setAttribute("id", doc.id);
+          span.innerText = doc.data().nombre;
           label.append(input, span);
           grabLista.append(label);
           contP++;
@@ -46,6 +47,7 @@ window.onload = async () => {
   if (contadorCheck == 4) {
     addButtons();
   }
+  // Habilitar boton despues de clickear un objeto
   const grabInputs = document.querySelectorAll(".form-check-input");
   grabInputs.forEach((e) => {
     e.addEventListener("change", () => editarM.classList.remove("disabled"));
@@ -59,13 +61,6 @@ export const grabLista = document.querySelector("#listaProductos");
 let archivo = document.querySelector("#fileItem");
 let fileAll = "";
 let fileName = "";
-let cont = 0;
-let cont_carousel = 0;
-let botonDisplay = false;
-
-// LocalStorage
-
-let contadorCheck = localStorage.getItem("contadorCheck");
 
 // Toma nombre de archivo
 archivo.addEventListener("change", () => {
@@ -80,6 +75,7 @@ export let getImput = () => {
   return nameProduct;
 };
 
+
 // Subir productos a firebase y actualizar lista
 btnSubir.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -88,7 +84,7 @@ btnSubir.addEventListener("submit", async (e) => {
   let contadorCheck = localStorage.getItem("contadorCheck");
   if (contadorCheck < 4) {
     // Generar contador en localstorage
-    const nameProduct = await getImput();
+    const nameProduct = getImput();
     // const precioProduct = document.querySelector("#precioP").value;
     var storageRef = firebase.storage().ref(`imagenes/${nameProduct}`);
     await storageRef.put(fileAll).then(function (snapshot) {
@@ -98,7 +94,7 @@ btnSubir.addEventListener("submit", async (e) => {
         Number(localStorage.getItem("contadorCheck")) + 1
       );
     });
-    pintarProductos();
+    await pintarProductos();
     addButtons();
     btnSubir.reset();
   } else {
