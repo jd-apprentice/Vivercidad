@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-
-const dNone = document.querySelector(".insertName");
-const dropdown = document.createElement("div");
-
-=======
 // Obtener usuario logeado de sessionStorage
->>>>>>> development
 const userName = JSON.parse(
   sessionStorage.getItem(
     "firebase:authUser:AIzaSyDo-Mx2Jz3j5MR9vH0V5ypYk3cQxYqYB7Y:[DEFAULT]"

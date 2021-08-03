@@ -1,5 +1,3 @@
-// Modulos
-
 import { grabLista, db } from "../añadirProducto.js";
 
 export let addButtons = () => {

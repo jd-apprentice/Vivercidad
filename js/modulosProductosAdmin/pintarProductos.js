@@ -1,10 +1,9 @@
-import { getImput, grabLista, db} from "../añadirProducto.js";
-export let pintarProductos = () => {
+import { getImput, grabLista, db } from "../añadirProducto.js";
+export let pintarProductos = async () => {
   const nameProduct = getImput();
-
+  var createSpan = document.createElement("span");
   let createLabel = document.createElement("label");
   let createInput = document.createElement("input");
-  let createSpan = document.createElement("span");
 
   createLabel.classList.add("list-group-item", "form-check-label");
   createInput.classList.add("form-check-input", "me-1");
@@ -15,7 +14,13 @@ export let pintarProductos = () => {
   createLabel.appendChild(createSpan);
   grabLista.appendChild(createLabel);
 
-  db.collection("carrousel").doc().set({
+  await db.collection("carrousel").doc().set({
     nombre: nameProduct,
   });
+  await db
+    .collection("carrousel")
+    .get()
+    .then((querySnapshot) => {
+      console.log(querySnapshot.docs);
+    });
 };
