@@ -21,21 +21,25 @@ window.onload = async () => {
     .then((querySnapshot) => {
       let contP = 0;
       let nombreDB = "";
+      let precioDB = 0;
       let idSpan = "";
       querySnapshot.forEach((doc) => {
         if (contP < 4) {
           nombreDB = doc.data().nombre;
+          precioDB = doc.data().precio;
           idSpan = doc.id;
           let label = document.createElement("label");
           let input = document.createElement("input");
           let span = document.createElement("span");
+          let spanP = document.createElement("spanP");
           input.classList.add("form-check-input", "me-1");
           label.classList.add("list-group-item", "form-check-label");
           input.type = "radio";
           input.name = "flexRadioDefault";
           span.setAttribute("id", idSpan);
           span.innerText = nombreDB;
-          label.append(input, span);
+          spanP.innerText = precioDB;
+          label.append(input, span, spanP);
           grabLista.append(label);
           contP++;
         }
@@ -59,13 +63,6 @@ export const grabLista = document.querySelector("#listaProductos");
 let archivo = document.querySelector("#fileItem");
 let fileAll = "";
 let fileName = "";
-let cont = 0;
-let cont_carousel = 0;
-let botonDisplay = false;
-
-// LocalStorage
-
-let contadorCheck = localStorage.getItem("contadorCheck");
 
 // Toma nombre de archivo
 archivo.addEventListener("change", () => {
@@ -77,7 +74,13 @@ archivo.addEventListener("change", () => {
 
 export let getImput = () => {
   const nameProduct = document.querySelector("#nameProduct").value;
+
   return nameProduct;
+};
+
+export let getPrecio = () => {
+  const precioProduct = document.querySelector("#precioP").value;
+  return precioProduct;
 };
 
 // Subir productos a firebase y actualizar lista
@@ -93,11 +96,11 @@ btnSubir.addEventListener("submit", async (e) => {
     var storageRef = firebase.storage().ref(`imagenes/${nameProduct}`);
     await storageRef.put(fileAll).then(function (snapshot) {
       console.log("Uploaded a blob or file!");
-      localStorage.setItem(
-        "contadorCheck",
-        Number(localStorage.getItem("contadorCheck")) + 1
-      );
     });
+    localStorage.setItem(
+      "contadorCheck",
+      Number(localStorage.getItem("contadorCheck")) + 1
+    );
     pintarProductos();
     addButtons();
     btnSubir.reset();
