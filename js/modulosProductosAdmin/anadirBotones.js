@@ -1,4 +1,4 @@
-import { grabLista, db } from "../añadirProducto.js";
+import { grabLista } from "../añadirProducto.js";
 
 export let addButtons = () => {
   let contadorCheck = localStorage.getItem("contadorCheck");
