@@ -11199,6 +11199,11 @@ fieldset:disabled .btn {
   display: none;
 }
 
+<<<<<<< HEAD
+@media (min-width: 768px) and (max-width: 991.98px) {
+  
+}
+=======
 hr {
   border: 0;
   height: 1px;
@@ -11214,3 +11219,4 @@ hr {
   padding: 5% 0;
   margin: 0 10%;
 }
+>>>>>>> development
