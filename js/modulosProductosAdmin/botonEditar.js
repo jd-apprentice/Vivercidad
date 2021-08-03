@@ -11,6 +11,8 @@ export let btnEdit = async () => {
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
+        modalProdName.value = doc.data().nombre;
+        modalProdPrice.value = doc.data().precio;
         console.log(doc.data().nombre);
       });
     });
