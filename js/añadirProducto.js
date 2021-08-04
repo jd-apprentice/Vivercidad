@@ -1,13 +1,10 @@
 //Modulos
 
+import { addButtons } from "../js/modulosProductosAdmin/anadirBotones.js";
+import { pintarProductos } from "../js/modulosProductosAdmin/pintarProductos.js";
 import {
-  addButtons
-} from "../js/modulosProductosAdmin/anadirBotones.js";
-import {
-  pintarProductos
-} from "../js/modulosProductosAdmin/pintarProductos.js";
-import {
-  btnEdit, btnGuardar
+  btnEdit,
+  btnGuardar,
 } from "../js/modulosProductosAdmin/botonEditar.js";
 // Inicializar Firebase
 export const db = firebase.firestore();
@@ -37,11 +34,12 @@ window.onload = async () => {
           let label = document.createElement("label");
           let input = document.createElement("input");
           let span = document.createElement("span");
-          let spanP = document.createElement("spanP");
+          let spanP = document.createElement("span");
           input.classList.add("form-check-input", "me-1");
           label.classList.add("list-group-item", "form-check-label");
           input.type = "radio";
           input.name = "flexRadioDefault";
+          span.classList.add("mx-4");
           span.setAttribute("id", idSpan);
           span.innerText = nombreDB;
           spanP.innerText = precioDB;
@@ -78,9 +76,9 @@ archivo.addEventListener("change", () => {
 export let claseBoton = () => {
   const grabInputs = document.querySelectorAll(".form-check-input");
   grabInputs.forEach((e) => {
-      e.addEventListener("change", () => editarM.classList.remove("disabled"));
+    e.addEventListener("change", () => editarM.classList.remove("disabled"));
   });
-}
+};
 
 // Pintar productos en la lista
 
