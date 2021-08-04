@@ -1,4 +1,4 @@
-import { getImput, getPrecio, grabLista, db } from "../añadirProducto.js";
+import { getImput, getPrecio, grabLista, db, claseBoton } from "../añadirProducto.js";
 
 export let pintarProductos = async () => {
   let contadorCheck = localStorage.getItem("contadorCheck");
@@ -24,6 +24,8 @@ export let pintarProductos = async () => {
     nombre: nameProduct,
     precio: precioProduct,
   });
+
+  claseBoton();
 
   await db
     .collection("carrousel")

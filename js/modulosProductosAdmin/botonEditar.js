@@ -2,6 +2,8 @@ import {
   editarM,
   modalProdName,
   modalProdPrice,
+  getImput, 
+  getPrecio,
   db,
 } from "../añadirProducto.js";
 
@@ -14,16 +16,23 @@ export let btnEdit = async () => {
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-<<<<<<< HEAD
-        for (let i = 0; i < doc.lenght; i++) {
-          modalNombre = doc.data().nombre[i]
-          return modalNombre;
-        }
-=======
         modalProdName.value = doc.data().nombre;
         modalProdPrice.value = doc.data().precio;
         console.log(doc.data().nombre);
->>>>>>> a32d630ba6fe4fb49d2af3dd763e9d7d1a471a58
       });
     });
 };
+
+export let btnGuardar = async () => {
+
+  let nameProduct = getImput();
+  let precioProduct = getPrecio();
+
+  nameProduct = modalNombre.value;
+  precioProduct = modalPrecio.value;
+
+  await db.collection("carrousel").doc().set({
+    nombre: nameProduct,
+    precio: precioProduct,
+  });
+}

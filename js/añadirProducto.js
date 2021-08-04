@@ -7,13 +7,14 @@ import {
   pintarProductos
 } from "../js/modulosProductosAdmin/pintarProductos.js";
 import {
-  btnEdit
+  btnEdit, btnGuardar
 } from "../js/modulosProductosAdmin/botonEditar.js";
 // Inicializar Firebase
 export const db = firebase.firestore();
 
 //Btn Editar Modal
 export const editarM = document.querySelector("#editarM");
+export const salvarM = document.querySelector("#editarCambios");
 export const modalProdName = document.querySelector("#modalProdName");
 export const modalProdPrice = document.querySelector("#modalProdPrice");
 
@@ -49,17 +50,13 @@ window.onload = async () => {
           contP++;
         }
       });
+      claseBoton();
     });
   // LocalStorage
   let contadorCheck = localStorage.getItem("contadorCheck");
   if (contadorCheck == 4) {
     addButtons();
   }
-  // Habilitar boton despues de clickear un objeto
-  const grabInputs = document.querySelectorAll(".form-check-input");
-  grabInputs.forEach((e) => {
-    e.addEventListener("change", () => editarM.classList.remove("disabled"));
-  });
 };
 
 // Variables
@@ -75,6 +72,15 @@ archivo.addEventListener("change", () => {
   fileAll = archivo.files[0];
   fileName = archivo.files[0].name;
 });
+
+// Habilitar boton editar
+
+export let claseBoton = () => {
+  const grabInputs = document.querySelectorAll(".form-check-input");
+  grabInputs.forEach((e) => {
+      e.addEventListener("change", () => editarM.classList.remove("disabled"));
+  });
+}
 
 // Pintar productos en la lista
 
@@ -92,8 +98,6 @@ export let getPrecio = () => {
 // Subir productos a firebase y actualizar lista
 btnSubir.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const modalProduct = document.querySelector("#modalProdName");
-  const modalPrice = document.querySelector("#modalProdPrice");
   let contadorCheck = localStorage.getItem("contadorCheck");
   if (contadorCheck < 4) {
     // Generar contador en localstorage
@@ -118,3 +122,4 @@ btnSubir.addEventListener("submit", async (e) => {
 //Boton editar Funciones
 
 editarM.addEventListener("click", btnEdit);
+salvarM.addEventListener("click", btnGuardar);
