@@ -14,8 +14,8 @@ export let recuperarContra = (e) => {
       }, 4000);
     })
     .catch((error) => {
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      let errorCode = error.code;
+      let errorMessage = error.message;
       // ..
     });
 };

@@ -7,7 +7,10 @@ import {
   btnGuardar,
 } from "../js/modulosProductosAdmin/botonEditar.js";
 // Inicializar Firebase
+
 export const db = firebase.firestore();
+export const storage = firebase.storage();
+
 
 //Btn Editar Modal
 export const editarM = document.querySelector("#editarM");
@@ -48,6 +51,7 @@ window.onload = async () => {
           contP++;
         }
       });
+      btnEdit();
       claseBoton();
     });
   // LocalStorage
@@ -61,14 +65,13 @@ window.onload = async () => {
 const btnSubir = document.querySelector("#lgForm");
 export const grabLista = document.querySelector("#listaProductos");
 
+
 let archivo = document.querySelector("#fileItem");
 let fileAll = "";
-let fileName = "";
 
-// Toma nombre de archivo
+// Adquirir propiedades del archivo
 archivo.addEventListener("change", () => {
   fileAll = archivo.files[0];
-  fileName = archivo.files[0].name;
 });
 
 // Habilitar boton editar
@@ -84,7 +87,6 @@ export let claseBoton = () => {
 
 export let getImput = () => {
   const nameProduct = document.querySelector("#nameProduct").value;
-
   return nameProduct;
 };
 
@@ -101,10 +103,8 @@ btnSubir.addEventListener("submit", async (e) => {
     // Generar contador en localstorage
     const nameProduct = getImput();
     // const precioProduct = document.querySelector("#precioP").value;
-    var storageRef = firebase.storage().ref(`imagenes/${nameProduct}`);
-    await storageRef.put(fileAll).then(function (snapshot) {
-      console.log("Uploaded a blob or file!");
-    });
+    let storageRef = firebase.storage().ref(`imagenes/${nameProduct}`);
+    await storageRef.put(fileAll);
     localStorage.setItem(
       "contadorCheck",
       Number(localStorage.getItem("contadorCheck")) + 1
