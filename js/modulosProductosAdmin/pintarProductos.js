@@ -30,7 +30,6 @@ export let pintarProductos = async () => {
   createLabel.appendChild(createSpanPrecio);
   grabLista.appendChild(createLabel);
 
-  //TEST
   let nombreP = "";
   let precioP = "";
   const grabInputs = document.querySelectorAll(".form-check-input");
