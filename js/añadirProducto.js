@@ -3,8 +3,9 @@
 import { addButtons } from "../js/modulosProductosAdmin/anadirBotones.js";
 import { pintarProductos } from "../js/modulosProductosAdmin/pintarProductos.js";
 import {
-  btnEdit,
+  pintarInputs,
   btnGuardar,
+  btnEdit,
 } from "../js/modulosProductosAdmin/botonEditar.js";
 // Inicializar Firebase
 export const db = firebase.firestore();
@@ -49,10 +50,12 @@ window.onload = async () => {
           contP++;
         }
       });
-      btnEdit();
       claseBoton();
     });
-
+  const Test = document.querySelectorAll(".form-check-input");
+  Test.forEach((e) => {
+    e.addEventListener("change", () => pintarInputs());
+  });
   // LocalStorage
   let contadorCheck = localStorage.getItem("contadorCheck");
   if (contadorCheck == 4) {
@@ -84,7 +87,6 @@ export let claseBoton = () => {
 
 export let getImput = () => {
   const nameProduct = document.querySelector("#nameProduct").value;
-
   return nameProduct;
 };
 
@@ -93,16 +95,24 @@ export let getPrecio = () => {
   return precioProduct;
 };
 
-// Subir productos a firebase y actualizar lista
+let getId = () => {
+  let x = Math.random() * 10;
+  return x;
+};
+export let seSubioIMG = false;
+
+const idProducto = getId();
+export const idEstatica = idProducto;
+// Subir productos a firebase y actualizar lista ESTO ESTA BIEN NO TOCAR KPO!!!!!!
 btnSubir.addEventListener("submit", async (e) => {
   e.preventDefault();
+  // Generar contador en localstorage
   let contadorCheck = localStorage.getItem("contadorCheck");
   if (contadorCheck < 4) {
-    // Generar contador en localstorage
-    const nameProduct = getImput();
-    var storageRef = firebase.storage().ref(`imagenes/${nameProduct}`);
+    var storageRef = firebase.storage().ref(`imagenes/${idEstatica}`);
     if (fileAll != "") {
-      await storageRef.put(fileAll).then(function (snapshot) {});
+      await storageRef.put(fileAll);
+      seSubioIMG = true;
     }
     localStorage.setItem(
       "contadorCheck",
@@ -110,7 +120,7 @@ btnSubir.addEventListener("submit", async (e) => {
     );
     pintarProductos();
     addButtons();
-    btnEdit();
+    // btnEdit();
     btnSubir.reset();
   } else {
     alert("Esta lleno");
