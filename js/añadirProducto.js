@@ -5,12 +5,14 @@ import { pintarProductos } from "../js/modulosProductosAdmin/pintarProductos.js"
 import {
   btnEdit,
   btnGuardar,
+  obtenerMetadatos,
+  saveName,
 } from "../js/modulosProductosAdmin/botonEditar.js";
+
 // Inicializar Firebase
 
 export const db = firebase.firestore();
 export const storage = firebase.storage();
-
 
 //Btn Editar Modal
 export const editarM = document.querySelector("#editarM");
@@ -51,9 +53,12 @@ window.onload = async () => {
           contP++;
         }
       });
+      /* saveName(); */
+      /* obtenerMetadatos(); */
       btnEdit();
       claseBoton();
     });
+
   // LocalStorage
   let contadorCheck = localStorage.getItem("contadorCheck");
   if (contadorCheck == 4) {
@@ -102,15 +107,17 @@ btnSubir.addEventListener("submit", async (e) => {
   if (contadorCheck < 4) {
     // Generar contador en localstorage
     const nameProduct = getImput();
-    // const precioProduct = document.querySelector("#precioP").value;
     let storageRef = firebase.storage().ref(`imagenes/${nameProduct}`);
-    await storageRef.put(fileAll);
+    if (fileAll != "") {
+      await storageRef.put(fileAll);
+    }
     localStorage.setItem(
       "contadorCheck",
       Number(localStorage.getItem("contadorCheck")) + 1
     );
     pintarProductos();
     addButtons();
+    btnEdit();
     btnSubir.reset();
   } else {
     alert("Esta lleno");
