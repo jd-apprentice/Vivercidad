@@ -2,6 +2,7 @@ import {
   getImput,
   getPrecio,
   grabLista,
+  idEstatica,
   db,
   claseBoton,
   modalProdName,
@@ -37,7 +38,6 @@ export let pintarProductos = async () => {
     e.addEventListener("change", () => {
       nombreP = e.parentElement.children[1];
       precioP = e.parentElement.children[2];
-      console.log(e.parentElement.children[2]);
       modalProdName.value = nombreP.innerHTML;
       modalProdPrice.value = precioP.innerHTML;
     });
@@ -46,6 +46,7 @@ export let pintarProductos = async () => {
   await db.collection("carrousel").doc().set({
     nombre: nameProduct,
     precio: precioProduct,
+    id: idEstatica,
   });
 
   await db
