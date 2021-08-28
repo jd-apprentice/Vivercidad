@@ -5,8 +5,6 @@ import { pintarProductos } from "../js/modulosProductosAdmin/pintarProductos.js"
 import {
   btnEdit,
   btnGuardar,
-  obtenerMetadatos,
-  saveName,
 } from "../js/modulosProductosAdmin/botonEditar.js";
 
 // Inicializar Firebase
@@ -32,52 +30,35 @@ window.onload = async () => {
       let precioDB = 0;
       let idSpan = "";
       querySnapshot.forEach((doc) => {
-        if (contP < 4) {
-          nombreDB = doc.data().nombre;
-          precioDB = doc.data().precio;
-          idSpan = doc.id;
-          let label = document.createElement("label");
-          let input = document.createElement("input");
-          let span = document.createElement("span");
-          let spanP = document.createElement("span");
-          input.classList.add("form-check-input", "me-1");
-          label.classList.add("list-group-item", "form-check-label");
-          input.type = "radio";
-          input.name = "flexRadioDefault";
-          span.classList.add("mx-4");
-          span.setAttribute("id", idSpan);
-          span.innerText = nombreDB;
-          spanP.innerText = precioDB;
-          label.append(input, span, spanP);
-          grabLista.append(label);
-          contP++;
-        }
+        nombreDB = doc.data().nombre;
+        precioDB = doc.data().precio;
+        idSpan = doc.id;
+        let label = document.createElement("label");
+        let input = document.createElement("input");
+        let span = document.createElement("span");
+        let spanP = document.createElement("span");
+        input.classList.add("form-check-input", "me-1");
+        label.classList.add("list-group-item", "form-check-label");
+        input.type = "radio";
+        input.name = "flexRadioDefault";
+        span.classList.add("mx-4");
+        span.setAttribute("id", idSpan);
+        span.innerText = nombreDB;
+        spanP.innerText = precioDB;
+        label.append(input, span, spanP);
+        grabLista.append(label);
+        contP++;
       });
       /* saveName(); */
       /* obtenerMetadatos(); */
       btnEdit();
       claseBoton();
     });
-
-  // LocalStorage
-  let contadorCheck = localStorage.getItem("contadorCheck");
-  if (contadorCheck == 4) {
-    addButtons();
-  }
+  addButtons();
 };
 
 // Variables
-const btnSubir = document.querySelector("#lgForm");
 export const grabLista = document.querySelector("#listaProductos");
-
-
-let archivo = document.querySelector("#fileItem");
-let fileAll = "";
-
-// Adquirir propiedades del archivo
-archivo.addEventListener("change", () => {
-  fileAll = archivo.files[0];
-});
 
 // Habilitar boton editar
 
@@ -86,6 +67,17 @@ export let claseBoton = () => {
   grabInputs.forEach((e) => {
     e.addEventListener("change", () => editarM.classList.remove("disabled"));
   });
+};
+
+export let getId = () => {
+  db.collection("carrousel")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        let idDocumento = doc.id;
+        return idDocumento;
+      });
+    });
 };
 
 // Pintar productos en la lista
@@ -99,30 +91,6 @@ export let getPrecio = () => {
   const precioProduct = document.querySelector("#precioP").value;
   return precioProduct;
 };
-
-// Subir productos a firebase y actualizar lista
-btnSubir.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  let contadorCheck = localStorage.getItem("contadorCheck");
-  if (contadorCheck < 4) {
-    // Generar contador en localstorage
-    const nameProduct = getImput();
-    let storageRef = firebase.storage().ref(`imagenes/${nameProduct}`);
-    if (fileAll != "") {
-      await storageRef.put(fileAll);
-    }
-    localStorage.setItem(
-      "contadorCheck",
-      Number(localStorage.getItem("contadorCheck")) + 1
-    );
-    pintarProductos();
-    addButtons();
-    btnEdit();
-    btnSubir.reset();
-  } else {
-    alert("Esta lleno");
-  }
-});
 
 //Boton editar Funciones
 
