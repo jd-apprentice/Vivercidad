@@ -49,8 +49,6 @@ window.onload = async () => {
         grabLista.append(label);
         contP++;
       });
-      /* saveName(); */
-      /* obtenerMetadatos(); */
       btnEdit();
       claseBoton();
     });

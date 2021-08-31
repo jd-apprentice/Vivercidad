@@ -16,7 +16,6 @@ export let pintarProductos = async () => {
   let createSpanPrecio = document.createElement("span");
   let createLabel = document.createElement("label");
   let createInput = document.createElement("input");
-
   createLabel.classList.add("list-group-item", "form-check-label");
   createInput.classList.add("form-check-input");
   createInput.disabled = true;
@@ -29,7 +28,6 @@ export let pintarProductos = async () => {
   createLabel.appendChild(createSpan);
   createLabel.appendChild(createSpanPrecio);
   grabLista.appendChild(createLabel);
-
   let nombreP = "";
   let precioP = "";
   const grabInputs = document.querySelectorAll(".form-check-input");
