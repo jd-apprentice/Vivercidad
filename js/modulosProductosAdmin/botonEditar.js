@@ -19,7 +19,10 @@ let inputImage = document.querySelector("#fileItemModal");
 let allInputImage = "";
 let nombreP = "";
 let precioP = "";
+let idP = "";
 let nameI = "";
+let nombre = "";
+let seCargaImagen = false;
 
 // Funciones
 
@@ -78,32 +81,55 @@ export let btnEdit = async () => {
 
   pintarProd();
 
-  // Descargar Archivo de Storage
-
-  let idDocumento = claseBoton();
-  let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
-
-  storageRef
-    .getDownloadURL()
-    .then(function (urlImagen) {
-      // Insertar imagen al html:
-      idImg().src = urlImagen;
-    })
-    .catch(function (error) {
-      return;
+  export let btnEdit = () => {
+    seCargaImagen = false;
+    grabInputs.forEach((e) => {
+      e.addEventListener("change", () => {
+        console.log("hola");
+      });
     });
-};
+    pintarInputs();
+    // Descargar Archivo de Storage
 
-// Obtener metadatos
+    let idDocumento = claseBoton();
+    let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
 
-export let obtenerMetadatos = () => {
-  // Verificar formato de archivo
-  let contentType = "";
-  let idDocumento = claseBoton();
-  let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
-  storageRef.getMetadata().then((metadata) => {
-    contentType = metadata.contentType;
-  });
+    storageRef
+      .getDownloadURL()
+      .then(function (urlImagen) {
+        // Insertar imagen al html:
+        idImg().src = urlImagen;
+      })
+      .catch(function (error) {
+        return;
+      });
+  };
+
+  // Obtener metadatos
+
+  export let obtenerMetadatos = () => {
+    // Verificar formato de archivo
+    let contentType = "";
+    let idDocumento = claseBoton();
+    let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
+    storageRef.getMetadata().then((metadata) => {
+      contentType = metadata.contentType;
+    });
+    // Almacenar
+    let obtenerData = {
+      type: "file",
+      contentType: contentType,
+    };
+    return obtenerData;
+  };
+
+  let obtenerNombre = () => {
+    // Comprobar si el nombre fue editado, adquirir ruta de referencia
+    if (nameI == "") {
+      nombre = modalProdName.value;
+    } else nombre = nameI;
+    return nombre;
+  };
 
   // Almacenar
 
@@ -142,3 +168,20 @@ export let btnGuardar = async () => {
       location.reload();
     });
 };
+
+// Este comportamiento la va a tener el boton eliminar imagen
+
+fileItemModal.addEventListener("change", async () => {
+  let storageRef = await firebase.storage().ref(`imagenes/`);
+  let desertRef = await storageRef.child(`${idEstatica}`);
+  await desertRef
+    .delete()
+    .then(() => {
+      console.log("Imagen borrada");
+      idImg().remove();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  seCargaImagen = true;
+});
