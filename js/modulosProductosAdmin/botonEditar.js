@@ -1,4 +1,9 @@
-import { db, modalProdName, modalProdPrice, getId } from "../añadirProducto.js";
+import {
+  db,
+  modalProdName,
+  modalProdPrice,
+  claseBoton,
+} from "../windowOnload.js";
 
 // Variables
 
@@ -12,7 +17,6 @@ const insertBeforePrice = modalBody.getElementsByTagName("input")[1];
 
 let inputImage = document.querySelector("#fileItemModal");
 let allInputImage = "";
-
 let nombreP = "";
 let precioP = "";
 let nameI = "";
@@ -72,11 +76,11 @@ export let btnEdit = async () => {
     });
   });
 
-  getId();
   pintarProd();
 
   // Descargar Archivo de Storage
-  let idDocumento = getId();
+
+  let idDocumento = claseBoton();
   let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
 
   storageRef
@@ -85,11 +89,9 @@ export let btnEdit = async () => {
       // Insertar imagen al html:
       idImg().src = urlImagen;
     })
-    .catch(function () {
-      // Error
-      console.log("No elegiste ningun elemento a editar");
+    .catch(function (error) {
+      return;
     });
-  obtenerMetadatos();
 };
 
 // Obtener metadatos
@@ -97,7 +99,7 @@ export let btnEdit = async () => {
 export let obtenerMetadatos = () => {
   // Verificar formato de archivo
   let contentType = "";
-  let idDocumento = getId();
+  let idDocumento = claseBoton();
   let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
   storageRef.getMetadata().then((metadata) => {
     contentType = metadata.contentType;
@@ -117,19 +119,26 @@ export let obtenerMetadatos = () => {
 
 export let btnGuardar = async () => {
   let getName = saveName();
-  let nameProduct = await nombreP.id;
-  /* let storageRef = await firebase.storage().ref(`imagenes/${saveName()}`); */
+  let idDocumento = claseBoton();
+  let storageRef = await firebase.storage().ref(`imagenes/${idDocumento}`);
   // Subir Archivo y actualizar base de datos
-  /* await storageRef.put(allInputImage, obtenerMetadatos()); */
+  if (allInputImage != "") {
+    await storageRef.put(allInputImage, obtenerMetadatos());
+  }
   await db
     .collection("carrousel")
-    .doc(nameProduct)
+    .doc(idDocumento)
     .set({
       nombre: getName,
       precio: modalProdPrice.value,
     })
     .then(() => {
-      console.log(saveName());
-      /* location.reload(); */
+      storageRef.getDownloadURL().then(function (urlImagen) {
+        // Insertar imagen al html:
+        idImg().src = urlImagen;
+      });
+      inputImage.value = "";
+      console.log("Guardado");
+      location.reload();
     });
 };

@@ -22,7 +22,7 @@ export let pintarProductos = async () => {
   createInput.name = "flexRadioDefault";
   createInput.type = "radio";
   createSpan.textContent = `${nameProduct}`;
-  createSpan.classList.add("mx-4");
+  createSpan.classList.add("my-5");
   createSpanPrecio.textContent = `${precioProduct}`;
   createLabel.appendChild(createInput);
   createLabel.appendChild(createSpan);

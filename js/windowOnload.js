@@ -1,11 +1,7 @@
 //Modulos
 
-import { addButtons } from "../js/modulosProductosAdmin/anadirBotones.js";
-import { pintarProductos } from "../js/modulosProductosAdmin/pintarProductos.js";
-import {
-  btnEdit,
-  btnGuardar,
-} from "../js/modulosProductosAdmin/botonEditar.js";
+import { addButtons } from "./modulosProductosAdmin/anadirBotones.js";
+import { btnEdit, btnGuardar } from "./modulosProductosAdmin/botonEditar.js";
 
 // Inicializar Firebase
 
@@ -51,31 +47,24 @@ window.onload = async () => {
       });
       btnEdit();
       claseBoton();
+      addButtons();
     });
-  addButtons();
 };
 
 // Variables
 export const grabLista = document.querySelector("#listaProductos");
+let idDocumento = "";
 
-// Habilitar boton editar
-
+// Habilitar boton editar y tomar la ID del span
 export let claseBoton = () => {
   const grabInputs = document.querySelectorAll(".form-check-input");
   grabInputs.forEach((e) => {
-    e.addEventListener("change", () => editarM.classList.remove("disabled"));
-  });
-};
-
-export let getId = () => {
-  db.collection("carrousel")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        let idDocumento = doc.id;
-        return idDocumento;
-      });
+    e.addEventListener("change", () => {
+      editarM.classList.remove("disabled");
+      idDocumento = e.parentElement.children[1].id;
     });
+  });
+  return idDocumento;
 };
 
 // Pintar productos en la lista

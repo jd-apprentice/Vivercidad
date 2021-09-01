@@ -26,7 +26,7 @@
     <title>Iniciar Sesion</title>
   </head>
 
-  <body style="height: 100vh">
+  <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
       <div class="container px-4 px-lg-5">
@@ -34,13 +34,16 @@
       </div>
     </nav>
 
-    <div class="d-flex justify-content-center align-items-center mt-5">
+    <div
+      id="contenedorProductos"
+      class="d-flex justify-content-center align-items-center"
+    >
       <div id="cartaLogin" class="card">
         <div class="card-body">
-          <div class="card mt-1 align-items-center">
-            <span class="text-center my-2">Lista de productos</span>
+          <div id="contenedorInterno" class="card align-items-center">
+            <span class="text-center my-5">Lista de productos</span>
             <div id="listaProductos" class="text-center"></div>
-            <a class="text-center mt-2" href="#!"
+            <a class="text-center my-5" href="#!"
               ><span>Ver lista de productos</span></a
             >
             <button
@@ -79,7 +82,7 @@
               align-middle
             "
           >
-            <input type="text" id="modalProdName" class="mb-4" />
+            <input type="text" maxlength="20" id="modalProdName" class="mb-4" />
             <input type="number" id="modalProdPrice" />
             <input
               type="file"
@@ -138,6 +141,6 @@
     </script>
 
     <!-- Main JS -->
-    <script type="module" src="./js/añadirProducto.js"></script>
+    <script type="module" src="./js/windowOnload.js"></script>
   </body>
 </html>
