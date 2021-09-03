@@ -1,6 +1,6 @@
 // Modulos
 
-import { grabAlertRecu, inputRecu } from "../login.js";
+import { grabAlertRecu, inputRecu } from "../modulosLogin/login.js";
 
 export let recuperarContra = (e) => {
   e.preventDefault();
@@ -12,10 +12,5 @@ export let recuperarContra = (e) => {
       setTimeout(() => {
         grabAlertRecu.style.display = "none";
       }, 4000);
-    })
-    .catch((error) => {
-      let errorCode = error.code;
-      let errorMessage = error.message;
-      // ..
     });
 };

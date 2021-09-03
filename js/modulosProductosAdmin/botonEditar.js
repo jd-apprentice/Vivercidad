@@ -3,7 +3,7 @@ import {
   modalProdName,
   modalProdPrice,
   claseBoton,
-} from "../windowOnload.js";
+} from "../adminPanel.js";
 
 // Variables
 
@@ -20,7 +20,8 @@ let allInputImage = "";
 let nombreP = "";
 let precioP = "";
 let nameI = "";
-let nombre = "";
+
+let imgLoad = false;
 
 // Funciones
 
@@ -84,15 +85,11 @@ export let btnEdit = async () => {
   let idDocumento = claseBoton();
   let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
 
-  storageRef
-    .getDownloadURL()
-    .then(function (urlImagen) {
-      // Insertar imagen al html:
-      idImg().src = urlImagen;
-    })
-    .catch(function (error) {
-      return;
-    });
+  await storageRef.getDownloadURL().then((urlImagen) => {
+    // Insertar imagen al html:
+    imgProduct.src = urlImagen;
+    imgLoad = !imgLoad;
+  });
 };
 
 // Obtener metadatos

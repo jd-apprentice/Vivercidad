@@ -1,10 +1,8 @@
 //Modulos
-
-import { addButtons } from "./modulosProductosAdmin/anadirBotones.js";
-import { btnEdit, btnGuardar } from "./modulosProductosAdmin/botonEditar.js";
+import { addButtons } from "./anadirBotones.js";
+import { btnEdit, btnGuardar } from "./botonEditar.js";
 
 // Inicializar Firebase
-
 export const db = firebase.firestore();
 export const storage = firebase.storage();
 
@@ -15,7 +13,6 @@ export const modalProdName = document.querySelector("#modalProdName");
 export const modalProdPrice = document.querySelector("#modalProdPrice");
 
 // Cuando la pantalla carga verifica la lista de productos para agregar los botones
-
 window.onload = async () => {
   await db
     .collection("carrousel")
@@ -68,7 +65,6 @@ export let claseBoton = () => {
 };
 
 // Pintar productos en la lista
-
 export let getImput = () => {
   const nameProduct = document.querySelector("#nameProduct").value;
   return nameProduct;
@@ -80,6 +76,5 @@ export let getPrecio = () => {
 };
 
 //Boton editar Funciones
-
 editarM.addEventListener("click", btnEdit);
 salvarM.addEventListener("click", btnGuardar);

@@ -1,11 +1,11 @@
-import { userEmail, password, grabAlertEmail } from "../login.js";
+import { userEmail, password, grabAlertEmail } from "../modulosLogin/login.js";
 
 export let crearUsuario = (e) => {
   e.preventDefault();
   firebase
     .auth()
     .createUserWithEmailAndPassword(userEmail.value, password.value)
-    .then((userCredential) => {
+    .then(() => {
       // Signed in
       firebase
         .auth()

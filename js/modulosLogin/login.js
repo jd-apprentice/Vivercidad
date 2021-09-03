@@ -1,18 +1,15 @@
 // Modulos
-
-import { crearUsuario } from "./modulosLogin/crearUsuarios.js";
-import { loginUser } from "./modulosLogin/loginUsuario.js";
-import { recuperarContra } from "./modulosLogin/recuperarContraseña.js";
+import { crearUsuario } from "./crearUsuarios.js";
+import { loginUser } from "./loginUsuario.js";
+import { recuperarContra } from "./recuperarContraseña.js";
 
 // Alertas
-
 export const grabAlertEmail = document.querySelector("#alertaEmail");
 export const grabAlertVerificar = document.querySelector("#alertaVerificar");
 export const grabAlertWelcome = document.querySelector("#Bienvenido");
 export const grabAlertRecu = document.querySelector("#alertaRecuperar");
 
-// Seccion persistente
-
+// Usuario persistente
 export let userEmail = document.querySelector("#email");
 export let password = document.querySelector("#pass");
 
@@ -23,11 +20,6 @@ firebase
     return firebase
       .auth()
       .signInWithEmailAndPassword(userEmail.value, password.value);
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    let errorCode = error.code;
-    let errorMessage = error.message;
   });
 
 //Create login
@@ -52,7 +44,7 @@ googleAcc.addEventListener("click", (e) => {
   firebase
     .auth()
     .signInWithPopup(provider)
-    .then((result) => {
+    .then(() => {
       location.href = "./index.html";
     })
     .catch((error) => {

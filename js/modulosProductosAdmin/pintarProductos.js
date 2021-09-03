@@ -2,7 +2,6 @@ import {
   getImput,
   getPrecio,
   grabLista,
-  idEstatica,
   db,
   claseBoton,
   modalProdName,
@@ -44,7 +43,6 @@ export let pintarProductos = async () => {
   await db.collection("carrousel").doc().set({
     nombre: nameProduct,
     precio: precioProduct,
-    id: idEstatica,
   });
 
   await db
