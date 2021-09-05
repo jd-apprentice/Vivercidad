@@ -10,19 +10,17 @@ const getPrecio = document.querySelectorAll(".precioProducto");
 const getImagenes = document.querySelectorAll(".imagenProducto");
 
 // Segundo Swiper
-let iTwo = 0;
+let iTwo = 4;
 const getNombresTwo = document.querySelectorAll(".nombreProducto2");
 const getPrecioTwo = document.querySelectorAll(".precioProducto2");
 const getImagenesTwo = document.querySelectorAll(".imagenProducto2");
 
 // Tercer Swiper
-let iThree = 0;
 const getNombresThree = document.querySelectorAll(".nombreProducto3");
 const getPrecioThree = document.querySelectorAll(".precioProducto3");
 const getImagenesThree = document.querySelectorAll(".imagenProducto3");
 
 // Cuarto Swiper
-let iFour = 0;
 const getNombresFour = document.querySelectorAll(".nombreProducto4");
 const getPrecioFour = document.querySelectorAll(".precioProducto4");
 const getImagenesFour = document.querySelectorAll(".imagenProducto4");
@@ -32,18 +30,18 @@ const getImagenesFour = document.querySelectorAll(".imagenProducto4");
 db.collection("carrousel")
   .get()
   .then((querySnapshot) => {
-    querySnapshot.forEach(async (doc) => {
-      getNombres[i].innerText = doc.data().nombre;
-      getNombresTwo[iTwo].innerText = doc.data().nombre;
-      getNombresThree[iThree].innerText = doc.data().nombre;
-      getNombresFour[iFour].innerText = doc.data().nombre;
-      getPrecio[i].innerText = `$${doc.data().precio}`;
-      getPrecioTwo[iTwo].innerText = `$${doc.data().precio}`;
-      getPrecioThree[iThree].innerText = `$${doc.data().precio}`;
-      getPrecioFour[iFour].innerText = `$${doc.data().precio}`;
+    querySnapshot.forEach((doc) => {
+      getNombres[i].innerHTML = doc.data().nombre;
+      getPrecio[i].innerHTML = `$${doc.data().precio}`;
+    });
+  });
+
+db.collection("carrousel-slide2")
+  .get()
+  .then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      getNombres[iTwo].innerHTML = doc.data().nombre;
+      getPrecio[iTwo].innerHTML = `$${doc.data().precio}`;
     });
     i++;
-    iTwo++;
-    iThree++;
-    iFour++;
   });

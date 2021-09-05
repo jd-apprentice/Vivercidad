@@ -1,6 +1,6 @@
 // Modulos
 
-import { grabAlertVerificar, grabAlertWelcome } from "../modulosLogin/login.js";
+import { grabAlertVerificar, grabAlertWelcome } from "./login.js";
 
 export let loginUser = (e) => {
   e.preventDefault();

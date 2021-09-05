@@ -1,4 +1,4 @@
-import { userEmail, password, grabAlertEmail } from "../modulosLogin/login.js";
+import { userEmail, password, grabAlertEmail } from "./login.js";
 
 export let crearUsuario = (e) => {
   e.preventDefault();

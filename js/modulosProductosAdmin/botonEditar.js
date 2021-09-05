@@ -3,7 +3,7 @@ import {
   modalProdName,
   modalProdPrice,
   claseBoton,
-} from "../adminPanel.js";
+} from "./adminPanel.js";
 
 // Variables
 

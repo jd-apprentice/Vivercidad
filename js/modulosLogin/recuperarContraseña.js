@@ -1,6 +1,6 @@
 // Modulos
 
-import { grabAlertRecu, inputRecu } from "../modulosLogin/login.js";
+import { grabAlertRecu, inputRecu } from "./login.js";
 
 export let recuperarContra = (e) => {
   e.preventDefault();

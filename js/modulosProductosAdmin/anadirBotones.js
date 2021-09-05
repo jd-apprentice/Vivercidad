@@ -1,4 +1,4 @@
-import { grabLista } from "../adminPanel.js";
+import { grabLista } from "./adminPanel.js";
 
 export let addButtons = () => {
   const padreBoton = document.createElement("div");
