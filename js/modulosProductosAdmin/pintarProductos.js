@@ -6,7 +6,7 @@ import {
   claseBoton,
   modalProdName,
   modalProdPrice,
-} from "./adminPanel.js";
+} from "../modulosProductosAdmin/adminPanel.js";
 
 export let pintarProductos = async () => {
   let contadorCheck = localStorage.getItem("contadorCheck");

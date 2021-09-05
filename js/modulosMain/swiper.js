@@ -8,7 +8,7 @@ const swiper = new Swiper(".mySwiper", {
   },
   breakpoints: {
     0: {
-      slidesPerView: 2,
+      slidesPerView: 1,
       spaceBetween: 50,
     },
     640: {
@@ -16,7 +16,7 @@ const swiper = new Swiper(".mySwiper", {
       spaceBetween: 20,
     },
     768: {
-      slidesPerView: 4,
+      slidesPerView: 3,
       spaceBetween: 40,
     },
     1024: {
@@ -35,7 +35,7 @@ const swiper2 = new Swiper(".mySwiper2", {
   },
   breakpoints: {
     0: {
-      slidesPerView: 2,
+      slidesPerView: 1,
       spaceBetween: 50,
     },
     640: {
@@ -43,7 +43,7 @@ const swiper2 = new Swiper(".mySwiper2", {
       spaceBetween: 20,
     },
     768: {
-      slidesPerView: 4,
+      slidesPerView: 3,
       spaceBetween: 40,
     },
     1024: {
@@ -62,7 +62,7 @@ const swiper3 = new Swiper(".mySwiper3", {
   },
   breakpoints: {
     0: {
-      slidesPerView: 2,
+      slidesPerView: 1,
       spaceBetween: 50,
     },
     640: {
@@ -70,7 +70,7 @@ const swiper3 = new Swiper(".mySwiper3", {
       spaceBetween: 20,
     },
     768: {
-      slidesPerView: 4,
+      slidesPerView: 3,
       spaceBetween: 40,
     },
     1024: {
@@ -89,7 +89,7 @@ const swiper4 = new Swiper(".mySwiper4", {
   },
   breakpoints: {
     0: {
-      slidesPerView: 2,
+      slidesPerView: 1,
       spaceBetween: 50,
     },
     640: {
@@ -97,7 +97,7 @@ const swiper4 = new Swiper(".mySwiper4", {
       spaceBetween: 20,
     },
     768: {
-      slidesPerView: 4,
+      slidesPerView: 3,
       spaceBetween: 40,
     },
     1024: {

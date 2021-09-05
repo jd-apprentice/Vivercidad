@@ -1,7 +1,7 @@
 // Modulos
-import { crearUsuario } from "./crearUsuarios.js";
-import { loginUser } from "./loginUsuario.js";
-import { recuperarContra } from "./recuperarContraseña.js";
+import { crearUsuario } from "../modulosLogin/crearUsuarios.js";
+import { loginUser } from "../modulosLogin/loginUsuario.js";
+import { recuperarContra } from "../modulosLogin/recuperarContraseña.js";
 
 // Alertas
 export const grabAlertEmail = document.querySelector("#alertaEmail");

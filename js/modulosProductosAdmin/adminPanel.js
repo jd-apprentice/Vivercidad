@@ -1,6 +1,6 @@
 //Modulos
-import { addButtons } from "./anadirBotones.js";
-import { btnEdit, btnGuardar } from "./botonEditar.js";
+import { addButtons } from "../modulosProductosAdmin/anadirBotones.js";
+import { btnEdit, btnGuardar } from "../modulosProductosAdmin/botonEditar.js";
 
 // Inicializar Firebase
 export const db = firebase.firestore();
