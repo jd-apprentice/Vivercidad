@@ -6,13 +6,14 @@ import { btnEdit, btnGuardar } from "../modulosProductosAdmin/botonEditar.js";
 export const db = firebase.firestore();
 export const storage = firebase.storage();
 
-//Btn Editar Modal
+// Variables
 export const editarM = document.querySelector("#editarM");
 export const salvarM = document.querySelector("#editarCambios");
 export const modalProdName = document.querySelector("#modalProdName");
 export const modalProdPrice = document.querySelector("#modalProdPrice");
+export const grabLista = document.querySelector("#listaProductos");
 
-// Cuando la pantalla carga verifica la lista de productos para agregar los botones
+// Cargar atributos en carga de página
 window.onload = async () => {
   await db
     .collection("carrousel")
@@ -21,10 +22,12 @@ window.onload = async () => {
       let contP = 0;
       let nombreDB = "";
       let precioDB = 0;
+      let idDocumento = "";
       let idSpan = "";
       querySnapshot.forEach((doc) => {
         nombreDB = doc.data().nombre;
         precioDB = doc.data().precio;
+        idDocumento = doc.data().id;
         idSpan = doc.id;
         let label = document.createElement("label");
         let input = document.createElement("input");
@@ -34,7 +37,7 @@ window.onload = async () => {
         label.classList.add("list-group-item", "form-check-label");
         input.type = "radio";
         input.name = "flexRadioDefault";
-        span.classList.add("mx-4");
+        span.classList.add("mx-4", idDocumento);
         span.setAttribute("id", idSpan);
         span.innerText = nombreDB;
         spanP.innerText = precioDB;
@@ -48,11 +51,8 @@ window.onload = async () => {
     });
 };
 
-// Variables
-export const grabLista = document.querySelector("#listaProductos");
-let idDocumento = "";
-
 // Habilitar boton editar y tomar la ID del span
+let idDocumento = "";
 export let claseBoton = () => {
   const grabInputs = document.querySelectorAll(".form-check-input");
   grabInputs.forEach((e) => {

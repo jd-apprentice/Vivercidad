@@ -1,22 +1,22 @@
+// Swiper 1-4
 const swiper = new Swiper(".mySwiper", {
   slidesPerView: 4,
-  spaceBetween: 30,
+  spaceBetween: 10,
   breakpoints: {
     0: {
       slidesPerView: 1,
-      spaceBetween: 50,
+      spaceBetween: 40,
     },
     640: {
       slidesPerView: 2,
-      spaceBetween: 20,
+      spaceBetween: 30,
     },
     768: {
       slidesPerView: 3,
-      spaceBetween: 40,
+      spaceBetween: 20,
     },
     1024: {
       slidesPerView: 4,
-      spaceBetween: 40,
     },
   },
 });
@@ -34,7 +34,7 @@ const swiper2 = new Swiper(".mySwiper2", {
     },
     768: {
       slidesPerView: 3,
-      spaceBetween: 40,
+      spaceBetween: 30,
     },
     1024: {
       slidesPerView: 4,
@@ -56,7 +56,7 @@ const swiper3 = new Swiper(".mySwiper3", {
     },
     768: {
       slidesPerView: 3,
-      spaceBetween: 40,
+      spaceBetween: 30,
     },
     1024: {
       slidesPerView: 4,
@@ -78,7 +78,7 @@ const swiper4 = new Swiper(".mySwiper4", {
     },
     768: {
       slidesPerView: 3,
-      spaceBetween: 40,
+      spaceBetween: 30,
     },
     1024: {
       slidesPerView: 4,

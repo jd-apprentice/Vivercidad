@@ -9,7 +9,6 @@ import {
 } from "../modulosProductosAdmin/adminPanel.js";
 
 export let pintarProductos = async () => {
-  let contadorCheck = localStorage.getItem("contadorCheck");
   const nameProduct = getImput();
   const precioProduct = getPrecio();
   var createSpan = document.createElement("span");
@@ -40,19 +39,11 @@ export let pintarProductos = async () => {
     });
   });
 
+  let idDocumento = claseBoton();
+
   await db.collection("carrousel").doc().set({
+    id: idDocumento,
     nombre: nameProduct,
     precio: precioProduct,
   });
-
-  await db
-    .collection("carrousel")
-    .get()
-    .then((querySnapshot) => {
-      let query = querySnapshot.docs[contadorCheck - 1];
-      createSpan.setAttribute("id", query.id);
-      createInput.disabled = false;
-    });
-
-  claseBoton();
 };

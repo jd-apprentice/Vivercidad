@@ -6,7 +6,6 @@ import {
 } from "../modulosProductosAdmin/adminPanel.js";
 
 // Variables
-
 const modalBody = document.querySelector(".modal-body");
 const spanName = document.createElement("span");
 const spanPrice = document.createElement("span");
@@ -20,16 +19,9 @@ let allInputImage = "";
 let nombreP = "";
 let precioP = "";
 let nameI = "";
-
 let imgLoad = false;
 
 // Funciones
-
-let idImg = () => {
-  let img = document.querySelector("#imagenEdit");
-  return img;
-};
-
 export let saveName = () => {
   // Keyup para el nombre
   modalProdName.addEventListener("keyup", (e) => {
@@ -46,7 +38,6 @@ export let saveName = () => {
 
 const pintarProd = () => {
   // Pintar radio seleccionado en modal
-
   spanName.innerText = "Nombre de producto";
   spanPrice.innerText = "Precio de producto";
   imgProduct.classList.add("img-fluid", "img-thumbnail", "text-center");
@@ -59,7 +50,6 @@ const pintarProd = () => {
 };
 
 // Adquirir propiedades del archivo
-
 inputImage.addEventListener("change", () => {
   allInputImage = inputImage.files[0];
 });
@@ -78,10 +68,10 @@ export let btnEdit = async () => {
     });
   });
 
+  // Pintar modal
   pintarProd();
 
   // Descargar Archivo de Storage
-
   let idDocumento = claseBoton();
   let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
 
@@ -97,13 +87,17 @@ export let btnEdit = async () => {
 export let obtenerMetadatos = () => {
   // Verificar formato de archivo
   let contentType = "";
+  let size = "";
   let idDocumento = claseBoton();
   let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
   storageRef.getMetadata().then((metadata) => {
     contentType = metadata.contentType;
+    size = metadata.size;
   });
   // Almacenar
   let obtenerData = {
+    id: idDocumento,
+    size: size,
     type: "file",
     contentType: contentType,
   };
@@ -124,16 +118,9 @@ export let btnGuardar = async () => {
     .collection("carrousel")
     .doc(idDocumento)
     .set({
+      id: idDocumento,
       nombre: getName,
       precio: modalProdPrice.value,
     })
-    .then(() => {
-      storageRef.getDownloadURL().then(function (urlImagen) {
-        // Insertar imagen al html:
-        idImg().src = urlImagen;
-      });
-      inputImage.value = "";
-      console.log("Guardado");
       location.reload();
-    });
 };
