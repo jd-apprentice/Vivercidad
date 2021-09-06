@@ -1,7 +1,6 @@
 const swiper = new Swiper(".mySwiper", {
   slidesPerView: 4,
   spaceBetween: 30,
-  loop: true,
   breakpoints: {
     0: {
       slidesPerView: 1,
@@ -24,7 +23,6 @@ const swiper = new Swiper(".mySwiper", {
 const swiper2 = new Swiper(".mySwiper2", {
   slidesPerView: 4,
   spaceBetween: 30,
-  loop: true,
   breakpoints: {
     0: {
       slidesPerView: 1,
@@ -47,7 +45,6 @@ const swiper2 = new Swiper(".mySwiper2", {
 const swiper3 = new Swiper(".mySwiper3", {
   slidesPerView: 4,
   spaceBetween: 30,
-  loop: true,
   breakpoints: {
     0: {
       slidesPerView: 1,
@@ -70,7 +67,6 @@ const swiper3 = new Swiper(".mySwiper3", {
 const swiper4 = new Swiper(".mySwiper4", {
   slidesPerView: 4,
   spaceBetween: 30,
-  loop: true,
   breakpoints: {
     0: {
       slidesPerView: 1,

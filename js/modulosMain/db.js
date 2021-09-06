@@ -10,17 +10,19 @@ const getPrecio = document.querySelectorAll(".precioProducto");
 const getImagenes = document.querySelectorAll(".imagenProducto");
 
 // Segundo Swiper
-let iTwo = 4;
+let iTwo = 0;
 const getNombresTwo = document.querySelectorAll(".nombreProducto2");
 const getPrecioTwo = document.querySelectorAll(".precioProducto2");
 const getImagenesTwo = document.querySelectorAll(".imagenProducto2");
 
 // Tercer Swiper
+let iTree = 0;
 const getNombresThree = document.querySelectorAll(".nombreProducto3");
 const getPrecioThree = document.querySelectorAll(".precioProducto3");
 const getImagenesThree = document.querySelectorAll(".imagenProducto3");
 
 // Cuarto Swiper
+let iFour = 0;
 const getNombresFour = document.querySelectorAll(".nombreProducto4");
 const getPrecioFour = document.querySelectorAll(".precioProducto4");
 const getImagenesFour = document.querySelectorAll(".imagenProducto4");
@@ -33,15 +35,18 @@ db.collection("carrousel")
     querySnapshot.forEach((doc) => {
       getNombres[i].innerHTML = doc.data().nombre;
       getPrecio[i].innerHTML = `$${doc.data().precio}`;
-    });
+      i++;
+    }
+    );
   });
 
-db.collection("carrousel-slide2")
+  db.collection("carrousel-2")
   .get()
   .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-      getNombres[iTwo].innerHTML = doc.data().nombre;
-      getPrecio[iTwo].innerHTML = `$${doc.data().precio}`;
-    });
-    i++;
+      getNombresTwo[iTwo].innerHTML = doc.data().nombre;
+      getPrecioTwo[iTwo].innerHTML = `$${doc.data().precio}`;
+      iTwo++;
+    }
+    );
   });
