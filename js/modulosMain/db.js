@@ -4,10 +4,10 @@ const storage = firebase.storage();
 
 // Primer Swiper
 let i = 0;
-let iImagenes = 0;
 const getNombres = document.querySelectorAll(".nombreProducto");
 const getPrecio = document.querySelectorAll(".precioProducto");
 const getImagenes = document.querySelectorAll(".imagenProducto");
+const getDescripcion = document.querySelectorAll(".descripcionProducto");
 
 // Segundo Swiper
 let iTwo = 0;
@@ -32,15 +32,14 @@ const getImagenesFour = document.querySelectorAll(".imagenProducto4");
 db.collection("carrousel")
   .get()
   .then((querySnapshot) => {
-    querySnapshot.forEach(async (doc) => {
-      getNombres[i].innerHTML = doc.data().nombre;
-      getPrecio[i].innerHTML = `$${doc.data().precio}`;
+    querySnapshot.forEach(async(doc) => {
+      const data = await doc.data();
+      let storageRef = storage.ref(`imagenes/${data.id}`);
+      let url = await storageRef.getDownloadURL();
+      getNombres[i].innerHTML = data.nombre;
+      getPrecio[i].innerHTML = `$ ${data.precio}`;
+      getDescripcion[i].innerHTML = data.descripcion;
+      getImagenes[i].src = await url;
       i++;
-      const getId = doc.data().id;
-      const storageRef = storage.ref(`imagenes/${getId}`);
-      await storageRef.getDownloadURL().then(async (url) => {
-        getImagenes[iImagenes].src = await url;
-        iImagenes++;
-      });
     });
   });

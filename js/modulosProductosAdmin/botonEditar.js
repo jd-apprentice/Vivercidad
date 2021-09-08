@@ -2,24 +2,20 @@ import {
   db,
   modalProdName,
   modalProdPrice,
+  modalProdDesc,
   claseBoton,
 } from "../modulosProductosAdmin/adminPanel.js";
 
 // Variables
 const modalBody = document.querySelector(".modal-body");
-const spanName = document.createElement("span");
-const spanPrice = document.createElement("span");
 const imgProduct = document.createElement("img");
-
-const insertBeforeName = modalBody.getElementsByTagName("input")[0];
-const insertBeforePrice = modalBody.getElementsByTagName("input")[1];
 
 let inputImage = document.querySelector("#fileItemModal");
 let allInputImage = "";
-let nombreP = "";
-let precioP = "";
+let nombreProducto = "";
+let precioProducto = "";
+let descripcionProducto = "";
 let nameI = "";
-let imgLoad = false;
 
 // Funciones
 export let saveName = () => {
@@ -38,14 +34,10 @@ export let saveName = () => {
 
 const pintarProd = () => {
   // Pintar radio seleccionado en modal
-  spanName.innerText = "Nombre de producto";
-  spanPrice.innerText = "Precio de producto";
-  imgProduct.classList.add("img-fluid", "img-thumbnail", "text-center");
+  imgProduct.classList.add("img-fluid", "img-thumbnail", "text-center", "mx-auto");
   imgProduct.setAttribute("id", "imagenEdit");
-  imgProduct.style.height = "450px";
+  imgProduct.style.height = "350px";
   imgProduct.style.width = "350px";
-  modalProdName.parentNode.insertBefore(spanName, insertBeforeName);
-  modalProdPrice.parentNode.insertBefore(spanPrice, insertBeforePrice);
   modalBody.appendChild(imgProduct);
 };
 
@@ -57,14 +49,17 @@ inputImage.addEventListener("change", () => {
 // Boton editar - Este toma el nombre, precio e imagen del radio que seleccionas
 
 export let btnEdit = async () => {
+
   const grabInputs = document.querySelectorAll(".form-check-input");
   grabInputs.forEach((e) => {
     e.addEventListener("change", () => {
-      nombreP = e.parentElement.children[1];
-      precioP = e.parentElement.children[2];
-      modalProdName.value = nombreP.innerHTML;
-      modalProdPrice.value = precioP.innerHTML;
-      return nombreP, precioP;
+      nombreProducto = e.parentElement.parentElement.children[2]
+      descripcionProducto = e.parentElement.parentElement.children[4]
+      precioProducto = e.parentElement.parentElement.children[3]
+      modalProdName.value = nombreProducto.innerHTML;
+      modalProdPrice.value = precioProducto.innerHTML;
+      modalProdDesc.value = descripcionProducto.innerHTML;
+      return nombreProducto, precioProducto, descripcionProducto;
     });
   });
 
@@ -78,7 +73,6 @@ export let btnEdit = async () => {
   await storageRef.getDownloadURL().then((urlImagen) => {
     // Insertar imagen al html:
     imgProduct.src = urlImagen;
-    imgLoad = !imgLoad;
   });
 };
 
@@ -118,6 +112,7 @@ export let btnGuardar = async () => {
     .collection("carrousel")
     .doc(idDocumento)
     .set({
+      descripcion: modalProdDesc.value,
       id: idDocumento,
       nombre: getName,
       precio: modalProdPrice.value,
