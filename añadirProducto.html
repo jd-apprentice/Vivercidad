@@ -46,7 +46,11 @@
       <tbody id="listaProductos">
       </tbody>
     </table>
-    <button id="editarM" type="button" class="btn btn-success d-flex mx-auto disabled" data-bs-toggle="modal" data-bs-target="#modalEdit">Editar</button>
+    <div class="d-flex justify-content-center">
+      <button id="editarM" type="button" class="btn btn-success disabled" data-bs-toggle="modal" data-bs-target="#modalEdit">Editar</button>
+      <button id="borrarButton" type="button" class="btn btn-success mx-3 d-flex disabled">Borrar</button>
+      <button id="crearButton" type="button" class="btn btn-success d-flex">Crear</button>
+    </div>
   </div>
 
     <!-- Modal -->
@@ -80,7 +84,7 @@
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="cerrarModal btn btn-secondary"
               data-bs-dismiss="modal"
             >
               Cerrar

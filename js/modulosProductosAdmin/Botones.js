@@ -4,7 +4,7 @@ import {
   modalProdPrice,
   modalProdDesc,
   claseBoton,
-} from "../modulosProductosAdmin/adminPanel.js";
+} from "./adminPanel.js";
 
 // Variables
 const modalBody = document.querySelector(".modal-body");
@@ -34,7 +34,12 @@ export let saveName = () => {
 
 const pintarProd = () => {
   // Pintar radio seleccionado en modal
-  imgProduct.classList.add("img-fluid", "img-thumbnail", "text-center", "mx-auto");
+  imgProduct.classList.add(
+    "img-fluid",
+    "img-thumbnail",
+    "text-center",
+    "mx-auto"
+  );
   imgProduct.setAttribute("id", "imagenEdit");
   imgProduct.style.height = "350px";
   imgProduct.style.width = "350px";
@@ -47,15 +52,13 @@ inputImage.addEventListener("change", () => {
 });
 
 // Boton editar - Este toma el nombre, precio e imagen del radio que seleccionas
-
 export let btnEdit = async () => {
-
   const grabInputs = document.querySelectorAll(".form-check-input");
   grabInputs.forEach((e) => {
     e.addEventListener("change", () => {
-      nombreProducto = e.parentElement.parentElement.children[2]
-      descripcionProducto = e.parentElement.parentElement.children[4]
-      precioProducto = e.parentElement.parentElement.children[3]
+      nombreProducto = e.parentElement.parentElement.children[2];
+      descripcionProducto = e.parentElement.parentElement.children[4];
+      precioProducto = e.parentElement.parentElement.children[3];
       modalProdName.value = nombreProducto.innerHTML;
       modalProdPrice.value = precioProducto.innerHTML;
       modalProdDesc.value = descripcionProducto.innerHTML;
@@ -73,11 +76,14 @@ export let btnEdit = async () => {
   await storageRef.getDownloadURL().then((urlImagen) => {
     // Insertar imagen al html:
     imgProduct.src = urlImagen;
+  })
+  .catch(() => {
+    // Handle any errors
+    console.log("No hay una imagen")
   });
 };
 
 // Obtener metadatos
-
 export let obtenerMetadatos = () => {
   // Verificar formato de archivo
   let contentType = "";
@@ -99,23 +105,76 @@ export let obtenerMetadatos = () => {
 };
 
 // Boton guardar - Subir
-
 export let btnGuardar = async () => {
-  let getName = saveName();
-  let idDocumento = claseBoton();
-  let storageRef = await firebase.storage().ref(`imagenes/${idDocumento}`);
+  let getName = saveName(); // Nombre
+  let idDocumento = claseBoton(); // Obtener id del documento
+  let storageRef = await firebase.storage().ref(`imagenes/${idDocumento}`); // Ruta donde estan las imagenes
   // Subir Archivo y actualizar base de datos
   if (allInputImage != "") {
     await storageRef.put(allInputImage, obtenerMetadatos());
   }
+  await db.collection("carrousel").doc(idDocumento).set({
+    descripcion: modalProdDesc.value,
+    id: idDocumento,
+    nombre: getName,
+    precio: modalProdPrice.value,
+  });
+  setTimeout(() => {
+  // Close modal after 3 seconds
+  const cerrarModal = document.querySelector(".cerrarModal");
+  cerrarModal.click();
+  }, 1000);
+};
+
+// Boton eliminar
+export let btnBorrar = async () => {
+  let idDocumento = claseBoton();
+  let storageRef = await firebase.storage().ref(`imagenes/${idDocumento}`); // Ruta donde estan las imagenes
+  // Si existe la imagen, la elimina
+  if (storageRef.getDownloadURL() != null) {
+    try {
+      await storageRef.delete();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  try {
+  await db.collection("carrousel").doc(idDocumento).delete(); // Eliminar documento
+  setTimeout(() => {
+    location.reload();
+  }, 1000);
+  } catch (error) {
+    console.error("Error al eliminar documento");
+  }
+};
+
+// Boton Crear
+export let btnCrear = async () => {
   await db
     .collection("carrousel")
-    .doc(idDocumento)
-    .set({
-      descripcion: modalProdDesc.value,
-      id: idDocumento,
-      nombre: getName,
-      precio: modalProdPrice.value,
+    .doc()
+    .set({ // Crear documento
+      descripcion: "Edita este producto libremente",
+      id: "",
+      nombre: "Producto Nuevo",
+      precio: 0,
     })
-      location.reload();
+    .then(async() => {
+      await db.collection("carrousel")
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach(async(doc) => {
+            if (doc.data().nombre === "Producto Nuevo" && doc.data().id === "") { // Si es el documento creado
+              await db.collection("carrousel").doc(doc.id).update({ // Cargar ID del documento
+                id: doc.id,
+              });
+            } else {
+              return; // Si no es el documento creado, no hace nada
+            }
+          });
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
+        });
+    });
 };
