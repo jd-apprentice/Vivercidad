@@ -31,8 +31,11 @@ Podes verla en este [Link]
 - Git
 - Photoshop
 
+
+
 ## Colaboradores 🧑👧
 
 - [jd-apprentice](https://github.com/jd-apprentice)
 - [GuillermoBaban](https://github.com/GuillermoBaban)
-- [Link]: https://jd-apprentice.github.io/Vivercidad/
+
+[Link]: https://jd-apprentice.github.io/Vivercidad/
