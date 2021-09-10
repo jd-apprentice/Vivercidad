@@ -1,5 +1,8 @@
 //Modulos
-import { btnEdit, btnGuardar, btnBorrar, btnCrear } from "./Botones.js";
+import { btnEdit } from "./Botones/btnEdit.js";
+import { btnCrear } from "./Botones/btnCrear.js";
+import { btnBorrar } from "./Botones/btnBorrar.js";
+import { btnGuardar } from "./Botones/btnGuardar.js";
 
 // Inicializar Firebase
 export const db = firebase.firestore();
