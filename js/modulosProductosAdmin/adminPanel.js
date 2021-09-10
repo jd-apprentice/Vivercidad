@@ -10,6 +10,7 @@ export const storage = firebase.storage();
 
 // Variables
 export const editarM = document.querySelector("#editarM");
+export const contenedorProductos = document.querySelector(".contenedorProductos");
 export const buttonBorrar = document.querySelector("#borrarButton");
 export const buttonCrear = document.querySelector("#crearButton");
 export const salvarM = document.querySelector("#editarCambios");
@@ -19,16 +20,11 @@ export const modalProdDesc = document.querySelector("#modalProdDesc");
 export const grabLista = document.querySelector("#listaProductos");
 
 // Cargar atributos en carga de página
-export const mostrarOnLoad = async () => {
+export const mostrarOnLoad = async (nombreDB = "", descripcionDB = "", precioDB = 0, numeroProducto = 1) => {
   await db
     .collection("carrousel")
     .get()
     .then((querySnapshot) => {
-      // Inicializar valores
-      let nombreDB = "";
-      let descripcionDB = "";
-      let precioDB = 0;
-      let numeroProducto = 1;
       // Por cada elemento en la colección
       querySnapshot.forEach((doc) => { 
         // Tomar nombre, precio, descripcion y ID de cada producto
@@ -69,7 +65,7 @@ export const mostrarOnLoad = async () => {
       });
       btnEdit();
       claseBoton();
-    });
+  });
 };
 
 mostrarOnLoad();

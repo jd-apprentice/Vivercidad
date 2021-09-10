@@ -1,5 +1,6 @@
 // Modulos
 import { claseBoton, db } from "../adminPanel.js";
+import { actualizarContador } from "./btnCrear.js";
 
 // Boton eliminar
 export let btnBorrar = async () => {
@@ -15,6 +16,7 @@ export let btnBorrar = async () => {
     }
     try {
     await db.collection("carrousel").doc(idDocumento).delete(); // Eliminar documento
+    actualizarContador("-"); // Actualizar contador de productos
     setTimeout(() => {
       location.reload();
     }, 500);

@@ -1,6 +1,18 @@
 // Modulos
 import { db } from "../adminPanel.js";
 
+// Aumentar Contador
+export const actualizarContador = (operador) => {
+  db.collection("adminContador").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      const contador = doc.data().cont;
+      db.collection("adminContador").doc("contador").update({
+        cont: `${operador}` === "+" ? contador + 1 : contador - 1,
+      });
+    });
+  });
+};
+
 // Boton Crear
 export let btnCrear = async () => {
     await db
@@ -29,5 +41,6 @@ export let btnCrear = async () => {
               location.reload();
             }, 500);
           });
+        actualizarContador("+");
       });
   };

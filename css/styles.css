@@ -11176,10 +11176,6 @@ fieldset:disabled .btn {
   }
 }
 
-#footer {
-  margin-top: 5vh;
-}
-
 #navBar {
   margin-bottom: 25vh;
 }
@@ -11192,13 +11188,14 @@ fieldset:disabled .btn {
   display: none;
 }
 
-.imagenProducto {
-  max-height: 100%;
-  max-width: 100%;
-}
-
 .contenedorProductos {
   padding: 20px;
+}
+
+.imagenProducto {
+  max-height: 250px;
+  min-width: 250px;
+  max-width: 250px;
 }
 
 .id_admin {
