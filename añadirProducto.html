@@ -32,36 +32,121 @@
       <a class="navbar-brand m-auto" href="index.html">Vivercidad</a>
     </nav>
 
-  <div class="p-2">
-   <table class="table">
-     <thead>
-       <tr>
-         <td>
-           <h3>Carrousel #1</h3>
-           <small>Cantidad maxima de productos por carrousel: 8</small>
-         </td>
-       </tr>
-     </thead>
-    <table class="table table-responsive table-bordered border-success table-hover table-light contenedorProductos">
-      <thead>
-        <tr>
-          <th class="id_admin"></th>
-          <th scope="col">#</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Descripcion</th>
-        </tr>
-      </thead>
-      <tbody id="listaProductos">
-      </tbody>
-    </table>
-  </table>
-    <div class="d-flex justify-content-center">
-      <button id="editarM" type="button" class="btn btn-success disabled" data-bs-toggle="modal" data-bs-target="#modalEdit">Editar</button>
-      <button id="borrarButton" type="button" class="btn btn-success mx-3 d-flex disabled">Borrar</button>
-      <button id="crearButton" type="button" class="btn btn-success d-flex">Crear</button>
+    <!-- Carrousel #1 -->
+    <div class="p-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>
+              <h3>Carrousel #1</h3>
+              <small>Cantidad maxima de productos por carrousel: 8</small>
+            </td>
+          </tr>
+        </thead>
+        <table
+          class="
+            table table-responsive table-bordered
+            border-success
+            table-hover table-light
+            contenedorProductos
+          "
+        >
+          <thead>
+            <tr>
+              <th class="id_admin"></th>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Descripcion</th>
+            </tr>
+          </thead>
+          <tbody data-lista="1" class="listaProductos"></tbody>
+        </table>
+      </table>
+      <div class="d-flex justify-content-center">
+        <button
+          id="editarM"
+          type="button"
+          class="btn btn-success disabled"
+          data-bs-toggle="modal"
+          data-bs-target="#modalEdit"
+        >
+          Editar
+        </button>
+        <button
+          data-numero="1"
+          type="button"
+          class="btn btn-success mx-3 d-flex borrarButton disabled"
+        >
+          Borrar
+        </button>
+        <button
+          data-numero="1"
+          type="button"
+          class="btn btn-success d-flex crearButton"
+        >
+          Crear
+        </button>
+      </div>
     </div>
-  </div>
+
+    <!-- Carrousel #2 -->
+    <div class="p-2">
+      <table class="table">
+        <thead>
+          <tr>
+            <td>
+              <h3>Carrousel #2</h3>
+              <small>Cantidad maxima de productos por carrousel: 8</small>
+            </td>
+          </tr>
+        </thead>
+        <table
+          class="
+            table table-responsive table-bordered
+            border-success
+            table-hover table-light
+            contenedorProductos
+          "
+        >
+          <thead>
+            <tr>
+              <th class="id_admin"></th>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Descripcion</th>
+            </tr>
+          </thead>
+          <tbody data-lista="2" class="listaProductos"></tbody>
+        </table>
+      </table>
+      <div class="d-flex justify-content-center">
+        <button
+          id="editarM2"
+          type="button"
+          class="btn btn-success disabled"
+          data-bs-toggle="modal"
+          data-bs-target="#modalEdit"
+        >
+          Editar
+        </button>
+        <button
+          data-numero="2"
+          type="button"
+          class="btn btn-success mx-3 d-flex borrarButton disabled"
+        >
+          Borrar
+        </button>
+        <button
+          data-numero="2"
+          type="button"
+          class="btn btn-success d-flex crearButton"
+        >
+          Crear
+        </button>
+      </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="modalEdit" aria-hidden="true">
@@ -99,7 +184,7 @@
             >
               Cerrar
             </button>
-            <button id="editarCambios" type="button" class="btn btn-primary" >
+            <button id="" type="button" class="btn btn-primary editarCambios">
               Guardar cambios
             </button>
           </div>

@@ -10,21 +10,26 @@ export const storage = firebase.storage();
 
 // Variables
 export const editarM = document.querySelector("#editarM");
+export const editarM2 = document.querySelector("#editarM2");
 export const contenedorProductos = document.querySelector(".contenedorProductos");
-export const buttonBorrar = document.querySelector("#borrarButton");
-export const buttonCrear = document.querySelector("#crearButton");
-export const salvarM = document.querySelector("#editarCambios");
+export const buttonBorrar = document.querySelectorAll(".borrarButton");
+export const buttonCrear = document.querySelectorAll(".crearButton");
+export const salvarM = document.querySelector(".editarCambios");
 export const modalProdName = document.querySelector("#modalProdName");
 export const modalProdPrice = document.querySelector("#modalProdPrice");
 export const modalProdDesc = document.querySelector("#modalProdDesc");
-export const grabLista = document.querySelector("#listaProductos");
+export const grabLista = document.querySelectorAll(".listaProductos");
 
 // Cargar atributos en carga de página
-export const mostrarOnLoad = async (nombreDB = "", descripcionDB = "", precioDB = 0, numeroProducto = 1) => {
+export const mostrarOnLoad = async (coleccion) => {
   await db
-    .collection("carrousel")
+    .collection(coleccion)
     .get()
     .then((querySnapshot) => {
+      let nombreDB = ""
+      let descripcionDB = ""
+      let precioDB = 0
+      let numeroProducto = 1
       // Por cada elemento en la colección
       querySnapshot.forEach((doc) => { 
         // Tomar nombre, precio, descripcion y ID de cada producto
@@ -61,14 +66,19 @@ export const mostrarOnLoad = async (nombreDB = "", descripcionDB = "", precioDB 
         createName.setAttribute("id", idDocumento);
         createPrice.setAttribute("id", "precioProducto");
         createDesc.setAttribute("id", "descripcionProducto");
-        grabLista.appendChild(createRow); // Cargar todo a la Tabla
+        if (coleccion == "carrousel") {
+          grabLista[0].appendChild(createRow);
+        } else if (coleccion == "carrousel2") {
+          grabLista[1].appendChild(createRow);
+        }
       });
       btnEdit();
       claseBoton();
   });
 };
 
-mostrarOnLoad();
+mostrarOnLoad("carrousel");
+mostrarOnLoad("carrousel2");
 
 // Habilitar boton editar y tomar la ID del span
 let idDocumento = "";
@@ -77,7 +87,10 @@ export let claseBoton = () => {
   grabInputs.forEach((e) => {
     e.addEventListener("change", () => {
       editarM.classList.remove("disabled");
-      buttonBorrar.classList.remove("disabled");
+      editarM2.classList.remove("disabled");
+      buttonBorrar.forEach((e) => {
+        e.classList.remove("disabled");
+      });
       idDocumento = e.parentElement.parentElement.children[2].id
     });
   });
@@ -102,6 +115,11 @@ export let getDescripcion = () => {
 
 //Boton editar Funciones
 editarM.addEventListener("click", btnEdit);
+editarM2.addEventListener("click", btnEdit);
 salvarM.addEventListener("click", btnGuardar);
-buttonBorrar.addEventListener("click", btnBorrar);
-buttonCrear.addEventListener("click", btnCrear);
+buttonBorrar.forEach((e) => {
+  e.addEventListener("click", btnBorrar);
+});
+buttonCrear.forEach((e) => {
+  e.addEventListener("click", btnCrear);
+});

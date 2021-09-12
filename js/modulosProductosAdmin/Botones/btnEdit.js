@@ -6,6 +6,7 @@ import {
 } from "../adminPanel.js";
 
 // Variables
+export const getModalEdit = document.querySelector(".editarCambios");
 const modalBody = document.querySelector(".modal-body");
 const imgProduct = document.createElement("img");
 
@@ -13,11 +14,12 @@ let nombreProducto = "";
 let precioProducto = "";
 let descripcionProducto = "";
 let nameI = "";
+let idModal = "";
 
 // Funciones
 export let saveName = () => {
   // Keyup para el nombre
-  modalProdName.addEventListener("keyup", (e) => nameI = e.path[0].value);
+  modalProdName.addEventListener("keyup", (e) => (nameI = e.path[0].value));
 
   // Comprobar si el nombre fue editado, adquirir ruta de referencia
   let nombre = "";
@@ -46,9 +48,11 @@ export let btnEdit = async () => {
   const grabInputs = document.querySelectorAll(".form-check-input");
   grabInputs.forEach((e) => {
     e.addEventListener("change", () => {
+      idModal = e.parentElement.parentElement.children[2].id;
       nombreProducto = e.parentElement.parentElement.children[2];
       descripcionProducto = e.parentElement.parentElement.children[4];
       precioProducto = e.parentElement.parentElement.children[3];
+      getModalEdit.id = idModal;
       modalProdName.value = nombreProducto.innerHTML;
       modalProdPrice.value = precioProducto.innerHTML;
       modalProdDesc.value = descripcionProducto.innerHTML;
@@ -63,14 +67,15 @@ export let btnEdit = async () => {
   let idDocumento = claseBoton();
   let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
 
-  await storageRef.getDownloadURL().then((urlImagen) => {
-    // Insertar imagen al html:
-    imgProduct.src = urlImagen;
-  })
-  .catch(() => {
-    // Handle any errors
-    console.log("No hay una imagen")
-  });
+  await storageRef
+    .getDownloadURL()
+    .then((urlImagen) => {
+      // Insertar imagen al html:
+      imgProduct.src = urlImagen;
+    })
+    .catch(() => {
+      console.log("No hay una imagen");
+    });
 };
 
 // Obtener metadatos
@@ -93,7 +98,3 @@ export let obtenerMetadatos = () => {
   };
   return obtenerData;
 };
-
-
-
-
