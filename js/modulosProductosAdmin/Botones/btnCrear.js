@@ -3,14 +3,18 @@ import { db } from "../adminPanel.js";
 
 // Aumentar Contador
 export const actualizarContador = (operador) => {
-  db.collection("adminContador").get().then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      const contador = doc.data().cont;
-      db.collection("adminContador").doc("contador").update({
-        cont: `${operador}` === "+" ? contador + 1 : contador - 1,
+  db.collection("adminContador")
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const contador = doc.data().cont;
+        db.collection("adminContador")
+          .doc("contador")
+          .update({
+            cont: `${operador}` === "+" ? contador + 1 : contador - 1,
+          });
       });
     });
-  });
 };
 
 // Variables
@@ -18,11 +22,11 @@ const buttonCrear = document.querySelectorAll(".crearButton");
 export let numero = "";
 
 // Obtener boton presionado
-  buttonCrear.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      numero = e.target.dataset.numero;
-    });
+buttonCrear.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    numero = e.target.dataset.numero;
   });
+});
 
 // Boton Crear
 export let btnCrear = async (coleccion) => {

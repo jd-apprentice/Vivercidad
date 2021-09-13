@@ -11,7 +11,6 @@ export const storage = firebase.storage();
 // Variables
 export const editarM = document.querySelector("#editarM");
 export const editarM2 = document.querySelector("#editarM2");
-export const contenedorProductos = document.querySelector(".contenedorProductos");
 export const buttonBorrar = document.querySelectorAll(".borrarButton");
 export const buttonCrear = document.querySelectorAll(".crearButton");
 export const salvarM = document.querySelector(".editarCambios");
@@ -26,17 +25,17 @@ export const mostrarOnLoad = async (coleccion) => {
     .collection(coleccion)
     .get()
     .then((querySnapshot) => {
-      let nombreDB = ""
-      let descripcionDB = ""
-      let precioDB = 0
-      let numeroProducto = 1
+      let nombreDB = "";
+      let descripcionDB = "";
+      let precioDB = 0;
+      let numeroProducto = 1;
       // Por cada elemento en la colección
-      querySnapshot.forEach((doc) => { 
+      querySnapshot.forEach((doc) => {
         // Tomar nombre, precio, descripcion y ID de cada producto
         nombreDB = doc.data().nombre;
-        precioDB = doc.data().precio; 
-        descripcionDB = doc.data().descripcion; 
-        idDocumento = doc.data().id; 
+        precioDB = doc.data().precio;
+        descripcionDB = doc.data().descripcion;
+        idDocumento = doc.data().id;
         // Crear Elementos
         let createRow = document.createElement("tr");
         let createHead = document.createElement("td");
@@ -74,7 +73,7 @@ export const mostrarOnLoad = async (coleccion) => {
       });
       btnEdit();
       claseBoton();
-  });
+    });
 };
 
 mostrarOnLoad("carrousel");
@@ -91,7 +90,7 @@ export let claseBoton = () => {
       buttonBorrar.forEach((e) => {
         e.classList.remove("disabled");
       });
-      idDocumento = e.parentElement.parentElement.children[2].id
+      idDocumento = e.parentElement.parentElement.children[2].id;
     });
   });
   return idDocumento;
@@ -109,7 +108,9 @@ export let getPrecio = () => {
 };
 
 export let getDescripcion = () => {
-  const descripcionProduct = document.querySelector(".descripcionProducto").value;
+  const descripcionProduct = document.querySelector(
+    ".descripcionProducto"
+  ).value;
   return descripcionProduct;
 };
 

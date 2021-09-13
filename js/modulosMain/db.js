@@ -35,7 +35,7 @@ const getDescripcionFour = document.querySelectorAll(".descripcionProducto4");
 db.collection("carrousel")
   .get()
   .then((querySnapshot) => {
-    querySnapshot.forEach(async(doc) => {
+    querySnapshot.forEach(async (doc) => {
       const data = await doc.data();
       let storageRef = storage.ref(`imagenes/${data.id}`);
       let url = await storageRef.getDownloadURL();

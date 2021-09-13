@@ -1,11 +1,11 @@
 # 🌱 Vivercidad E-commerce 🌱
 
 - La presentacion incluye un header/banner con 3 slides personalizados para destacar promociones y demas
-<img src="https://media.discordapp.net/attachments/780523152059924552/871233592762699846/unknown.png?width=1200&height=505">
+  <img src="https://media.discordapp.net/attachments/780523152059924552/871233592762699846/unknown.png?width=1200&height=505">
 
 - Productos cargados desde Firebase
 - Este es un carrousel donde podes arrastrar los objetos de forma desktop/mobile
-<img src="https://i.imgur.com/XfDl40Y.png">
+  <img src="https://i.imgur.com/XfDl40Y.png">
 
 <img align="right" src="https://i.imgur.com/V9mkCwW.png">
 
@@ -30,8 +30,6 @@ Podes verla en este [Link]
 - Firebase
 - Git
 - Photoshop
-
-
 
 ## Colaboradores 🧑👧
 

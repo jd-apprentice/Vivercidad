@@ -15,6 +15,7 @@ let precioProducto = "";
 let descripcionProducto = "";
 let nameI = "";
 let idModal = "";
+let datasetLista = "";
 
 // Funciones
 export let saveName = () => {
@@ -38,8 +39,7 @@ const pintarProd = () => {
     "mx-auto"
   );
   imgProduct.setAttribute("id", "imagenEdit");
-  imgProduct.style.height = "350px";
-  imgProduct.style.width = "350px";
+  [imgProduct.style.height, imgProduct.style.width] = ["350px", "350px"];
   modalBody.appendChild(imgProduct);
 };
 
@@ -48,11 +48,13 @@ export let btnEdit = async () => {
   const grabInputs = document.querySelectorAll(".form-check-input");
   grabInputs.forEach((e) => {
     e.addEventListener("change", () => {
+      datasetLista = e.parentElement.parentElement.parentElement.dataset.lista;
       idModal = e.parentElement.parentElement.children[2].id;
       nombreProducto = e.parentElement.parentElement.children[2];
       descripcionProducto = e.parentElement.parentElement.children[4];
       precioProducto = e.parentElement.parentElement.children[3];
       getModalEdit.id = idModal;
+      getModalEdit.dataset.lista = datasetLista;
       modalProdName.value = nombreProducto.innerHTML;
       modalProdPrice.value = precioProducto.innerHTML;
       modalProdDesc.value = descripcionProducto.innerHTML;
@@ -81,8 +83,7 @@ export let btnEdit = async () => {
 // Obtener metadatos
 export let obtenerMetadatos = () => {
   // Verificar formato de archivo
-  let contentType = "";
-  let size = "";
+  [contentType, size] = ["", ""];
   let idDocumento = claseBoton();
   let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
   storageRef.getMetadata().then((metadata) => {
