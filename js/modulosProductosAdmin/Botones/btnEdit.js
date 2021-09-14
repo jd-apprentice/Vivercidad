@@ -31,6 +31,7 @@ export let saveName = () => {
 };
 
 const pintarProd = () => {
+  imgProduct.src = "img/Xpinner.gif";
   // Pintar radio seleccionado en modal
   imgProduct.classList.add(
     "img-fluid",
@@ -62,7 +63,7 @@ export let btnEdit = async () => {
     });
   });
 
-  // Pintar modal
+  // Preparar imagen
   pintarProd();
 
   // Descargar Archivo de Storage
@@ -83,7 +84,8 @@ export let btnEdit = async () => {
 // Obtener metadatos
 export let obtenerMetadatos = () => {
   // Verificar formato de archivo
-  [contentType, size] = ["", ""];
+  let contentType = "";
+  let size = "";
   let idDocumento = claseBoton();
   let storageRef = firebase.storage().ref(`imagenes/${idDocumento}`);
   storageRef.getMetadata().then((metadata) => {

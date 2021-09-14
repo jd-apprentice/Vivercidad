@@ -68,7 +68,7 @@ export let btnCrear = async (coleccion) => {
           });
           setTimeout(() => {
             location.reload();
-          }, 500);
+          }, 200);
         });
       actualizarContador("+");
     });

@@ -3,46 +3,41 @@ const db = firebase.firestore();
 const storage = firebase.storage();
 
 // Primer Swiper
-let i = 0;
-const getNombres = document.querySelectorAll(".nombreProducto");
-const getPrecio = document.querySelectorAll(".precioProducto");
-const getImagenes = document.querySelectorAll(".imagenProducto");
-const getDescripcion = document.querySelectorAll(".descripcionProducto");
+const carrousel = {
+  nombreProducto: document.querySelectorAll('.nombreProducto'),
+  precioProducto: document.querySelectorAll('.precioProducto'),
+  imagenProducto: document.querySelectorAll('.imagenProducto'),
+  descripcionProducto: document.querySelectorAll('.descripcionProducto'),
+}
 
 // Segundo Swiper
-let iTwo = 0;
-const getNombresTwo = document.querySelectorAll(".nombreProducto2");
-const getPrecioTwo = document.querySelectorAll(".precioProducto2");
-const getImagenesTwo = document.querySelectorAll(".imagenProducto2");
-const getDescripcionTwo = document.querySelectorAll(".descripcionProducto2");
+const carrousel2 = {
+  nombreProducto: document.querySelectorAll(".nombreProducto2"),
+  precioProducto: document.querySelectorAll(".precioProducto2"),
+  imagenProducto: document.querySelectorAll(".imagenProducto2"),
+  descripcionProducto: document.querySelectorAll(".descripcionProducto2"),
+}
 
-// Tercer Swiper
-let iTree = 0;
-const getNombresThree = document.querySelectorAll(".nombreProducto3");
-const getPrecioThree = document.querySelectorAll(".precioProducto3");
-const getImagenesThree = document.querySelectorAll(".imagenProducto3");
-const getDescripcionThree = document.querySelectorAll(".descripcionProducto3");
+// Objeto carrousel
+const carrousels = {
+  carrousel,
+  carrousel2,
+}
 
-// Cuarto Swiper
-let iFour = 0;
-const getNombresFour = document.querySelectorAll(".nombreProducto4");
-const getPrecioFour = document.querySelectorAll(".precioProducto4");
-const getImagenesFour = document.querySelectorAll(".imagenProducto4");
-const getDescripcionFour = document.querySelectorAll(".descripcionProducto4");
+// Pintar todos los datos en el index
+const getIndex = async (coleccion) => {
+  const querySnapshots = await db.collection(coleccion).get() // Obtener todos los documentos
+  const productsPromises = querySnapshots.docs.map((doc) => doc.data()) // Obtener todos los datos de cada documento
+  const products = await Promise.all(productsPromises) // Esperar a que se resuelvan todas las promesas
+  const imageUrlsPromises = products.map(product => storage.ref(`imagenes/${product.id}`).getDownloadURL()) // Obtener las urls de las imagenes
+  const imageUrls = await Promise.all(imageUrlsPromises) // Esperar a que se resuelvan todas las promesas
+  for (const [i, product] of Object.entries(products)) { // Recorrer los datos
+      carrousels[coleccion].nombreProducto[i].innerHTML = product.nombre; // Pintar el nombre
+      carrousels[coleccion].precioProducto[i].innerHTML = `$ ${product.precio}`; // Pintar el precio
+      carrousels[coleccion].descripcionProducto[i].innerHTML = product.descripcion; // Pintar la descripcion
+      carrousels[coleccion].imagenProducto[i].src = imageUrls[i]; // Pintar la imagen
+  }
+}
 
-// Leer todos los datos - Pintar Carousel #1
-
-db.collection("carrousel")
-  .get()
-  .then((querySnapshot) => {
-    querySnapshot.forEach(async (doc) => {
-      const data = await doc.data();
-      let storageRef = storage.ref(`imagenes/${data.id}`);
-      let url = await storageRef.getDownloadURL();
-      getNombres[i].innerHTML = data.nombre;
-      getPrecio[i].innerHTML = `$ ${data.precio}`;
-      getDescripcion[i].innerHTML = data.descripcion;
-      getImagenes[i].src = await url;
-      i++;
-    });
-  });
+getIndex("carrousel");
+getIndex("carrousel2");

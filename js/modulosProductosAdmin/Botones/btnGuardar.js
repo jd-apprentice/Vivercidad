@@ -49,6 +49,6 @@ export let btnGuardar = async (coleccion) => {
   setTimeout(() => {
     // Close modal after 3 seconds
     const cerrarModal = document.querySelector(".cerrarModal");
-    cerrarModal.click();
+    location.reload();
   }, 1000);
 };

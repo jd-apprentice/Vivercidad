@@ -11192,7 +11192,7 @@ fieldset:disabled .btn {
   padding: 20px;
 }
 
-.imagenProducto {
+.imagenProducto, .imagenProducto2 {
   max-height: 250px;
   min-width: 250px;
   max-width: 250px;
@@ -11200,4 +11200,8 @@ fieldset:disabled .btn {
 
 .id_admin {
   width: 25px;
+}
+
+.imgHead {
+  object-fit: contain;
 }
