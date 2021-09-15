@@ -25,6 +25,21 @@ export const mostrarOnLoad = async (coleccion) => {
     .collection(coleccion)
     .get()
     .then((querySnapshot) => {
+
+      // Botones crear
+      const arrBtn = [];
+      buttonCrear.forEach((btn) => {
+        arrBtn.push(btn);
+      });
+
+      // Resolver botones crear
+      if (querySnapshot.size <= 7 && coleccion === "carrousel") {
+        arrBtn[0].classList.remove("disabled");
+      } else if (querySnapshot.size <= 7 && coleccion === "carrousel2") {
+        arrBtn[1].classList.remove("disabled");
+      }
+
+      // Valores de los atributos
       let nombreDB = "";
       let descripcionDB = "";
       let precioDB = 0;

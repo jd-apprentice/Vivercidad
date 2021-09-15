@@ -33,13 +33,12 @@ loginF.addEventListener("submit", loginUser);
 // Recuperar contraseña
 const btnRecu = document.querySelector("#enviarMail");
 export const inputRecu = document.querySelector("#emailRecu");
-
 btnRecu.addEventListener("click", recuperarContra);
 
 //Google login
 const googleAcc = document.querySelector("#googleAcc");
 
-googleAcc.addEventListener("click", (e) => {
+googleAcc.addEventListener("click", () => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase
     .auth()
