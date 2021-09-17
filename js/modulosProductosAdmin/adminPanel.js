@@ -9,6 +9,7 @@ export const db = firebase.firestore();
 export const storage = firebase.storage();
 
 // Variables
+export const grabInputs = document.querySelectorAll(".form-check-input");
 export const editarM = document.querySelector("#editarM");
 export const editarM2 = document.querySelector("#editarM2");
 export const buttonBorrar = document.querySelectorAll(".borrarButton");
@@ -21,24 +22,12 @@ export const grabLista = document.querySelectorAll(".listaProductos");
 
 // Cargar atributos en carga de página
 export const mostrarOnLoad = async (coleccion) => {
+  // Limpiar Tabla
   await db
     .collection(coleccion)
     .get()
     .then((querySnapshot) => {
-
-      // Botones crear
-      const arrBtn = [];
-      buttonCrear.forEach((btn) => {
-        arrBtn.push(btn);
-      });
-
-      // Resolver botones crear
-      if (querySnapshot.size <= 7 && coleccion === "carrousel") {
-        arrBtn[0].classList.remove("disabled");
-      } else if (querySnapshot.size <= 7 && coleccion === "carrousel2") {
-        arrBtn[1].classList.remove("disabled");
-      }
-
+      updateCreate(coleccion); // Actualizar botones crear
       // Valores de los atributos
       let nombreDB = "";
       let descripcionDB = "";
@@ -82,10 +71,13 @@ export const mostrarOnLoad = async (coleccion) => {
         createDesc.setAttribute("id", "descripcionProducto");
         if (coleccion == "carrousel") {
           grabLista[0].appendChild(createRow);
+          createCheckBock.dataset.numero = "1";
         } else if (coleccion == "carrousel2") {
           grabLista[1].appendChild(createRow);
+          createCheckBock.dataset.numero = "2";
         }
       });
+      grabRadio();
       btnEdit();
       claseBoton();
     });
@@ -94,21 +86,68 @@ export const mostrarOnLoad = async (coleccion) => {
 mostrarOnLoad("carrousel");
 mostrarOnLoad("carrousel2");
 
-// Habilitar boton editar y tomar la ID del span
+// Actualizar Boton Crear
+export const updateCreate = async (coleccion) => {
+  // Botones crear
+  const arrBtn = [];
+  buttonCrear.forEach((btn) => {
+    arrBtn.push(btn);
+  });
+
+  await db
+    .collection(coleccion)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.size <= 7 && coleccion === "carrousel") {
+        arrBtn[0].classList.remove("disabled");
+      } else if (querySnapshot.size <= 7 && coleccion === "carrousel2") {
+        arrBtn[1].classList.remove("disabled");
+      }
+    });
+};
+
+// Carrouseles
+const arrLista = [];
+grabLista.forEach((lista) => {
+  arrLista.push(lista);
+});
+
+// Botones
+const arrBtn = [];
+buttonBorrar.forEach((btn) => {
+  arrBtn.push(btn);
+});
+
+// Cargar ID's
 let idDocumento = "";
 export let claseBoton = () => {
   const grabInputs = document.querySelectorAll(".form-check-input");
   grabInputs.forEach((e) => {
     e.addEventListener("change", () => {
-      editarM.classList.remove("disabled");
-      editarM2.classList.remove("disabled");
-      buttonBorrar.forEach((e) => {
-        e.classList.remove("disabled");
-      });
       idDocumento = e.parentElement.parentElement.children[2].id;
     });
   });
   return idDocumento;
+};
+
+// Manipular inputs
+const grabRadio = () => {
+  const grabInputs = document.querySelectorAll(".form-check-input");
+  grabInputs.forEach((e) => {
+    e.addEventListener("change", () => {
+      if (e.dataset.numero === "1") {
+        arrBtn[0].classList.remove("disabled");
+        arrBtn[1].classList.add("disabled");
+        editarM.classList.remove("disabled");
+        editarM2.classList.add("disabled");
+      } else if (e.dataset.numero === "2") {
+        arrBtn[1].classList.remove("disabled");
+        arrBtn[0].classList.add("disabled");
+        editarM2.classList.remove("disabled");
+        editarM.classList.add("disabled");
+      }
+    });
+  });
 };
 
 // Pintar productos en la lista

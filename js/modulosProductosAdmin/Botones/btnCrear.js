@@ -1,21 +1,5 @@
 // Modulos
-import { db } from "../adminPanel.js";
-
-// Aumentar Contador
-export const actualizarContador = (operador) => {
-  db.collection("adminContador")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const contador = doc.data().cont;
-        db.collection("adminContador")
-          .doc("contador")
-          .update({
-            cont: `${operador}` === "+" ? contador + 1 : contador - 1,
-          });
-      });
-    });
-};
+import { db, mostrarOnLoad } from "../adminPanel.js";
 
 // Variables
 const buttonCrear = document.querySelectorAll(".crearButton");
@@ -29,7 +13,7 @@ buttonCrear.forEach((btn) => {
 });
 
 // Boton Crear
-export let btnCrear = async (coleccion) => {
+export let btnCrear = async (coleccion) => { 
   // Si dataset es igual al boton presionado asignar la collecion
   if (numero === "1") {
     coleccion = "carrousel";
@@ -66,10 +50,6 @@ export let btnCrear = async (coleccion) => {
               return; // Si no es el documento creado, no hace nada
             }
           });
-          setTimeout(() => {
-            location.reload();
-          }, 200);
         });
-      actualizarContador("+");
     });
 };
