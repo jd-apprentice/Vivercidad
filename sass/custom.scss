@@ -11,9 +11,9 @@ $imagen-carrousel: 250px;
 }
 
 .imagenProducto, .imagenProducto2 { 
-    max-height: $height-carrousel; 
-    min-width: $min-carrousel; 
-    max-width: $width-carrousel;
+    max-height: $imagen-carrousel; 
+    min-width: $imagen-carrousel;
+    max-width: $imagen-carrousel;
 }
 
 #btnLogout { 
