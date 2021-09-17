@@ -15,8 +15,6 @@ getTabla.forEach(element => {
   getCarrousel.push(element.textContent);
 });
 
-console.log(getCarrousel[0]);
-
 // Adquirir propiedades del archivo
 inputImage.addEventListener(
   "change",
@@ -46,9 +44,10 @@ export let btnGuardar = async (coleccion) => {
     nombre: getName,
     precio: modalProdPrice.value,
   });
+
   setTimeout(() => {
     // Close modal after 3 seconds
     const cerrarModal = document.querySelector(".cerrarModal");
-    location.reload();
+    cerrarModal.click();
   }, 1000);
 };

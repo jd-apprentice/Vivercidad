@@ -1,0 +1,29 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+$imagen-carrousel: 250px;
+
+.id_admin { 
+    width: 25px;
+}
+
+.imgHead { 
+    object-fit: contain;
+}
+
+.imagenProducto, .imagenProducto2 { 
+    max-height: $height-carrousel; 
+    min-width: $min-carrousel; 
+    max-width: $width-carrousel;
+}
+
+#btnLogout { 
+    display: none;
+}
+
+#footer { 
+    min-height: calc(100vh - 200px - 350px);
+}
+
+#navBar { 
+    margin-bottom: 10vh;
+}

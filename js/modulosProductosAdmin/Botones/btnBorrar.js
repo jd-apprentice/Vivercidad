@@ -1,11 +1,9 @@
 // Modulos
-import { claseBoton, db } from "../adminPanel.js";
-import { actualizarContador } from "./btnCrear.js";
-
-const buttonBorrar = document.querySelectorAll(".borrarButton");
-let numero = "";
+import { claseBoton, db, updateCreate } from "../adminPanel.js";
 
 // Obtener boton presionado
+const buttonBorrar = document.querySelectorAll(".borrarButton");
+let numero = "";
 buttonBorrar.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     numero = e.target.dataset.numero;
@@ -32,11 +30,10 @@ export let btnBorrar = async (coleccion) => {
     }
   }
   try {
+    const getTR = document.getElementById(idDocumento);
     await db.collection(coleccion).doc(idDocumento).delete(); // Eliminar documento
-    actualizarContador("-"); // Actualizar contador de productos
-    setTimeout(() => {
-      location.reload();
-    }, 500);
+    getTR.parentNode.remove(); // Eliminar Row
+    updateCreate(coleccion)  // Actualizar boton crear
   } catch (error) {
     console.log(error);
   }
