@@ -51,5 +51,8 @@ export let btnCrear = async (coleccion) => {
             }
           });
         });
-    });
+        setTimeout(() => {
+      mostrarOnLoad(coleccion);
+    }, 1000);
+  });
 };

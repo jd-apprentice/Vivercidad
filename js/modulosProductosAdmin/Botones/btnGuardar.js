@@ -1,5 +1,5 @@
 import { saveName } from "./btnEdit.js";
-import { claseBoton, db} from "../adminPanel.js";
+import { claseBoton, db, mostrarOnLoad} from "../adminPanel.js";
 import { obtenerMetadatos } from "./btnEdit.js";
 
 // Variables globales
@@ -49,5 +49,6 @@ export let btnGuardar = async (coleccion) => {
     // Close modal after 3 seconds
     const cerrarModal = document.querySelector(".cerrarModal");
     cerrarModal.click();
+    mostrarOnLoad(coleccion);
   }, 1000);
 };

@@ -16,10 +16,13 @@ export let password = document.querySelector("#pass");
 firebase
   .auth()
   .setPersistence(firebase.auth.Auth.Persistence.SESSION)
-  .then(() => {
+  .then((userCredential) => {
     return firebase
       .auth()
       .signInWithEmailAndPassword(userEmail.value, password.value);
+  })
+  .catch((error) => {
+    console.log(error);
   });
 
 //Create login
@@ -43,7 +46,7 @@ googleAcc.addEventListener("click", () => {
   firebase
     .auth()
     .signInWithPopup(provider)
-    .then(() => {
+    .then((result) => {
       location.href = "./index.html";
     })
     .catch((error) => {
