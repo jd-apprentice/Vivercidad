@@ -1,5 +1,5 @@
 // Modulos
-import { claseBoton, db, updateCreate } from "../adminPanel.js";
+import { claseBoton, db, updateCreate} from "../adminPanel.js";
 
 // Obtener boton presionado
 const buttonBorrar = document.querySelectorAll(".borrarButton");
@@ -33,7 +33,7 @@ export let btnBorrar = async (coleccion) => {
     const getTR = document.getElementById(idDocumento);
     await db.collection(coleccion).doc(idDocumento).delete(); // Eliminar documento
     getTR.parentNode.remove(); // Eliminar Row
-    updateCreate(coleccion)  // Actualizar boton crear
+    updateCreate(coleccion);
   } catch (error) {
     console.log(error);
   }

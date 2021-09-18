@@ -1,5 +1,4 @@
 // Modulos
-
 import { grabAlertRecu, inputRecu } from "../modulosLogin/login.js";
 
 export let recuperarContra = (e) => {

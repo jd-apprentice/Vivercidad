@@ -1,12 +1,12 @@
 import { userEmail, password, grabAlertEmail } from "../modulosLogin/login.js";
 
+// Crear usuario
 export let crearUsuario = (e) => {
   e.preventDefault();
   firebase
     .auth()
     .createUserWithEmailAndPassword(userEmail.value, password.value)
     .then(() => {
-      // Signed in
       firebase
         .auth()
         .currentUser.sendEmailVerification()

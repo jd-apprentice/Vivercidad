@@ -20,14 +20,43 @@ export const modalProdPrice = document.querySelector("#modalProdPrice");
 export const modalProdDesc = document.querySelector("#modalProdDesc");
 export const grabLista = document.querySelectorAll(".listaProductos");
 
+// Limpiar Tabla
+const limpiarTabla = (coleccion) => {
+  switch (coleccion) {
+    case "carrousel":
+      grabLista[0].innerHTML = "";
+    break;
+    case "carrousel2":
+      grabLista[1].innerHTML = "";
+    break;
+  }
+};
+
+// Boton Crear
+const btnCreate = () => {
+  const arrBtn = [];
+  buttonCrear.forEach((btn) => {
+    arrBtn.push(btn);
+  });
+  return arrBtn;
+};
+
+// Boton Borrar
+const botonBorrar = () => {
+  const arrBtn = [];
+  buttonBorrar.forEach((btn) => {
+    arrBtn.push(btn);
+  });
+  return arrBtn;
+};
+
 // Cargar atributos en carga de página
 export const mostrarOnLoad = async (coleccion) => {
-  // Limpiar Tabla
+  limpiarTabla(coleccion);
   await db
     .collection(coleccion)
     .get()
     .then((querySnapshot) => {
-      updateCreate(coleccion); // Actualizar botones crear
       // Valores de los atributos
       let nombreDB = "";
       let descripcionDB = "";
@@ -77,6 +106,7 @@ export const mostrarOnLoad = async (coleccion) => {
           createCheckBock.dataset.numero = "2";
         }
       });
+      updateCreate(coleccion);
       grabRadio();
       btnEdit();
       claseBoton();
@@ -86,37 +116,30 @@ export const mostrarOnLoad = async (coleccion) => {
 mostrarOnLoad("carrousel");
 mostrarOnLoad("carrousel2");
 
-// Actualizar Boton Crear
-export const updateCreate = async (coleccion) => {
-  // Botones crear
-  const arrBtn = [];
-  buttonCrear.forEach((btn) => {
-    arrBtn.push(btn);
-  });
-
-  await db
-    .collection(coleccion)
-    .get()
-    .then((querySnapshot) => {
-      if (querySnapshot.size <= 7 && coleccion === "carrousel") {
-        arrBtn[0].classList.remove("disabled");
-      } else if (querySnapshot.size <= 7 && coleccion === "carrousel2") {
-        arrBtn[1].classList.remove("disabled");
-      }
-    });
-};
-
 // Carrouseles
 const arrLista = [];
 grabLista.forEach((lista) => {
   arrLista.push(lista);
 });
 
-// Botones
-const arrBtn = [];
-buttonBorrar.forEach((btn) => {
-  arrBtn.push(btn);
-});
+// Actualizar Boton Crear
+export const updateCreate = async (coleccion) => {
+  const arrBoton = btnCreate();
+  await db
+    .collection(coleccion)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.size <= 7 && coleccion === "carrousel") {
+        arrBoton[0].classList.remove("disabled");
+      } else if (querySnapshot.size <= 7 && coleccion === "carrousel2") {
+        arrBoton[1].classList.remove("disabled");
+      } else if (querySnapshot.size > 7 && coleccion === "carrousel") {
+        arrBoton[0].classList.add("disabled");
+      } else if (querySnapshot.size > 7 && coleccion === "carrousel2") {
+        arrBoton[1].classList.add("disabled");
+      }
+    });
+};
 
 // Cargar ID's
 let idDocumento = "";
@@ -132,6 +155,7 @@ export let claseBoton = () => {
 
 // Manipular inputs
 const grabRadio = () => {
+  const arrBtn = botonBorrar();
   const grabInputs = document.querySelectorAll(".form-check-input");
   grabInputs.forEach((e) => {
     e.addEventListener("change", () => {
