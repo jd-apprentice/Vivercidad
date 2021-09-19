@@ -36,4 +36,4 @@ Podes verla en este [Link]
 - [jd-apprentice](https://github.com/jd-apprentice)
 - [GuillermoBaban](https://github.com/GuillermoBaban)
 
-[Link]: https://jd-apprentice.github.io/Vivercidad/
+[Link]: https://vivercidad.vercel.app/
