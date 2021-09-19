@@ -21,16 +21,7 @@ export const modalProdDesc = document.querySelector("#modalProdDesc");
 export const grabLista = document.querySelectorAll(".listaProductos");
 
 // Limpiar Tabla
-const limpiarTabla = (coleccion) => {
-  switch (coleccion) {
-    case "carrousel":
-      grabLista[0].innerHTML = "";
-    break;
-    case "carrousel2":
-      grabLista[1].innerHTML = "";
-    break;
-  }
-};
+const limpiarTabla = (coleccion) => (coleccion === "carrousel") ? grabLista[0].innerHTML = "" : grabLista[1].innerHTML = "";
 
 // Boton Crear
 const btnCreate = () => {

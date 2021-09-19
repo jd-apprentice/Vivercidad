@@ -11960,10 +11960,19 @@ fieldset:disabled .btn {
      object-fit: contain;
 }
 
+.imagenCarrito {
+  width: 100px;
+  height: 100px;
+}
+
 .imagenProducto, .imagenProducto2 {
   max-height: 250px;
   min-width: 250px;
   max-width: 250px;
+}
+
+.signoMenos, .signoMas {
+  cursor: pointer;
 }
 
 #btnLogout {

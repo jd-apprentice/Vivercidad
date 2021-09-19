@@ -70,10 +70,11 @@
             type="button"
             id="navCarrito"
             class="btn btn-outline-dark me-2"
+            data-bs-toggle="modal" data-bs-target="#modalCarrito"
           >
             <i class="bi-cart-fill"></i>
             <span>Carrito</span>
-            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+            <span id="contadorCarrito" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
           </button>
           <a href="login.html" id="elimSiUsuarioExist">
             <button type="button" class="btn btn-outline-dark">
@@ -126,8 +127,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -139,8 +140,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -152,8 +153,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -165,8 +166,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -178,8 +179,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -191,8 +192,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -204,8 +205,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -217,8 +218,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
         </div>
@@ -241,8 +242,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto2">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto2 btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -257,8 +258,8 @@
                 alt=""
               />
               <span class="d-block descripcionProducto2">Lorem ipsum dolor sit amet.</span>
-              <button class="btn btn-success d-block mx-auto my-2">
-                Anadir producto
+              <button class="agregarProducto2 btn btn-success d-block mx-auto my-2">
+                Añadir producto
               </button>
             </div>
           </div>
@@ -273,8 +274,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto2">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto2 btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -288,8 +289,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto2">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto2 btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -303,8 +304,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto2">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto2 btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -318,8 +319,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto2">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto2 btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -333,8 +334,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto2">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto2 btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -348,8 +349,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto2">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto2 btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
         </div>
@@ -371,8 +372,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto3">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -386,8 +387,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto3">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -401,8 +402,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto3">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -416,8 +417,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto3">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -430,23 +431,8 @@
               src="https://dummyimage.com/250x250/000/fff"
               alt=""
             />
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
-            </button>
-          </div>
-          <div class="swiper-slide">
-            <span class="nombreProducto3 fs-5"
-              >Nombre: Hola soy una planta</span
-            >
-            <span class="d-block precioProducto3 fs-6">Precio: 200$</span>
-            <img
-              class="imagenProducto3 img-fluid img-thumbnail"
-              src="https://dummyimage.com/250x250/000/fff"
-              alt=""
-            />
-            <span class="d-block descripcionProducto3">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -460,8 +446,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto3">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -475,8 +461,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto3">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -490,8 +476,23 @@
               alt=""
             />
             <span class="d-block descripcionProducto3">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
+            </button>
+          </div>
+          <div class="swiper-slide">
+            <span class="nombreProducto3 fs-5"
+              >Nombre: Hola soy una planta</span
+            >
+            <span class="d-block precioProducto3 fs-6">Precio: 200$</span>
+            <img
+              class="imagenProducto3 img-fluid img-thumbnail"
+              src="https://dummyimage.com/250x250/000/fff"
+              alt=""
+            />
+            <span class="d-block descripcionProducto3">Lorem ipsum dolor sit amet.</span>
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
         </div>
@@ -513,8 +514,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto4">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -528,8 +529,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto4">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -543,8 +544,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto4">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -558,8 +559,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto4">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -573,8 +574,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto4">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -588,8 +589,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto4">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -603,8 +604,8 @@
               alt=""
             />
             <span class="d-block descripcionProducto4">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
           <div class="swiper-slide">
@@ -618,13 +619,33 @@
               alt=""
             />
             <span class="d-block descripcionProducto4">Lorem ipsum dolor sit amet.</span>
-            <button class="btn btn-success d-block mx-auto my-2">
-              Anadir producto
+            <button class="agregarProducto btn btn-success d-block mx-auto my-2">
+              Añadir producto
             </button>
           </div>
         </div>
       </div>
     </div> -->
+
+    <!-- Modal -->
+
+    <div class="modal" id="modalCarrito" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Tus productos</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="productosCarrito">
+            <p>Tu carrito de compras estas vacio!, por que no buscas algo que comprar?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button id="btnComprar" type="button" class="btn btn-primary">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Footer-->
     <footer class="py-5 bg-dark">
@@ -666,6 +687,7 @@
 
     <!-- Main JS -->
     <script type="module" src="./js/index.js"></script>
+    <script type="module" src="/js/moduloCarrito/agregar.js"></script>
     <script src="./js/modulosMain/db.js"></script>
     <script src="./js/modulosMain/swiper.js"></script>
   </body>

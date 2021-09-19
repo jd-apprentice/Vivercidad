@@ -1,6 +1,8 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+// Imagenes
 $imagen-carrousel: 250px;
+$imagen-cart: 100px;
 
 .id_admin { 
     width: 25px;
@@ -10,10 +12,20 @@ $imagen-carrousel: 250px;
     object-fit: contain;
 }
 
+.imagenCarrito {
+    width: $imagen-cart;
+    height: $imagen-cart;
+}
+
 .imagenProducto, .imagenProducto2 { 
     max-height: $imagen-carrousel;
     min-width: $imagen-carrousel;
     max-width: $imagen-carrousel;
+
+}
+
+.signoMenos, .signoMas {
+    cursor: pointer;
 }
 
 #btnLogout { 
