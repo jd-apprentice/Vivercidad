@@ -85,6 +85,21 @@
         </div>
       </div>
     </nav>
+
+    <!-- Alerta de login -->
+
+    <div
+      style="display: none"
+      class="alert alert-success sticky-top"
+      role="alert"
+      data-bs-dismiss="alert"
+      id="alertaLogin"
+    >
+      <i class="bi bi-exclamation-lg fs-3"></i>
+      <use xlink:href="#check-circle-fill" />
+      <div class="fs-3 d-inline-flex">Necesitas logear para agregar productos al carrito!</div>
+    </div>
+
     <!-- Header-->
     <div class="swiper mySwiperHead">
       <div class="swiper-wrapper">
@@ -119,7 +134,7 @@
       <div class="swiper mySwiper img-thumbnail text-center">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
-            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span data-cantidad=1 class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
             <span class="d-block precioProducto fs-6">Precio: 200$</span>
             <img
               class="imagenProducto img-fluid img-thumbnail"
@@ -132,7 +147,7 @@
             </button>
           </div>
           <div class="swiper-slide">
-            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span data-cantidad=1 class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
             <span class="d-block precioProducto fs-6">Precio: 200$</span>
             <img
               class="imagenProducto img-fluid img-thumbnail"
@@ -145,7 +160,7 @@
             </button>
           </div>
           <div class="swiper-slide">
-            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span data-cantidad=1 class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
             <span class="d-block precioProducto fs-6">Precio: 200$</span>
             <img
               class="imagenProducto img-fluid img-thumbnail"
@@ -158,7 +173,7 @@
             </button>
           </div>
           <div class="swiper-slide">
-            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span data-cantidad=1 class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
             <span class="d-block precioProducto fs-6">Precio: 200$</span>
             <img
               class="imagenProducto img-fluid img-thumbnail"
@@ -171,7 +186,7 @@
             </button>
           </div>
           <div class="swiper-slide">
-            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span data-cantidad=1 class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
             <span class="d-block precioProducto fs-6">Precio: 200$</span>
             <img
               class="imagenProducto img-fluid img-thumbnail"
@@ -184,7 +199,7 @@
             </button>
           </div>
           <div class="swiper-slide">
-            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span data-cantidad=1 class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
             <span class="d-block precioProducto fs-6">Precio: 200$</span>
             <img
               class="imagenProducto img-fluid img-thumbnail"
@@ -197,7 +212,7 @@
             </button>
           </div>
           <div class="swiper-slide">
-            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span data-cantidad=1 class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
             <span class="d-block precioProducto fs-6">Precio: 200$</span>
             <img
               class="imagenProducto img-fluid img-thumbnail"
@@ -210,7 +225,7 @@
             </button>
           </div>
           <div class="swiper-slide">
-            <span class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
+            <span data-cantidad=1 class="nombreProducto fs-5">Nombre: Hola soy una planta</span>
             <span class="d-block precioProducto fs-6">Precio: 200$</span>
             <img
               class="imagenProducto img-fluid img-thumbnail"

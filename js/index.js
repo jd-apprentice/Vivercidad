@@ -1,5 +1,5 @@
 // Obtener usuario logeado de sessionStorage
-const userName = JSON.parse(
+export const userName = JSON.parse(
   sessionStorage.getItem(
     "firebase:authUser:AIzaSyDo-Mx2Jz3j5MR9vH0V5ypYk3cQxYqYB7Y:[DEFAULT]"
   )
