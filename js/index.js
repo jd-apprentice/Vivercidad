@@ -1,12 +1,9 @@
 // Obtener usuario logeado de sessionStorage
-const userName = JSON.parse(
+export const userName = JSON.parse(
   sessionStorage.getItem(
     "firebase:authUser:AIzaSyDo-Mx2Jz3j5MR9vH0V5ypYk3cQxYqYB7Y:[DEFAULT]"
   )
 );
-
-const getContador = document.querySelector("#contadorCarrito")
-getContador.innerHTML = sessionStorage.getItem("contador")
 
 // Consulta si entro por email o por google
 let nombre = "";
