@@ -4,7 +4,6 @@ import { userName } from "../index.js";
 // Variables
 const getBotonesAgregar = document.querySelectorAll(".agregarProducto");
 const getCarrito = document.querySelector("#navCarrito");
-const getContador = document.querySelector("#contadorCarrito");
 const getLogin = document.querySelector("#alertaLogin");
 
 // Presionar boton agregar
@@ -13,7 +12,7 @@ getBotonesAgregar.forEach((boton) => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let producto = new Producto(
-          userName.displayName, // Nombre del usuario cargado a firebase
+          userName.uid, // Nombre del usuario cargado a firebase
           boton.parentElement.children[0].innerText, // Nombre del producto
           boton.parentElement.children[1].innerText, // Precio del producto
           boton.parentElement.children[2].src, // Imagen del producto
@@ -38,7 +37,7 @@ getCarrito.addEventListener("click", () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       refCarrito
-        .doc(userName.displayName)
+        .doc(userName.uid)
         .get()
         .then((doc) => {
           if (doc.exists) {
@@ -78,6 +77,9 @@ getCarrito.addEventListener("click", () => {
             </div>
             <div class="productoCantidad">
               0
+            </div>
+            <div>
+              <button class="btn btn-primary btn-block btn-sm">Borrar carrito</button>
             </div>
           </div>
           `;

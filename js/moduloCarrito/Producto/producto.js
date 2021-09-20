@@ -16,7 +16,8 @@ export class Producto {
       .doc(this.usuario)
       .get()
       .then((doc) => {
-        if (doc.exists) { // Si el usuario ya tiene un carrito
+        if (doc.exists) {
+          // Si el usuario ya tiene un carrito
           let carrito = doc.data();
           let productos = carrito.productos;
           let producto = {
@@ -26,10 +27,21 @@ export class Producto {
             descripcion: this.descripcion,
             cantidad: this.cantidad,
           };
-        productos.push(producto);
-        refCarrito.doc(this.usuario).set({  
-          productos: productos
-        });
+          if (productos) {
+            // Si el usuario ya tiene productos en el carrito
+            let productoEncontrado = productos.find(
+              (producto) => producto.nombre === this.nombre
+            );
+            if (productoEncontrado) {
+              // Si el producto ya esta en el carrito
+              productoEncontrado.cantidad += this.cantidad;
+              refCarrito.doc(this.usuario).set({ productos: productos });
+            } else {
+              // Si el producto no esta en el carrito
+              productos.push(producto);
+              refCarrito.doc(this.usuario).set({ productos: productos });
+            }
+          } 
         } else { // Si el usuario no tiene un carrito
           let producto = {
             nombre: this.nombre,
@@ -41,7 +53,7 @@ export class Producto {
           let productos = [];
           productos.push(producto);
           refCarrito.doc(this.usuario).set({
-            productos: productos
+            productos: productos,
           });
         }
       });
@@ -71,26 +83,26 @@ export class Producto {
   // Funcion para actualizar la cantidad de productos
   sumarCantidad(usuario, nombre, cantidad) {
     refCarrito
-    .doc(usuario)
-    .get()
-    .then((doc) => {
-      if (doc.exists) {
-        // Si el usuario ya tiene un carrito
-        let carrito = doc.data();
-        let productos = carrito.productos;
-        let producto = productos.find(
-          (producto) => producto.nombre === nombre
-        );
-        if (producto) {
-          producto.cantidad += cantidad;
-          refCarrito.doc(usuario).set({ productos: productos });
+      .doc(usuario)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          // Si el usuario ya tiene un carrito
+          let carrito = doc.data();
+          let productos = carrito.productos;
+          let producto = productos.find(
+            (producto) => producto.nombre === nombre
+          );
+          if (producto) {
+            producto.cantidad += cantidad;
+            refCarrito.doc(usuario).set({ productos: productos });
+          }
         }
-      }
-    });
+      });
   }
 
   // Funcion para actualizar el carrito
-  actualizarCarrito(usuario, productos) {
+  actualizarCarrito(usuario) {
     refCarrito
       .doc(usuario)
       .get()
@@ -100,6 +112,21 @@ export class Producto {
           let carrito = doc.data();
           let productos = carrito.productos;
           refCarrito.doc(usuario).set({ productos: productos });
+        }
+      });
+  }
+
+  // Funcion para vaciar el carrito
+  vaciarCarrito(usuario) {
+    refCarrito
+      .doc(usuario)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          // Si el usuario ya tiene un carrito
+          let carrito = doc.data();
+          let productos = carrito.productos;
+          refCarrito.doc(usuario).set({ productos: [] });
         }
       });
   }
