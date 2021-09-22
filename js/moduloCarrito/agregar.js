@@ -1,15 +1,11 @@
-// Modulos
 import { Producto, refCarrito } from "./Producto/producto.js";
 import { userName } from "../index.js";
-import { renderCarrito } from "./Render/render.js";
-import { generarID } from "./IDs/generador.js";
 
 // Variables
 const getBotonesAgregar = document.querySelectorAll(".agregarProducto");
 const getCarrito = document.querySelector("#navCarrito");
+const getContador = document.querySelector("#contadorCarrito");
 const getLogin = document.querySelector("#alertaLogin");
-const btnBorrar = document.querySelector('#btnVaciar');
-const getBtnOperaciones = document.querySelectorAll('.operaciones');
 
 // Presionar boton agregar
 getBotonesAgregar.forEach((boton) => {
@@ -17,7 +13,7 @@ getBotonesAgregar.forEach((boton) => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let producto = new Producto(
-          userName.uid, // Nombre del usuario cargado a firebase
+          userName.displayName, // Nombre del usuario cargado a firebase
           boton.parentElement.children[0].innerText, // Nombre del producto
           boton.parentElement.children[1].innerText, // Precio del producto
           boton.parentElement.children[2].src, // Imagen del producto
@@ -51,27 +47,6 @@ getCarrito.addEventListener("click", () => {
             getBtnOperaciones.forEach((btn) => {
               console.log(btn);
             })
-          }
-        });
-    }
-  });
-});
-
-// Vaciar carrito
-btnBorrar.addEventListener("click", () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      refCarrito
-        .doc(userName.uid)
-        .get()
-        .then((doc) => {
-          if (doc.exists) {
-            let carrito = doc.data();
-            console.log(carrito);
-            refCarrito.doc(userName.uid).set({
-              productos: [],
-            });
-            renderCarrito({ productos: [] });
           }
         });
     }
