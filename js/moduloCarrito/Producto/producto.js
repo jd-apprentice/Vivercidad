@@ -68,7 +68,7 @@ export class Producto {
         if (doc.exists) {
           // Si el usuario ya tiene un carrito
           let carrito = doc.data();
-          let productos = carrito.productos;
+          let { productos } = carrito;
           let producto = productos.find(
             (producto) => producto.nombre === nombre
           );
@@ -89,7 +89,7 @@ export class Producto {
         if (doc.exists) {
           // Si el usuario ya tiene un carrito
           let carrito = doc.data();
-          let productos = carrito.productos;
+          let { productos } = carrito;
           let producto = productos.find(
             (producto) => producto.nombre === nombre
           );
@@ -110,7 +110,7 @@ export class Producto {
         if (doc.exists) {
           // Si el usuario ya tiene un carrito
           let carrito = doc.data();
-          let productos = carrito.productos;
+          let { productos } = carrito;
           refCarrito.doc(usuario).set({ productos: productos });
         }
       });
@@ -125,7 +125,7 @@ export class Producto {
         if (doc.exists) {
           // Si el usuario ya tiene un carrito
           let carrito = doc.data();
-          let productos = carrito.productos;
+          let { productos } = carrito;
           refCarrito.doc(usuario).set({ productos: [] });
         }
       });
