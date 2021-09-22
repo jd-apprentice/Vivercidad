@@ -44,9 +44,26 @@ getCarrito.addEventListener("click", () => {
           if (doc.exists) {
             let carrito = doc.data();
             renderCarrito(carrito);
-            getBtnOperaciones.forEach((btn) => {
-              console.log(btn);
-            })
+          }
+        });
+    }
+  });
+});
+
+// Vaciar carrito
+btnBorrar.addEventListener("click", () => {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      refCarrito
+        .doc(userName.uid)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            let carrito = doc.data();
+            refCarrito.doc(userName.uid).set({
+              productos: [],
+            });
+            renderCarrito({ productos: [] });
           }
         });
     }
