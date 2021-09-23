@@ -1,12 +1,22 @@
+// Configuracion Firebase
+var firebaseConfig = {
+  apiKey: "AIzaSyDo-Mx2Jz3j5MR9vH0V5ypYk3cQxYqYB7Y",
+  authDomain: "e-commerce-35ca6.firebaseapp.com",
+  projectId: "e-commerce-35ca6",
+  storageBucket: "e-commerce-35ca6.appspot.com",
+  messagingSenderId: "532342078664",
+  databaseURL: "https://e-commerce-35ca6-default-rtdb.firebaseio.com/",
+  appId: "1:532342078664:web:8ccee9a04ce0eb868bf9fd",
+};
+// Iniciar Firebase
+firebase.initializeApp(firebaseConfig);
+
 // Obtener usuario logeado de sessionStorage
 export const userName = JSON.parse(
   sessionStorage.getItem(
     "firebase:authUser:AIzaSyDo-Mx2Jz3j5MR9vH0V5ypYk3cQxYqYB7Y:[DEFAULT]"
   )
 );
-
-const getContador = document.querySelector("#contadorCarrito")
-getContador.innerHTML = sessionStorage.getItem("contador")
 
 // Consulta si entro por email o por google
 let nombre = "";

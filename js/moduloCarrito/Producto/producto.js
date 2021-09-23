@@ -1,13 +1,14 @@
 // Clase Producto
 export const refCarrito = db.collection("carrito");
 export class Producto {
-  constructor(usuario, nombre, precio, imagen, descripcion, cantidad) {
+  constructor(usuario, nombre, precio, imagen, descripcion, cantidad, id) {
     this.usuario = usuario;
     this.nombre = nombre;
     this.precio = precio;
     this.imagen = imagen;
     this.descripcion = descripcion;
     this.cantidad = parseInt(cantidad);
+    this.id = id;
   }
 
   // Funcion para agregar producto al carrito
@@ -26,6 +27,7 @@ export class Producto {
             imagen: this.imagen,
             descripcion: this.descripcion,
             cantidad: this.cantidad,
+            id: this.id,
           };
           if (productos) {
             // Si el usuario ya tiene productos en el carrito
@@ -49,6 +51,7 @@ export class Producto {
             imagen: this.imagen,
             descripcion: this.descripcion,
             cantidad: this.cantidad,
+            id: this.id,
           };
           let productos = [];
           productos.push(producto);
@@ -81,7 +84,7 @@ export class Producto {
   }
 
   // Funcion para actualizar la cantidad de productos
-  sumarCantidad(usuario, nombre, cantidad) {
+  sumarCantidad(usuario, id, cantidad) {
     refCarrito
       .doc(usuario)
       .get()
@@ -91,7 +94,7 @@ export class Producto {
           let carrito = doc.data();
           let { productos } = carrito;
           let producto = productos.find(
-            (producto) => producto.nombre === nombre
+            (producto) => producto.id === id
           );
           if (producto) {
             producto.cantidad += cantidad;

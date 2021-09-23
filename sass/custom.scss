@@ -4,37 +4,43 @@
 $imagen-carrousel: 250px;
 $imagen-cart: 100px;
 
-.id_admin { 
-    width: 25px;
+.id_admin {
+  width: 25px;
 }
 
-.imgHead { 
-    object-fit: contain;
+.imgHead {
+  object-fit: contain;
 }
 
-.imagenCarrito {
-    width: $imagen-cart;
-    height: $imagen-cart;
+.imagenProducto,
+.imagenProducto2 {
+  max-height: $imagen-carrousel;
+  min-width: $imagen-carrousel;
+  max-width: $imagen-carrousel;
 }
 
-.imagenProducto, .imagenProducto2 { 
-    max-height: $imagen-carrousel;
-    min-width: $imagen-carrousel;
-    max-width: $imagen-carrousel;
+.main {
+  height: 90vh;
 }
 
-.signoMenos, .signoMas {
-    cursor: pointer;
+.mas,
+.menos {
+  padding: 0.3rem;
+  border-color: none;
 }
 
-#btnLogout { 
-    display: none;
+#btnLogout {
+  display: none;
 }
 
-#footer { 
-    min-height: calc(100vh - 200px - 350px);
+#footer {
+  min-height: calc(100vh - 200px - 350px);
 }
 
-#navBar { 
-    margin-bottom: 10vh;
+#navBar {
+  margin-bottom: 10vh;
+}
+
+.cantidadCarrito {
+  font-weight: 300;
 }
