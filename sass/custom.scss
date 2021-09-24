@@ -2,39 +2,50 @@
 
 // Imagenes
 $imagen-carrousel: 250px;
-$imagen-cart: 100px;
+$imagen-cart: 75px;
 
-.id_admin { 
-    width: 25px;
+.id_admin {
+  width: 25px;
 }
 
-.imgHead { 
-    object-fit: contain;
+.imgHead {
+  object-fit: contain;
+}
+
+.imagenProducto,
+.imagenProducto2 {
+  max-height: $imagen-carrousel;
+  min-width: $imagen-carrousel;
+  max-width: $imagen-carrousel;
+}
+
+.main {
+  height: 90vh;
 }
 
 .imagenCarrito {
-    width: $imagen-cart;
-    height: $imagen-cart;
+  width: $imagen-cart;
+  height: $imagen-cart;
 }
 
-.imagenProducto, .imagenProducto2 { 
-    max-height: $imagen-carrousel;
-    min-width: $imagen-carrousel;
-    max-width: $imagen-carrousel;
+.mas,
+.menos {
+  padding: 0.3rem;
+  border-color: none;
 }
 
-.signoMenos, .signoMas {
-    cursor: pointer;
+#btnLogout {
+  display: none;
 }
 
-#btnLogout { 
-    display: none;
+#footer {
+  min-height: calc(100vh - 200px - 350px);
 }
 
-#footer { 
-    min-height: calc(100vh - 200px - 350px);
+#navBar {
+  margin-bottom: 10vh;
 }
 
-#navBar { 
-    margin-bottom: 10vh;
+.cantidadCarrito {
+  font-weight: 300;
 }

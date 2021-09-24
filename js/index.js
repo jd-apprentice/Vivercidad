@@ -5,9 +5,6 @@ export const userName = JSON.parse(
   )
 );
 
-const getContador = document.querySelector("#contadorCarrito")
-getContador.innerHTML = sessionStorage.getItem("contador")
-
 // Consulta si entro por email o por google
 let nombre = "";
 if (userName.displayName === null) {

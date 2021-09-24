@@ -1,28 +1,73 @@
-// Render carrito
-export const renderCarrito = (carrito) => {
-  let total = 0;
-  let productos = document.querySelector("#productosCarrito");
-  productos.innerHTML = "";
-  for (let i = 0; i < carrito.productos.length; i++) {
-    productos.innerHTML += `
-              <div class="text-start">
-                <img class="imagenCarrito img-fluid img-thumbnail" src="${carrito.productos[i].imagen}" alt="${carrito.productos[i].nombre}">
-                <h4 class="d-inline-flex">${carrito.productos[i].nombre}</h4>
-                <p class="d-inline-flex">${carrito.productos[i].precio}</p>
-              <div class="d-flex justify-content-end my-2 mx-auto fs-5">Cantidad: 
-                  <button class="operaciones" data-id="${carrito.productos[i].nombre}">-</button>
-                  <span cantidad="${carrito.productos[i].cantidad}" class="mx-1 cantidadCarrito"> ${carrito.productos[i].cantidad}</span>
-                  <button class="operaciones" data-id="${carrito.productos[i].nombre}">+</i></button>
-              </div>
-              </div>
-            `;
-    total +=
-      carrito.productos[i].precio.split("$")[1] * carrito.productos[i].cantidad; // Sacamos el $ para poder hacer la cuenta
+import { formatMoney } from "../../moduloUtils/format.js"
+export class Render {
+  constructor(contenedor, productos, total = 0) {
+    this.contenedor = contenedor;
+    this.productos = productos;
+    this.total = total;
   }
-  // Pintamos el total
-  productosCarrito.innerHTML += `
-              <div class="total text-end">
-                  <h3>Total: ${total} AR$</h3>
-              </div>
-            `;
-};
+  // Renderizar el carrito
+  render() {
+    this.contenedor.innerHTML = "";
+    this.productos.forEach((producto) => {
+      this.contenedor.innerHTML += `
+      <tr>
+          <td>
+              <img
+              src="${producto.imagen}"
+              alt="${producto.nombre}"
+              class="img-fluid img-thumbnail imagenCarrito"
+              />
+          </td>
+          <td>${producto.nombre}</td>
+          <td>${formatMoney(producto.precio)}</td>
+          <td>
+              <input
+              type="number"
+              class="form-control mas"
+              value="${producto.cantidad}"
+              />
+          </td>
+          <td>
+              <button
+              type="button"
+              class="btn btn-danger"
+              >
+              <i class="bi bi-trash"></i>
+              </button>
+          </td>
+      </tr>
+          `;
+      // Sumar el precio total
+      this.total = this.productos.reduce((total, producto) => {
+        return total + producto.precio * producto.cantidad;
+      }, 0);
+    });
+    // Pintar el HTML
+    this.contenedor.innerHTML += `
+    <tr>
+      <td class="d-flex">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            >
+            <i class="bi-cart-fill"></i>
+            <span>Vaciar Carrito</span>
+          </button>
+        <td>
+        </td>
+        <td>
+          <td>
+            <td class="d-flex justify-content-end">
+              <h3>Total: ${formatMoney(this.total)}</h3>
+            </td>
+          </td>
+        </td>
+    </tr>
+    `;
+  }
+  // Actualizar el carrito
+  actualizarCarrito(productos) {
+    this.productos = productos;
+    this.render();
+  }
+}

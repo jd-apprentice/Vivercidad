@@ -1,10 +1,12 @@
 export class generarID {
     constructor() {
-        this.id = 0;
+        this.id = Math.floor(Math.random() * 1000);
     }
 
     generar() {
-        this.id++;
-        return this.id;
+        if(this.id == this.id) {
+            this.id += 1;
+            return this.id;
+        }
     }
 }

@@ -1,5 +1,5 @@
 import { saveName } from "./btnEdit.js";
-import { claseBoton, db, mostrarOnLoad} from "../adminPanel.js";
+import { claseBoton, db, mostrarOnLoad } from "../adminPanel.js";
 import { obtenerMetadatos } from "./btnEdit.js";
 
 // Variables globales
@@ -8,10 +8,9 @@ const getGuardar = document.querySelector(".editarCambios");
 let allInputImage = "";
 
 // Obtener tabla
-
 let getCarrousel = [];
 const getTabla = document.querySelectorAll(".getTabla");
-getTabla.forEach(element => {
+getTabla.forEach((element) => {
   getCarrousel.push(element.textContent);
 });
 
@@ -23,7 +22,6 @@ inputImage.addEventListener(
 
 // Boton guardar - Subir
 export let btnGuardar = async (coleccion) => {
-
   if (getGuardar.dataset.lista === "1") {
     coleccion = "carrousel";
   } else {

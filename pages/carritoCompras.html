@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/sass/custom.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+      <div class="container">
+        <a class="navbar-brand" href="#!">VIVERCIDAD</a>
+        <form class="d-flex w-100">
+          <input
+            class="form-control me-2 bg-light"
+            type="search"
+            placeholder="Buscar Productos"
+            aria-label="Search"
+          />
+          <button class="btn btn-success bg-dark" type="submit">
+            <i class="bi bi-search"></i>
+          </button>
+        </form>
+      </div>
+    </nav>
+
+    <!-- Segunda parte Navbar -->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+      <div class="container">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#!">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#!">Sobre Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#!">Ayuda</a>
+            </li>
+          </ul>
+        </div>
+        <div class="d-flex insertName">
+          <button
+            type="button"
+            class="btn btn-outline-dark me-2"
+          >
+            <i class="bi-cart-fill"></i>
+            <span>Carrito</span>
+            <span
+              class="badge bg-dark text-white ms-1 rounded-pill"
+              >0</span
+            >
+          </button>
+          <a href="./loginUsuario.html" id="elimSiUsuarioExist">
+            <button type="button" class="btn btn-outline-dark">
+              <i class="bi bi-person-circle me-1"></i>
+              <span id="changeName">Ingresar</span>
+            </button>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Carrito de compras -->
+    <div class="container mt-3">
+        <div class="row">
+            <div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>🛒Carrito de compras</h3>
+                    </div>
+                    <div class="card-body">
+                          <div class="row">
+                              <div>
+                                  <table class="table table-hover table-striped table-borderless">
+                                      <thead>
+                                          <tr>
+                                              <th>Producto</th>
+                                              <th>Nombre</th>
+                                              <th>Precio</th>
+                                              <th>Cantidad</th>
+                                              <th>Eliminar</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody id="tbodyCarrito">
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>            
+    </div>
+
+    <!-- Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+
+    <!-- Firebase Addons -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+    
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyDo-Mx2Jz3j5MR9vH0V5ypYk3cQxYqYB7Y",
+        authDomain: "e-commerce-35ca6.firebaseapp.com",
+        projectId: "e-commerce-35ca6",
+        storageBucket: "e-commerce-35ca6.appspot.com",
+        messagingSenderId: "532342078664",
+        appId: "1:532342078664:web:8ccee9a04ce0eb868bf9fd",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- Main JS -->
+    <script type="module" src="../js/index.js"></script>
+    <script type="module" src="../js/moduloCarrito/carritoIndex.js"></script>
+  </body>
+</html>
