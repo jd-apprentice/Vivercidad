@@ -13,7 +13,7 @@ export let crearUsuario = (e) => {
         .then(() => {
           grabAlertEmail.style.display = "flex";
           setTimeout(() => {
-            location.href = "./login.html";
+            location.href = "../pages/loginUsuario.html";
           }, 5000);
         });
     })

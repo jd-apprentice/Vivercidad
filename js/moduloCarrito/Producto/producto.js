@@ -1,4 +1,5 @@
 // Clase Producto
+const db = firebase.firestore();
 export const refCarrito = db.collection("carrito");
 export class Producto {
   constructor(usuario, nombre, precio, imagen, descripcion, cantidad, id) {
@@ -44,7 +45,7 @@ export class Producto {
               refCarrito.doc(this.usuario).set({ productos: productos });
             }
           } 
-        } else { // Si el usuario no tiene un carrito
+        } else { // Si el usuario no tiene productos en el carrito
           let producto = {
             nombre: this.nombre,
             precio: this.precio,

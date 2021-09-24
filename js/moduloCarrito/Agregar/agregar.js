@@ -28,7 +28,7 @@ getBotonesAgregar.forEach((boton) => {
         getLogin.style.display = "block";
         setTimeout(() => {
           getLogin.style.display = "none";
-          window.location.href = "login.html";
+          window.location.href = "../pages/loginUsuario.html";
         }, 2000);
       }
     });

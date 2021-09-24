@@ -24,9 +24,6 @@ const carrousels = {
   carrousel2,
 }
 
-// Carrito
-const getContenedor = document.querySelector("#tbodyCarrito");
-
 // Pintar todos los datos en el index
 const getIndex = async (coleccion) => {
   const querySnapshots = await db.collection(coleccion).get() // Obtener todos los documentos
@@ -40,8 +37,7 @@ const getIndex = async (coleccion) => {
       carrousels[coleccion].descripcionProducto[i].innerHTML = product.descripcion; // Pintar la descripcion
       carrousels[coleccion].imagenProducto[i].src = imageUrls[i]; // Pintar la imagen
   }
-}     
+}
 
 getIndex("carrousel");
 getIndex("carrousel2");
-getCarrito();

@@ -1,9 +1,9 @@
+import { formatMoney } from "../../moduloUtils/format.js"
 export class Render {
-  constructor(contenedor, productos, total) {
+  constructor(contenedor, productos, total = 0) {
     this.contenedor = contenedor;
     this.productos = productos;
     this.total = total;
-    this.eventTarget = new EventTarget(); // Eventos
   }
   // Renderizar el carrito
   render() {
@@ -15,18 +15,18 @@ export class Render {
               <img
               src="${producto.imagen}"
               alt="${producto.nombre}"
-              class="img-fluid"
+              class="img-fluid img-thumbnail imagenCarrito"
               />
           </td>
-          <td>${producto.precio}</td>
+          <td>${producto.nombre}</td>
+          <td>${formatMoney(producto.precio)}</td>
           <td>
               <input
               type="number"
-              class="form-control"
+              class="form-control mas"
               value="${producto.cantidad}"
               />
           </td>
-          <td>${this.total}</td>
           <td>
               <button
               type="button"
@@ -39,38 +39,31 @@ export class Render {
           `;
       // Sumar el precio total
       this.total = this.productos.reduce((total, producto) => {
-        return total + producto.precio.split("$")[1] * producto.cantidad;
+        return total + producto.precio * producto.cantidad;
       }, 0);
     });
-    // Renderizar el precio total
-    this.onRender();
     // Pintar el HTML
     this.contenedor.innerHTML += `
-    <div class="row">
-      <div class="col-12">
-          <div class="d-flex justify-content-between">
-              <div class="d-flex">
-                  <button
-                  type="button"
-                  class="btn btn-outline-dark"
-                  >
-                  <i class="bi-cart-fill"></i>
-                  <span>Vaciar Carrito</span>
-                  </button>
-              </div>
-              <div class="d-flex">
-                  <h3>Total: ${this.total}</h3>
-              </div>
-          </div>
-      </div>
-    </div>
+    <tr>
+      <td class="d-flex">
+          <button
+            type="button"
+            class="btn btn-outline-dark"
+            >
+            <i class="bi-cart-fill"></i>
+            <span>Vaciar Carrito</span>
+          </button>
+        <td>
+        </td>
+        <td>
+          <td>
+            <td class="d-flex justify-content-end">
+              <h3>Total: ${formatMoney(this.total)}</h3>
+            </td>
+          </td>
+        </td>
+    </tr>
     `;
-  }
-  // Metodos
-  onRender() {
-    window.requestAnimationFrame(() => {
-      this.eventTarget.dispatchEvent(new Event("onRender")); // Evento renderizado
-    });
   }
   // Actualizar el carrito
   actualizarCarrito(productos) {

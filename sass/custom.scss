@@ -2,7 +2,7 @@
 
 // Imagenes
 $imagen-carrousel: 250px;
-$imagen-cart: 100px;
+$imagen-cart: 75px;
 
 .id_admin {
   width: 25px;
@@ -21,6 +21,11 @@ $imagen-cart: 100px;
 
 .main {
   height: 90vh;
+}
+
+.imagenCarrito {
+  width: $imagen-cart;
+  height: $imagen-cart;
 }
 
 .mas,

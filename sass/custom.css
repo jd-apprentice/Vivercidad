@@ -11971,6 +11971,11 @@ fieldset:disabled .btn {
   height: 90vh;
 }
 
+.imagenCarrito {
+  width: 75px;
+  height: 75px;
+}
+
 .mas,
 .menos {
   padding: 0.3rem;

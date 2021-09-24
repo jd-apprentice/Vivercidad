@@ -70,7 +70,7 @@
               >0</span
             >
           </button>
-          <a href="login.html" id="elimSiUsuarioExist">
+          <a href="./loginUsuario.html" id="elimSiUsuarioExist">
             <button type="button" class="btn btn-outline-dark">
               <i class="bi bi-person-circle me-1"></i>
               <span id="changeName">Ingresar</span>
@@ -81,75 +81,31 @@
     </nav>
 
     <!-- Carrito de compras -->
-    <div class="container my-2">
+    <div class="container mt-3">
         <div class="row">
-            <div class="col-12">
+            <div>
                 <div class="card">
                     <div class="card-header">
                         <h3>🛒Carrito de compras</h3>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Producto</th>
-                                            <th>Precio</th>
-                                            <th>Cantidad</th>
-                                            <th>Subtotal</th>
-                                            <th>Eliminar</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tbodyCarrito">
-                                        <tr>
-                                            <td>
-                                                <img
-                                                src="https://via.placeholder.com/100"
-                                                alt=""
-                                                class="img-fluid"
-                                                />
-                                            </td>
-                                            <td>$100</td>
-                                            <td>
-                                                <input
-                                                type="number"
-                                                class="form-control"
-                                                value="1"
-                                                />
-                                            </td>
-                                            <td>$100</td>
-                                            <td>
-                                                <button
-                                                type="button"
-                                                class="btn btn-danger"
-                                                >
-                                                <i class="bi bi-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex">
-                                            <button
-                                            type="button"
-                                            class="btn btn-outline-dark"
-                                            >
-                                            <i class="bi-cart-fill"></i>
-                                            <span>Vaciar Carrito</span>
-                                            </button>
-                                        </div>
-                                        <div class="d-flex">
-                                            <h3>Total: $100</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                          <div class="row">
+                              <div>
+                                  <table class="table table-hover table-striped table-borderless">
+                                      <thead>
+                                          <tr>
+                                              <th>Producto</th>
+                                              <th>Nombre</th>
+                                              <th>Precio</th>
+                                              <th>Cantidad</th>
+                                              <th>Eliminar</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody id="tbodyCarrito">
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -160,14 +116,30 @@
     <!-- Bootstrap JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Core Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+
     <!-- Firebase Addons -->
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-storage.js"></script>
+    
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyDo-Mx2Jz3j5MR9vH0V5ypYk3cQxYqYB7Y",
+        authDomain: "e-commerce-35ca6.firebaseapp.com",
+        projectId: "e-commerce-35ca6",
+        storageBucket: "e-commerce-35ca6.appspot.com",
+        messagingSenderId: "532342078664",
+        appId: "1:532342078664:web:8ccee9a04ce0eb868bf9fd",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
 
     <!-- Main JS -->
-    <script type="module" src="./js/index.js"></script>
-    <script type="module" src="./js/moduloCarrito/Agregar/agregar.js"></script>
-    <script src="./js/modulosMain/db.js"></script>
+    <script type="module" src="../js/index.js"></script>
+    <script type="module" src="../js/moduloCarrito/carritoIndex.js"></script>
   </body>
 </html>
