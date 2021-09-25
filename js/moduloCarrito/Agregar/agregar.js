@@ -1,5 +1,5 @@
 // Modulos
-import { Producto} from "../Producto/producto.js";
+import { Producto } from "../Producto/producto.js";
 import { userName } from "../../index.js";
 import { generarID } from "../IDs/generador.js";
 
@@ -13,10 +13,14 @@ getBotonesAgregar.forEach((boton) => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let id = new generarID();
+        // Obtener precio sin $
+        let precioSplit = parseInt(
+          boton.parentElement.children[1].innerText.split("$")[1]
+        ); 
         let producto = new Producto(
           userName.uid, // Nombre del usuario cargado a firebase
           boton.parentElement.children[0].innerText, // Nombre del producto
-          boton.parentElement.children[1].innerText, // Precio del producto
+          precioSplit, // Precio del producto
           boton.parentElement.children[2].src, // Imagen del producto
           boton.parentElement.children[3].innerText, // Descripcion del producto// ID del producto
           boton.parentElement.children[0].dataset.cantidad, // Cantidad del producto

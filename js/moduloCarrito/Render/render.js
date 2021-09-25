@@ -1,54 +1,57 @@
-import { formatMoney } from "../../moduloUtils/format.js"
+// Modulos
+import { formatMoney, incrementData } from "../../moduloUtils/format.js";
 export class Render {
-  constructor(contenedor, productos, total = 0) {
+  constructor(contenedor, productos, total = 0, dataset = 0) {
     this.contenedor = contenedor;
     this.productos = productos;
     this.total = total;
+    this.dataset = dataset;
   }
   // Renderizar el carrito
   render() {
-    this.contenedor.innerHTML = "";
-    this.productos.forEach((producto) => {
-      this.contenedor.innerHTML += `
-      <tr>
-          <td>
-              <img
-              src="${producto.imagen}"
-              alt="${producto.nombre}"
-              class="img-fluid img-thumbnail imagenCarrito"
-              />
-          </td>
-          <td>${producto.nombre}</td>
-          <td>${formatMoney(producto.precio)}</td>
-          <td>
-              <input
-              type="number"
-              class="form-control mas"
-              value="${producto.cantidad}"
-              />
-          </td>
-          <td>
-              <button
-              type="button"
-              class="btn btn-danger"
-              >
-              <i class="bi bi-trash"></i>
-              </button>
-          </td>
-      </tr>
-          `;
-      // Sumar el precio total
+    this.contenedor.innerHTML = ""
+      this.productos.forEach((producto) => {
+        this.contenedor.innerHTML += `
+        <tr>
+            <td>
+                <img
+                src="${producto.imagen}"
+                alt="${producto.nombre}"
+                class="img-fluid img-thumbnail imagenCarrito"
+                />
+            </td>
+            <td>${producto.nombre}</td>
+            <td>${producto.precio}</td>
+            <td>
+                <input
+                data-id="${incrementData(this.dataset)}"
+                type="number"
+                class="form-control operaciones"
+                value="${producto.cantidad}"
+                />
+            </td>
+            <td>
+                <button
+                type="button"
+                class="btn btn-danger ${producto.id}"
+                >
+                <i class="bi bi-trash ${producto.id}"></i>
+                </button>
+            </td>
+        </tr>
+            `;
+    // Obtener el total
       this.total = this.productos.reduce((total, producto) => {
         return total + producto.precio * producto.cantidad;
       }, 0);
     });
-    // Pintar el HTML
-    this.contenedor.innerHTML += `
+  // Pintar el HTML
+  this.contenedor.innerHTML += `
     <tr>
       <td class="d-flex">
           <button
             type="button"
-            class="btn btn-outline-dark"
+            class="btn btn-outline-dark btnVaciar"
             >
             <i class="bi-cart-fill"></i>
             <span>Vaciar Carrito</span>
@@ -64,10 +67,24 @@ export class Render {
         </td>
     </tr>
     `;
+}
+
+  addEventListener(evento) {
+    const btnVaciar = document.querySelector(".btnVaciar");
+    btnVaciar.addEventListener("click", evento);
   }
-  // Actualizar el carrito
-  actualizarCarrito(productos) {
-    this.productos = productos;
-    this.render();
+
+  changeValue(evento) {
+    const getOperaciones = document.querySelectorAll(".operaciones");
+    getOperaciones.forEach((operacion) => {
+      operacion.addEventListener("change", evento);
+    });
+  }
+
+  deleteProduct(evento) {
+    const getBtnDelete = document.querySelectorAll(".btn-danger");
+    getBtnDelete.forEach((btnDelete) => {
+      btnDelete.addEventListener("click", evento);
+    });
   }
 }
