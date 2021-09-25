@@ -2,11 +2,11 @@
 import { Render } from "./Render/render.js";
 import { refCarrito } from "./Producto/producto.js";
 import { userName } from "../index.js";
+import { limpiarCarrito } from "./Borrar/borrar.js";
 
 // Firebase
-const getCarrito = document.querySelector("#tbodyCarrito");
+export const getCarrito = document.querySelector("#tbodyCarrito");
 
-// Obtener carrito de firebase
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     refCarrito
@@ -17,41 +17,29 @@ firebase.auth().onAuthStateChanged((user) => {
           let itemsCarrito = doc.data();
           const renderCarrito = new Render(getCarrito, itemsCarrito.productos);
           renderCarrito.render();
+          renderCarrito.addEventListener(vaciarCarrito);
+          renderCarrito.changeValue(updateValue);
+          renderCarrito.deleteProduct(borrarItem);
         }
-      })
-      .catch((error) => {
-        console.log(error);
       });
   }
 });
 
-const getBtnMas = document.querySelectorAll(".mas");
-getBtnMas.forEach((boton) => {
-  boton.addEventListener("click", () => {
-    let cantidad = parseInt(boton.parentElement.children[1].textContent);
-    cantidad++;
-    boton.parentElement.children[1].textContent = cantidad;
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        refCarrito
-          .doc(userName.uid)
-          .get()
-          .then((doc) => {
-            if (doc.exists) {
-              let carrito = doc.data();
-              let productos = carrito.productos;
-              const carritoRender = new Render(getContenedor, productos);
-              const mas = boton.closest(".mas");
-              const id = mas.getAttribute("data-id");
-              const findProduct = productos.find((product) => product.id == id);
-              findProduct.cantidad = cantidad;
-              refCarrito.doc(userName.uid).set({
-                productos: productos,
-              });
-              carritoRender.render();
-            }
-          });
-      }
-    });
-  });
-});
+// Vaciar carrito
+const vaciarCarrito = () => {
+  limpiarCarrito(userName.uid);
+  const carritoRender = new Render(getCarrito, []);
+  carritoRender.render();
+};
+
+const updateValue = (e) => {
+  const id = e.target.dataset.id;
+  const cantidad = e.target.value;
+}
+
+const borrarItem = (e) => {
+  const id = e.target.classList[2];
+  const contenido = e.target.closest("tr");
+  contenido.remove();
+}
+
