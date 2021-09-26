@@ -18,8 +18,7 @@ export class Producto {
       .doc(this.usuario)
       .get()
       .then((doc) => {
-        if (doc.exists) {
-          // Si el usuario ya tiene un carrito
+        if (doc.exists) { // Si el usuario ya tiene un carrito
           let carrito = doc.data();
           let productos = carrito.productos;
           let producto = {

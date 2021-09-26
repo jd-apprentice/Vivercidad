@@ -9,7 +9,7 @@ export class Render {
   // Renderizar el carrito
   render() {
     this.contenedor.innerHTML = "";
-    this.productos.forEach((producto) => {
+     this.productos.forEach((producto) => {
       this.contenedor.innerHTML += `
         <tr>
             <td>
@@ -47,8 +47,8 @@ export class Render {
         return total + producto.precio * producto.cantidad;
       }, 0);
     });
-    // Pintar el HTML
-    this.contenedor.innerHTML += `
+  // Pintar el HTML
+  this.contenedor.innerHTML += `
     <tr>
       <td class="d-flex">
           <button
@@ -69,13 +69,17 @@ export class Render {
         </td>
     </tr>
     `;
-  }
+}
 
   addEventListener(evento) {
     const btnVaciar = document.querySelector(".btnVaciar");
     btnVaciar.addEventListener("click", evento);
   }
 
+  addEventListener(evento) {
+    const btnVaciar = document.querySelector(".btnVaciar");
+    btnVaciar.addEventListener("click", evento);
+  }
   changeValue(evento) {
     const getOperaciones = document.querySelectorAll(".operaciones");
     getOperaciones.forEach((operacion) => {
