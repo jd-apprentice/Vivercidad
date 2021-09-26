@@ -1,17 +1,16 @@
 // Modulos
 import { formatMoney, incrementData } from "../../moduloUtils/format.js";
 export class Render {
-  constructor(contenedor, productos, total = 0, dataset = 0) {
+  constructor(contenedor = [], productos = [], total = 0) {
     this.contenedor = contenedor;
     this.productos = productos;
     this.total = total;
-    this.dataset = dataset;
   }
   // Renderizar el carrito
   render() {
-    this.contenedor.innerHTML = ""
-      this.productos.forEach((producto) => {
-        this.contenedor.innerHTML += `
+    this.contenedor.innerHTML = "";
+    this.productos.forEach((producto) => {
+      this.contenedor.innerHTML += `
         <tr>
             <td>
                 <img
@@ -26,6 +25,8 @@ export class Render {
                 <input
                 data-id="${incrementData(this.dataset)}"
                 type="number"
+                min="1"
+                id="${producto.id}"
                 class="form-control operaciones"
                 value="${producto.cantidad}"
                 />
@@ -33,20 +34,21 @@ export class Render {
             <td>
                 <button
                 type="button"
-                class="btn btn-danger ${producto.id}"
+                id="${producto.id}"
+                class="btn btn-danger"
                 >
-                <i class="bi bi-trash ${producto.id}"></i>
+                <i id="${producto.id}" class="bi bi-trash"></i>
                 </button>
             </td>
         </tr>
             `;
-    // Obtener el total
+      // Obtener el total
       this.total = this.productos.reduce((total, producto) => {
         return total + producto.precio * producto.cantidad;
       }, 0);
     });
-  // Pintar el HTML
-  this.contenedor.innerHTML += `
+    // Pintar el HTML
+    this.contenedor.innerHTML += `
     <tr>
       <td class="d-flex">
           <button
@@ -61,13 +63,13 @@ export class Render {
         <td>
           <td>
             <td class="d-flex justify-content-end">
-              <h3>Total: ${formatMoney(this.total)}</h3>
+              <h3 class="grabTotal">Total: ${formatMoney(this.total)}</h3>
             </td>
           </td>
         </td>
     </tr>
     `;
-}
+  }
 
   addEventListener(evento) {
     const btnVaciar = document.querySelector(".btnVaciar");
@@ -86,5 +88,13 @@ export class Render {
     getBtnDelete.forEach((btnDelete) => {
       btnDelete.addEventListener("click", evento);
     });
+  }
+
+  updateTotal() {
+    this.total = this.productos.reduce((total, producto) => {
+      return total + producto.precio * producto.cantidad;
+    }, 0);
+    const getTotal = document.querySelector(".grabTotal");
+    getTotal.innerHTML = `Total: ${formatMoney(this.total)}`;
   }
 }
