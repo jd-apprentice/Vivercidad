@@ -4,7 +4,6 @@ import { refCarrito } from "./Producto/producto.js";
 import { userName } from "../index.js";
 import { limpiarCarrito, eliminarProducto } from "./Borrar/borrar.js";
 import { actualizarCantidad } from "./Cantidad/cantidad.js";
-import { limpiarCarrito } from "./Borrar/borrar.js";
 
 // Firebase
 export const getCarrito = document.querySelector("#tbodyCarrito");
