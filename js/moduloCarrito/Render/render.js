@@ -75,11 +75,7 @@ export class Render {
     const btnVaciar = document.querySelector(".btnVaciar");
     btnVaciar.addEventListener("click", evento);
   }
-
-  addEventListener(evento) {
-    const btnVaciar = document.querySelector(".btnVaciar");
-    btnVaciar.addEventListener("click", evento);
-  }
+  
   changeValue(evento) {
     const getOperaciones = document.querySelectorAll(".operaciones");
     getOperaciones.forEach((operacion) => {
