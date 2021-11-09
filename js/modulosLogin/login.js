@@ -47,7 +47,7 @@ googleAcc.addEventListener("click", () => {
     .auth()
     .signInWithPopup(provider)
     .then((result) => {
-      location.href = "../index.html";
+      location.href = "/index.html";
     })
     .catch((error) => {
       console.log(error.message);

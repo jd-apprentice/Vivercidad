@@ -1,3 +1,4 @@
+
 // Modulos
 import { refCarrito } from "../Producto/producto.js";
 import { Render } from "../Render/render.js";
@@ -43,4 +44,3 @@ export const eliminarProducto = (usuario, id) => {
         });
     }
   });
-};

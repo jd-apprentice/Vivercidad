@@ -25,4 +25,3 @@ export const actualizarCantidad = (usuario, id, actualizar) => {
         });
     }
   });
-};

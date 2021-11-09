@@ -1,4 +1,3 @@
-// Modulos
 import { Render } from "./Render/render.js";
 import { refCarrito } from "./Producto/producto.js";
 import { userName } from "../index.js";
