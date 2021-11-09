@@ -1,12 +1,13 @@
-// Modulos
 import { Render } from "./Render/render.js";
 import { refCarrito } from "./Producto/producto.js";
 import { userName } from "../index.js";
+import { limpiarCarrito, eliminarProducto } from "./Borrar/borrar.js";
+import { actualizarCantidad } from "./Cantidad/cantidad.js";
 
 // Firebase
-const getCarrito = document.querySelector("#tbodyCarrito");
+export const getCarrito = document.querySelector("#tbodyCarrito");
 
-// Obtener carrito de firebase
+// Render
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     refCarrito
@@ -17,41 +18,33 @@ firebase.auth().onAuthStateChanged((user) => {
           let itemsCarrito = doc.data();
           const renderCarrito = new Render(getCarrito, itemsCarrito.productos);
           renderCarrito.render();
+          renderCarrito.addEventListener(vaciarCarrito);
+          renderCarrito.changeValue(updateCantidad);
+          renderCarrito.deleteProduct(borrarItem);
+          renderCarrito.updateTotal();
         }
-      })
-      .catch((error) => {
-        console.log(error);
       });
   }
 });
 
-const getBtnMas = document.querySelectorAll(".mas");
-getBtnMas.forEach((boton) => {
-  boton.addEventListener("click", () => {
-    let cantidad = parseInt(boton.parentElement.children[1].textContent);
-    cantidad++;
-    boton.parentElement.children[1].textContent = cantidad;
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        refCarrito
-          .doc(userName.uid)
-          .get()
-          .then((doc) => {
-            if (doc.exists) {
-              let carrito = doc.data();
-              let productos = carrito.productos;
-              const carritoRender = new Render(getContenedor, productos);
-              const mas = boton.closest(".mas");
-              const id = mas.getAttribute("data-id");
-              const findProduct = productos.find((product) => product.id == id);
-              findProduct.cantidad = cantidad;
-              refCarrito.doc(userName.uid).set({
-                productos: productos,
-              });
-              carritoRender.render();
-            }
-          });
-      }
-    });
-  });
-});
+// Vaciar carrito
+const vaciarCarrito = () => {
+  limpiarCarrito(userName.uid);
+  const carritoRender = new Render(getCarrito, []);
+  carritoRender.render();
+};
+
+// Borrar item
+const borrarItem = (e) => {
+  const id = e.target.id;
+  const contenido = e.target.closest("tr");
+  eliminarProducto(userName.uid, id);
+  contenido.remove();
+}
+
+// Actualizar cantidad
+const updateCantidad = (e) => {
+  const id = e.target.id;
+  const cantidad = e.target.value;
+  actualizarCantidad(userName.uid, id, cantidad);
+}
