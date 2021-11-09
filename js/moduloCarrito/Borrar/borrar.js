@@ -44,3 +44,4 @@ export const eliminarProducto = (usuario, id) => {
         });
     }
   });
+};
