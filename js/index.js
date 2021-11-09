@@ -59,6 +59,6 @@ firebase.auth().onAuthStateChanged((user) => {
     generateUser("", "outline-dark");
     // Si el usuario es el administrador
   } else if (user.uid == "t9NLsKRAT0S2ktmEoHANNfqeYhs2") {
-    generateUser(`<li><a class="dropdown-item" href="./añadirProducto.html" style="cursor:pointer">Añadir Producto</a></li>`, "outline-dark");
+    generateUser(`<li><a class="dropdown-item" href="./adminPanel.html" style="cursor:pointer">Añadir Producto</a></li>`, "outline-dark");
   }
 });

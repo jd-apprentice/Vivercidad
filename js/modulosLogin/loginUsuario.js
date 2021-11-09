@@ -29,7 +29,7 @@ export let loginUser = (e) => {
         grabAlertWelcome.style.display = "flex";
         grabAlertWelcome.style.display = "justify-content-center";
         setTimeout(() => {
-          location.href = "./index.html";
+          location.href = "../index.html";
         }, 3000);
       }
     })
