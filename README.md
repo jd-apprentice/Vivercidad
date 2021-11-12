@@ -13,6 +13,10 @@
 - Editar productos administrador
 <img src="https://i.imgur.com/V9mkCwW.png">
 
+- Diagrama de firebase
+
+![Firebase - Carrito](https://user-images.githubusercontent.com/68082746/141403745-58667a6d-6f03-4e24-bbef-ce591120601f.jpg)
+
 ## Que es Vivercidad 🌱
 
 Vivercidad esta siendo trabajado para ser un E-commerce de plantas implementando frontend con javascript vanilla y backend as a service con firebase.
